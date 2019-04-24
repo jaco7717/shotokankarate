@@ -21,7 +21,7 @@ app.set('view engine', 'hbs');
 app.set('views', __dirname+'/templates');
 app.use(session({secret: 'hemmelig', saveUninitialized: true, resave: true}));
 
-
+console.log('test');
 const loginSkema = new Schema({
     username: String,
     password: String
