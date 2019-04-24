@@ -13,7 +13,7 @@ onload = () => {
         });
         const svar = await resultat.json();
         if (svar.ok)
-            window.location.href = "/session";
+            window.location.href = "https://shotokankarate.herokuapp.com/session";
         else {
             fejl.innerHTML = "Login fejl!";
         }
