@@ -17,7 +17,7 @@ const loginSkema = new Schema({
     password: String
 });
 
-const loginModel = mongoose.model('logins', loginSkema);
+const loginModel = mongoose.model('login', loginSkema);
 
 // GET /api/login
 
