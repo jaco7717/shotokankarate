@@ -65,13 +65,13 @@ app.get('/api/news', async (request, response) => {
 app.post('/api/news', (request, response) => {
     let msgObj = request.body;
 
-    if (msgObj.username) {
+    if (msgObj.headline) {
         let news = new loginModel({
-            headline: msgObj.username,
+            headline: msgObj.headline,
             data: msgObj.date,
             content: msgObj.content,
-        });
 
+        });
 
         news.save();
 
