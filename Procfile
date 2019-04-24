@@ -1,1 +1,1 @@
-web: node joke.js
+web: node karate.js
