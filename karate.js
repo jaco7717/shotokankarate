@@ -49,7 +49,6 @@ app.post('/api/login', (request, response) => {
 
 const newsSkema = new Schema( {
     headline: String,
-    date: { type: Date, default: Date.now },
     content: String
 });
 
@@ -68,7 +67,6 @@ app.post('/api/news', (request, response) => {
     if (msgObj.headline) {
         let news = new loginModel({
             headline: msgObj.headline,
-            data: msgObj.date,
             content: msgObj.content,
 
         });
