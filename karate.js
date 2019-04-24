@@ -26,6 +26,25 @@ app.get('/api/login', async (request, response) => {
 
 });
 
+// POST /api/login
+
+app.post('/api/login', (request, response) => {
+    let msgObj = request.body;
+
+    if (msgObj.username) {
+        let login = new loginModel({
+            username: msgObj.username,
+            password: msgObj.password,
+        });
+
+
+        login.save();
+
+        response.status(200).send("Message sent")
+
+    }
+});
+
 
 let PORT = process.env.PORT || 8080;
 app.listen(PORT);
