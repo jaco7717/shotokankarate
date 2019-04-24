@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 
-let url = 'https://krdo-joke-registry.herokuapp.com/api/services...';
-let data = {name: 'gruppe-død' , address: 'https://jokservice.herokuapp.com/', secret:'pedes'};
+let url = 'https://shotokankarate.herokuapp.com/api/login';
+let data = {username: 'a' , password: 'a'};
 
 fetch(url, {
     method: "POST",
