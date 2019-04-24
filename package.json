@@ -4,7 +4,10 @@
   "dependencies": {
     "express": "^4.16.4",
     "mongoose": "^5.5.0",
-    "node-fetch": "^2.3.0"
+    "node-fetch": "^2.3.0",
+    "express-session": "^1.15.6",
+    "hbs": "^4.0.1",
+    "morgan": "^1.9.1"
   },
   "main": "joke.js",
   "devDependencies": {},
