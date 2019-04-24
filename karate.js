@@ -65,7 +65,7 @@ app.post('/api/news', (request, response) => {
     let msgObj = request.body;
 
     if (msgObj.headline) {
-        let news = new loginModel({
+        let news = new newsModel({
             headline: msgObj.headline,
             content: msgObj.content,
 
