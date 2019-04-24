@@ -6,7 +6,7 @@ onload = () => {
 
     button.onclick = async () => {
         const data = {username: username.value, password: password.value};
-        const resultat = await fetch("/api/login", {
+        const resultat = await fetch("https://shotokankarate.herokuapp.com/api/login", {
             method: "POST",
             body: JSON.stringify(data),
             headers: {'Content-Type': 'application/json'}
