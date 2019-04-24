@@ -45,6 +45,43 @@ app.post('/api/login', (request, response) => {
     }
 });
 
+// GET api/news
+
+const newsSkema = new Schema( {
+    headline: String,
+    date: { type: Date, default: Date.now },
+    content: String
+});
+
+const newsModel = mongoose.model('news', newsSkema);
+
+// GET
+app.get('/api/news', async (request, response) => {
+    response.json(await newsModel.find().exec())
+});
+
+// POST /api/news
+
+app.post('/api/news', (request, response) => {
+    let msgObj = request.body;
+
+    if (msgObj.username) {
+        let news = new loginModel({
+            headline: msgObj.username,
+            data: msgObj.date,
+            content: msgObj.content,
+        });
+
+
+        news.save();
+
+        response.status(200).send("Message sent")
+
+    }
+});
+
+
+
 
 let PORT = process.env.PORT || 8080;
 app.listen(PORT);
