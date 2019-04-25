@@ -23,6 +23,7 @@ async function addNews() {
     document.querySelector('#saveNews').onclick = () => {
         const msg = {
             headline: document.querySelector('#headline').value,
+            date: Date.now(),
             content: document.querySelector('#content').value
         };
 
