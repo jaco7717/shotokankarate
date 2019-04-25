@@ -130,4 +130,5 @@ app.post('/login', function (request, response) {
 });
 
 let PORT = process.env.PORT || 8080;
+module.exports = app;
 app.listen(PORT);
