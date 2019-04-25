@@ -1,5 +1,6 @@
 onload = async () => {
     update();
+    addNews();
 };
 
 
