@@ -1,6 +1,7 @@
 onload = async () => {
     update();
     addNews();
+    console.log("bliver jeg kørt?0");
 };
 
 
