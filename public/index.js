@@ -21,13 +21,14 @@ async function getNews() {
 
 async function addNews() {
     document.querySelector('#saveNews').onclick = () => {
+        let url = 'https://shotokankarate.herokuapp.com/api/news';
+        console.log("test af knap");
         const msg = {
             headline: document.querySelector('#headline').value,
-            date: Date.now(),
             content: document.querySelector('#content').value
         };
 
-        fetch('/api/news', {
+        fetch(url, {
             method: "POST",
             body: JSON.stringify(msg),
             headers: {'Content-Type': 'application/json'}
