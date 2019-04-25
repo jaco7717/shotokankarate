@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 
-let url = 'https://shotokankarate.herokuapp.com/login';
+let url = 'https://shotokankarate.herokuapp.com/api/login';
 let data = {username: 'a' , password: 'a'};
 
 fetch(url, {
