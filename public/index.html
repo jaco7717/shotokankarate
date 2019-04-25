@@ -16,9 +16,54 @@
     <h2 align = "center">Nyheder</h2>
     <dl id="news"></dl>
 
-    <input type="text" id="username" placeholder="Indtast username"><br>
-    <input type="password" id="password" placeholder="Indtast password"><br><br>
-    <input type="button" id="button" value="Login"> <span id="fejl"/>
+
+
+    <div class="container">
+
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#menuComp">Companies</a></li>
+            <li><a data-toggle="tab" href="#menuEmp">Employees</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="menuComp" class="tab-pane fade in active">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3>Companies</h3>
+                        <ol id="companies"></ol>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="well">
+                            <h3>Add company</h3>
+                            <input type="text" id="username" placeholder="Indtast username"><br>
+                            <input type="password" id="password" placeholder="Indtast password"><br><br>
+                            <input type="button" id="button" value="Login"> <span id="fejl"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="menuEmp" class="tab-pane fade">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3>Employees</h3>
+                        <ol id="employees"></ol>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="well">
+                            <h3>Add employee</h3>
+                            <label>Name</label><br>
+
+
+                            <label>Company</label><br>
+                            <select class="selectpicker" id="createPicker"/>
+                            </select><br/><br/>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 
