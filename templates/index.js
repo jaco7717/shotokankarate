@@ -1,13 +1,16 @@
 onload = async () => {
     update();
     addNews();
-    console.log("bliver jeg kørt?0");
+
 };
 
 
 async function update() {
-    document.querySelector('#news').innerHTML = '';
-    for (let input of document.querySelectorAll('input')) input.value = '';
+    const overskrift = document.querySelector('#headline');
+    const tekst = document.querySelector('#content');
+
+    overskrift.value = '';
+    tekst.value = '';
     getNews();
 }
 
