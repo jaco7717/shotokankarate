@@ -112,6 +112,22 @@ app.get('/logout', function (request, response) {
     });
 });
 
+app.post('/login', function (request, response) {
+    const {username, password} = request.body;
+    let login = request.body;
+    console.log(login);
+    loginModel.find(login).exec().then(logins => {
+            console.log(logins);
+            if(logins.length === 1){
+                request.session.username = username;
+                response.send({ok: true});
+            }
+            else{
+                response.send({ok: false});
+            }
+        }
+    )
+});
 
 let PORT = process.env.PORT || 8080;
 app.listen(PORT);
