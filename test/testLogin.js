@@ -1,4 +1,4 @@
-//her skal vi lave test af
+//her skal vi lave test af administrator login
 
 const app = require('../karate.js');
 const request = require('supertest');
@@ -45,54 +45,7 @@ describe('Login test', function () {
             .expect('Content-Type', /json/);
         const login = response.body;
 
-        login[0].username.should.not.be.equal('9');
-        login[0].password.should.not.be.equal('#1');
-    });
-});
-
-describe('News test', function () {
-
-    it("TEST5 - test of correct headline/content test1", async function () {
-        const response = await request(app)
-            .get('/api/news')
-            .expect(200)
-            .expect('Content-Type', /json/);
-        const news = response.body;
-
-        news[0].headline.should.be.equal('test1');
-        news[0].content.should.be.equal('test1');
-    });
-
-    it("TEST6 - test of incorrect headline/content test1", async function () {
-        const response = await request(app)
-            .get('/api/news')
-            .expect(200)
-            .expect('Content-Type', /json/);
-        const news = response.body;
-
-        news[0].headline.should.not.be.equal('test');
-        news[0].content.should.not.be.equal('12345');
-    });
-
-    it("TEST7 - test of correct headline/content test2", async function () {
-        const response = await request(app)
-            .get('/api/news')
-            .expect(200)
-            .expect('Content-Type', /json/);
-        const news = response.body;
-
-        news[1].headline.should.be.equal('test2');
-        news[1].content.should.be.equal('test2');
-    });
-
-    it("TEST8 - test of incorrect headline/content test2", async function () {
-        const response = await request(app)
-            .get('/api/news')
-            .expect(200)
-            .expect('Content-Type', /json/);
-        const news = response.body;
-
-        news[1].headline.should.not.be.equal('test');
-        news[1].content.should.not.be.equal('12345');
+        login[1].username.should.not.be.equal('9');
+        login[1].password.should.not.be.equal('#1');
     });
 });
