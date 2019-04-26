@@ -16,11 +16,11 @@ async function update() {
 
 async function getNews() {
     const [template, userResponse] =
-        await Promise.all([fetch('/news.hbs'), fetch('https://shotokankarate.herokuapp.com/api/news')]);
+        await Promise.all([fetch(__dirname+'/news.hbs'), fetch('https://shotokankarate.herokuapp.com/api/news')]);
     const templateText = await template.text();
     const news = await userResponse.json();
     const compiledTemplate = Handlebars.compile(templateText);
-    document.querySelector('#news').innerHTML = compiledTemplate({news});
+    document.querySelector('#nyheder').innerHTML = compiledTemplate({news});
 }
 
 async function addNews() {
