@@ -92,8 +92,8 @@ app.post('/api/news', (request, response) => {
 
 // DELETE /api/news
 
-app.delete('/api/news', (request, response) => {
-    for (let i of array) {
+app.delete('/api/news/:id', (request, response) => {
+    for (let i of request) {
 
         if (request.body.id === i.id) {
             let index = array.indexOf(i);
