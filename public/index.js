@@ -50,7 +50,7 @@ async function addNews() {
 }
 
 function slet(id) {
-
+    console.log(id);
     tilSlet(id);
 
 }
