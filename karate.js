@@ -90,6 +90,26 @@ app.post('/api/news', (request, response) => {
     }
 });
 
+// DELETE /api/news
+
+app.delete('/api/news', (request, response) => {
+    let msgObj = request.body;
+
+    if (msgObj.headline) {
+        let news = new newsModel({
+            headline: msgObj.headline,
+            date : msgObj.date,
+            content: msgObj.content,
+
+        });
+
+        news.save();
+
+        response.status(200).send("Message sent")
+
+    }
+});
+
 
 app.get('/session', function (request, response) {
     const username = request.session.username;
