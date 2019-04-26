@@ -93,22 +93,15 @@ app.post('/api/news', (request, response) => {
 // DELETE /api/news
 
 app.delete('/api/news/:id', (request, response) => {
+    for (let i of array) {
 
-    console.log(request.body.id);
-    console.log(request.params.id);
-        .then(resultat => resultat.json())
-        .then(resultat => {
-            for (let i of resultat) {
-
-        if (request.body.id === i.id) {
+        if (request.body.tekst === i.id) {
             let index = array.indexOf(i);
             array.splice(index, i);
 
-        }
 
+        }
     }
-    }
-)
 });
 
 
