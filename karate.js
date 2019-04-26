@@ -92,15 +92,17 @@ app.post('/api/news', (request, response) => {
 
 // DELETE /api/news
 
-app.delete('/api/news/:id', (request, response) => {
-    for (let i of request) {
+app.delete('/api/news/:id', async (req, res) => {
+    const message = await req.context.models.news.findById(
+        req.params.id,
+    );
 
-        if (request.body.id === i.id) {
-            let index = array.indexOf(i);
-            array.splice(index, i);
-
-        }
+    let result = null;
+    if (message) {
+        result = await message.remove();
     }
+
+    return res.send(result);
 });
 
 
