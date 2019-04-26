@@ -20,7 +20,7 @@ async function getNews() {
     const templateText = await template.text();
     const news = await userResponse.json();
     const compiledTemplate = Handlebars.compile(templateText);
-    document.querySelector('#news').innerHTML = compiledTemplate({news});
+    document.querySelector('#nyheder').innerHTML = compiledTemplate({news});
 }
 
 async function addNews() {
