@@ -48,3 +48,30 @@ async function addNews() {
             .catch(fejl => console.log('Fejl: ' + fejl));
     };
 }
+
+function slet(id) {
+
+    tilSlet(id);
+
+}
+
+
+async function tilSlet(id) {
+
+    fetch(url, {
+        method: "DELETE",
+        body: JSON.stringify(id),
+        headers: {'Content-Type': 'application/json'}
+    })
+        .then(response => {
+            if (response.status >= 400)
+                throw new Error(response.status);
+            else
+                update();
+            return response.json();
+        })
+        .then(resultat => console.log(`Resultat: %o`, resultat))
+        .catch(fejl => console.log('Fejl: ' + fejl));
+};
+
+}
