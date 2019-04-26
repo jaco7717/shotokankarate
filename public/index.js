@@ -57,7 +57,8 @@ function slet(id) {
 
 async function tilSlet(id) {
     console.log(id);
-    fetch('https://shotokankarate.herokuapp.com/api/news/' + id, {
+    let url = 'https://shotokankarate.herokuapp.com/api/news/:' + id;
+    fetch(url, {
         method: "DELETE",
         body: JSON.stringify(id),
         headers: {'Content-Type': 'application/json'}
