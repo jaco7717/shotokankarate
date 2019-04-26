@@ -93,20 +93,13 @@ app.post('/api/news', (request, response) => {
 // DELETE /api/news
 
 app.delete('/api/news', (request, response) => {
-    let msgObj = request.body;
+    for (let i of array) {
 
-    if (msgObj.headline) {
-        let news = new newsModel({
-            headline: msgObj.headline,
-            date : msgObj.date,
-            content: msgObj.content,
+        if (request.body.id === i.id) {
+            let index = array.indexOf(i);
+            array.splice(index, i);
 
-        });
-
-        news.save();
-
-        response.status(200).send("Message sent")
-
+        }
     }
 });
 
