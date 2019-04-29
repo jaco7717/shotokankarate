@@ -1,4 +1,4 @@
-onload = async() => {
+onload = () => {
     getNewsUserPage();
 };
 
