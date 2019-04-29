@@ -95,12 +95,19 @@ app.post('/api/news', (request, response) => {
 app.delete('/api/news/:id', (request, response) => {
     let msgObj = request.body;
 
+    if (msgObj.headline) {
+        let news = new newsModel({
+            headline: msgObj.headline,
+            date : msgObj.date,
+            content: msgObj.content,
+
+        });
 
         msgObj.delete();
 
         response.status(200).send("Message sent")
 
-    
+    }
 });
 
 // GET SINGLE NEWS
