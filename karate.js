@@ -92,22 +92,12 @@ app.post('/api/news', (request, response) => {
 
 // DELETE /api/news
 
-app.delete('/api/news/:id', (request, response) => {
-    let msgObj = request.body;
+app.delete('/api/news/:id', async (request, response) => {
+    let { _id } = request.body;
 
-    if (msgObj.headline) {
-        let news = new newsModel({
-            headline: msgObj.headline,
-            date : msgObj.date,
-            content: msgObj.content,
+    await newsModel.find({ _id }).delete().exec();
 
-        });
-
-        news.delete();
-
-        response.status(200).send("Message sent")
-
-    }
+    response.status(200).send("Message sent");
 });
 
 // GET SINGLE NEWS
