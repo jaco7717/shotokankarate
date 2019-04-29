@@ -1,11 +1,13 @@
 onload = () => {
     getNewsUserPage();
+    loginButton();
+};
 
+async function loginButton() {
     const username = document.querySelector('#username');
     const password = document.querySelector('#password');
     const button = document.querySelector('#button');
     const fejl = document.querySelector('#fejl');
-
     button.onclick = async () => {
         const data = {username: username.value, password: password.value};
         const resultat = await fetch("https://shotokankarate.herokuapp.com/login", {
@@ -20,7 +22,8 @@ onload = () => {
             fejl.innerHTML = "Login fejl!";
         }
     }
-};
+
+}
 
 
 async function getNewsUserPage() {
