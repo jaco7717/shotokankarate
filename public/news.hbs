@@ -6,7 +6,7 @@
         <button class="button" id="{{_id}}" onclick="slet('{{this._id}}')"> slet</button>
 
 
-    <button class="fb-share-button" id="{{_id}}" data-href="https://www.facebook.com/Test12345-293450494906833/" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.facebook.com%2FTest12345-293450494906833%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore" onclick="deler('{{this._id}},{{this._content}}')">Del</a></button>
+    <button class="fb-share-button" id="{{_id}}" data-href="https://www.facebook.com/Test12345-293450494906833/" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.facebook.com%2FTest12345-293450494906833%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore" onclick="deler('{{this._id}}','{{this._content}}')">Del</a></button>
         <br>
     {{/each}}
 </table>
