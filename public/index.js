@@ -85,7 +85,9 @@ function deler(id, content) {
 async function tilDel(id, content) {
 console.log(id);
 console.log(content);
-    content.execCommand('copy');
+
+let c = content;
+    c.execCommand('copy');
 
 
 }
