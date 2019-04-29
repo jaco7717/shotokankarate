@@ -1,17 +1,13 @@
-onload = () => {
-    update();
+onload = async() => {
+    getNewsUserPage();
 };
 
-function update() {
-    getNewsUserPage()
-}
-
-function getNewsUserPage() {
+async function getNewsUserPage() {
     const [template, userResponse] =
-        Promise.all([fetch('/newsUserPage.hbs'), fetch('https://shotokankarate.herokuapp.com/api/news')]);
+      await Promise.all([fetch('/newsUserPage.hbs'), fetch('https://shotokankarate.herokuapp.com/api/news')]);
     console.log("kører funktionen getNewsUserPage?");
-    const templateText = template.text();
-    const newsUserPage = userResponse.json();
+    const templateText = await template.text();
+    const newsUserPage = await userResponse.json();
     const compiledTemplate = Handlebars.compile(templateText);
     document.querySelector('#nyhederBrugerside').innerHTML = compiledTemplate({newsUserPage});
 }
