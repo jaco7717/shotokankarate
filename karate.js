@@ -104,6 +104,14 @@ app.delete('/api/news/:id', (request, response) => {
     }
 });
 
+// GET SINGLE NEWS
+
+app.get('/api/news/:id', (request, response) => {
+    for (let i of (newsModel.find().exec())) {
+        response.json(i);
+    }
+});
+
 
 app.get('/session', function (request, response) {
     const username = request.session.username;
@@ -125,6 +133,8 @@ app.get('/logout', function (request, response) {
         }
     });
 });
+
+
 
 app.post('/login', function (request, response) {
     const {username, password} = request.body;
