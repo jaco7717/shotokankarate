@@ -49,7 +49,7 @@ async function addNews() {
     };
 }
 
-function deler(id) {
+function slet(id) {
     tilSlet(id);
 
 }
@@ -76,7 +76,7 @@ async function tilSlet(id) {
 }
 
 
-function del(id) {
+function deler(id) {
     tilDel(id);
 
 }
