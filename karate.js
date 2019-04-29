@@ -93,17 +93,16 @@ app.post('/api/news', (request, response) => {
 // DELETE /api/news
 
 app.delete('/api/news/:id', (request, response) => {
-    let id = request.params.id;
-    response.json(newsModel.find({_id: id}).exec())
+
 
 
 });
 
 // GET SINGLE NEWS
 
-app.get('/api/news/:id', (request, response) => {
+app.get('/api/news/:id', async (request, response) => {
     let id = request.params.id;
-    response.json(newsModel.find({_id: id}).exec())
+    response.json(await newsModel.find({_id: id}).exec())
 });
 
 
