@@ -93,23 +93,17 @@ app.post('/api/news', (request, response) => {
 // DELETE /api/news
 
 app.delete('/api/news/:id', (request, response) => {
-    for (let i of array) {
-
-        if (request.body.tekst === i.id) {
-            let index = array.indexOf(i);
-            array.splice(index, i);
+    let id = request.params.id;
+    response.json(newsModel.find({_id: id}).exec())
 
 
-        }
-    }
 });
 
 // GET SINGLE NEWS
 
 app.get('/api/news/:id', (request, response) => {
-    for (let i of (newsModel.find().exec())) {
-        response.json(i);
-    }
+    let id = request.params.id;
+    response.json(newsModel.find({_id: id}).exec())
 });
 
 
