@@ -94,6 +94,7 @@ app.post('/api/news', (request, response) => {
 
 app.delete('/api/news/:id', async (request, response) => {
     let { _id } = request.body;
+    console.log('test')
 
     await newsModel.find({ _id }).remove().exec();
 
