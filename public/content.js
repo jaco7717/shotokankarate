@@ -1,14 +1,9 @@
 onload = async () => {
     update();
-    addNews();
 };
 
 async function update() {
-    const overskrift = document.querySelector('#headline');
-    const tekst = document.querySelector('#content');
 
-    overskrift.value = '';
-    tekst.value = '';
     getNewsUserPage()
 }
 
