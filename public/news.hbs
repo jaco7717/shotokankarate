@@ -3,7 +3,8 @@
         <ol> {{this.headline}}</ol>
         <ol>{{this.date}}</ol>
         <ol>{{this.content}}</ol>
-    <button class="button" id="{{_id}}" onclick="slet('{{this._id}}')" > slet </button>
+        <button class="button" id="{{_id}}" onclick="slet('{{this._id}}')"> slet</button>
+        <button class="button" id="{{_id}}" onclick="deler('{{this._id}}')"> del</button>
         <br>
     {{/each}}
 </table>

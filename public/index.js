@@ -49,7 +49,7 @@ async function addNews() {
     };
 }
 
-function slet(id) {
+function deler(id) {
     tilSlet(id);
 
 }
@@ -74,4 +74,18 @@ async function tilSlet(id) {
         .then(resultat => console.log(`Resultat: %o`, resultat))
         .catch(fejl => console.log('Fejl: ' + fejl));
 }
+
+
+function del(id) {
+    tilDel(id);
+
+}
+
+
+async function tilDel(id) {
+    console.log(id);
+
+}
+
+
 
