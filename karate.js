@@ -93,9 +93,15 @@ app.post('/api/news', (request, response) => {
 // DELETE /api/news
 
 app.delete('/api/news/:id', (request, response) => {
+    for (let i of array) {
+
+        if (request.body.tekst === i.id) {
+            let index = array.indexOf(i);
+            array.splice(index, i);
 
 
-
+        }
+    }
 });
 
 // GET SINGLE NEWS
