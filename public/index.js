@@ -87,14 +87,15 @@ async function tilSlet(id) {
 }
 
 
-function deler(id) {
-    tilDel(id);
+function deler(id, content) {
+    tilDel(id, content);
 
 }
 
 
-async function tilDel(id) {
-    console.log(id);
+async function tilDel(id, content) {
+console.log(id);
+console.log(content);
 
 }
 
