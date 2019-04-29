@@ -88,6 +88,10 @@ async function tilDel(id, content) {
 console.log(id);
 console.log(content);
 
+let c = content;
+
+    document.execCommand(c);
+
 }
 
 
