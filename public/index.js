@@ -63,8 +63,6 @@ async function tilSlet(id) {
     console.log(url);
     fetch(url, {
         method: "DELETE",
-        body: JSON.stringify(id),
-        headers: {'Content-Type': 'application/json'}
     })
         .then(response => {
             if (response.status >= 400)
