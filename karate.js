@@ -93,10 +93,10 @@ app.post('/api/news', (request, response) => {
 // DELETE /api/news
 
 app.delete('/api/news/:id', async (request, response) => {
-    let { _id } = request.body;
+    let { id } = request.params;
     console.log('test')
 
-    await newsModel.find({ _id }).deleteOne().exec();
+    await newsModel.find({ _id: id }).deleteOne().exec();
 
     response.status(200).send("Message sent");
 });
