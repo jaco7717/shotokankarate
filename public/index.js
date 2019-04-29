@@ -59,7 +59,7 @@ function slet(id) {
 
 async function tilSlet(id) {
     console.log(id);
-    let url = 'https://shotokankarate.herokuapp.com/api/news/' + id;
+    let url = '/api/news/' + id;
     console.log(url);
     fetch(url, {
         method: "DELETE",
