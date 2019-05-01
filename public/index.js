@@ -90,7 +90,7 @@ async function tilEdit(id, content, headline) {
     console.log(content)
     console.log(headline)
 
-    let data = {headline: 'headline', content: 'content'};
+    let data = {headline: overskrift, content: text};
     console.log(data)
 
     let url = 'https://shotokankarate.herokuapp.com/api/news/'+id;
