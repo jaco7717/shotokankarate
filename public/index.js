@@ -86,8 +86,12 @@ async function tilEdit(id, content, headline) {
     if (overskrift != null && text != null ) {
         console.log("fungere");
     }
+    console.log(id)
+    console.log(content)
+    console.log(headline)
 
     let data = {headline: headline, content: content};
+    console.log(data)
 
     fetch('https://shotokankarate.herokuapp.com/api/news/' +id, {
         method: "PUT",
