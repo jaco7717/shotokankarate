@@ -87,6 +87,8 @@ async function tilEdit(id, content, headline) {
         console.log("fungere");
     }
 
+    let data = {headline: headline, content: content};
+
     fetch('https://shotokankarate.herokuapp.com/api/news/' +id, {
         method: "PUT",
         body: JSON.stringify(data),
