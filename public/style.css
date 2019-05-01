@@ -12,6 +12,8 @@ table.a {
     border-spacing: 0;
     font-weight: 600;
 
+    border-bottom: 2px solid #ddd;
+
 }
 
 thead tr:first-child {
