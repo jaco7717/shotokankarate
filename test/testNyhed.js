@@ -5,6 +5,11 @@ const request = require('supertest');
 const should = require('should');
 
 
+let data = {
+    "headline": "Posttest headline",
+    "content": "Posttest content"
+}
+
 describe('News test', function () {
 
     it("TEST5 - test of correct headline/content test1", async function () {
@@ -50,4 +55,36 @@ describe('News test', function () {
         news[1].headline.should.not.be.equal('test');
         news[1].content.should.not.be.equal('12345');
     });
+
+    // it('TEST9 - test of Post into News', function (done) {
+    //     request(app)
+    //         .post('/api/news')
+    //         .send(data)
+    //         .set('Accept', 'application/json')
+    //         .expect('Content-Type', /text/)
+    //         .expect(200)
+    //         .end((err) => {
+    //             if (err) return done(err);
+    //             done();
+    //         });
+    // });
+    //
+    // it('TEST10 - test of Delete of News', function (done) {
+    //     request(app)
+    //     let end;
+    //     fetch('api/news')
+    //         .then(response = response.json())
+    //         .then(array => end = array.last())
+    //         .delete('/api/news/' + end
+    //         .send(data)
+    //         .set('Accept', 'application/json')
+    //         .expect('Content-Type', /text/)
+    //         .expect(200)
+    //         .end((err) => {
+    //             if (err) return done(err);
+    //             done();
+    //         });
+    // });
+
+
 });
