@@ -74,11 +74,13 @@ app.get('/api/news', async (request, response) => {
 
 app.post('/api/news', (request, response) => {
     let msgObj = request.body;
+    let currentDate = new Date();
+    let formattedDate = currentDate.getDate() + "-" + (currentDate.getMonth() + 1) + "-" + currentDate.getFullYear();
 
     if (msgObj.headline) {
         let news = new newsModel({
             headline: msgObj.headline,
-            date : msgObj.date,
+            date : formattedDate,
             content: msgObj.content,
 
         });
