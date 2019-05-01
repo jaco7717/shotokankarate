@@ -10,9 +10,10 @@
 table.a {
     border-collapse: separate;
     border-spacing: 0;
-    font-weight: 600;
+    font-weight: 500;
 
-    border-bottom: 2px solid #ddd;
+    border-bottom: 2px solid black;
+    font-size: 12px;
 
 }
 
