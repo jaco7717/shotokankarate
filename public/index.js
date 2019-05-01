@@ -24,11 +24,10 @@ async function getNews() {
 }
 
 
-
 async function addNews() {
     document.querySelector('#saveNews').onclick = () => {
         let url = 'https://shotokankarate.herokuapp.com/api/news';
-        console.log("test af knap");
+
         const msg = {
             headline: document.querySelector('#headline').value,
             content: document.querySelector('#content').value
@@ -58,9 +57,7 @@ function slet(id) {
 
 
 async function tilSlet(id) {
-    console.log(id);
     let url = 'https://shotokankarate.herokuapp.com/api/news/' + id;
-    console.log(url);
     fetch(url, {
         method: "DELETE",
     })
@@ -76,22 +73,12 @@ async function tilSlet(id) {
 }
 
 
-function deler(id, content) {
-    tilDel(id, content);
+function edit(id) {
+    tilEdit(id);
 
 }
 
 
-async function tilDel(id, content) {
+async function tilEdit(id) {
 console.log(id);
-console.log(content);
-
-
-
-
-
-
 }
-
-
-
