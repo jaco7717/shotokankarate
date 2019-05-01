@@ -80,9 +80,8 @@ app.post('/api/news', (request, response) => {
     if (msgObj.headline) {
         let news = new newsModel({
             headline: msgObj.headline,
-            date : currentDate,
+            date : msgObj.date = formattedDate,
             content: msgObj.content,
-
         });
 
         news.save();
