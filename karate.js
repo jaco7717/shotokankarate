@@ -164,10 +164,7 @@ app.put('/api/news/:id', async function (request, response){
             content: msgObj.content,
         });
 
-        // let findnews = await newsModel.find({_id: id}).exec();
-        // console.log(findnews);
         await newsModel.findOneAndUpdate({_id: id }, msgObj)
-        // await newsModel.find({_id: id}).send(news).exec();
         response.status(200).send("Message updated")
 
     }
