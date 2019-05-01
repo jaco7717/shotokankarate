@@ -16,6 +16,15 @@ table.a {
     font-size: 12px;
 }
 
+table.b {
+    
+    border-spacing: 0;
+    font-weight: 500;
+
+
+    font-size: 12px;
+}
+
 thead tr:first-child {
     border: none;
     text-align: left;
