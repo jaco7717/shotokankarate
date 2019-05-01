@@ -151,7 +151,7 @@ app.post('/login', function (request, response) {
 });
 
 
-app.put('/api/news/:id', function (request, response){
+app.put('/api/news/:id', async function (request, response){
     let { id } = request.params;
     let msgObj = request.body;
     console.log('UPDATE NEWS TEST')
@@ -162,9 +162,9 @@ app.put('/api/news/:id', function (request, response){
             password: msgObj.password,
         });
 
-        let findnews = newsModel.find({_id: id});
+        let  findnews = newsModel.find({_id: id});
         console.log(findnews);
-        newsModel.find({_id: id}).put(login);
+        await newsModel.find({_id: id}).put(login);
         response.status(200).send("Message updated")
 
     }
