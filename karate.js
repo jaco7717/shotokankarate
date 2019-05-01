@@ -162,7 +162,7 @@ app.put('/api/news/:id', async function (request, response){
             password: msgObj.password,
         });
 
-        let  findnews = newsModel.find({_id: id});
+        let findnews = newsModel.find({_id: id}).exec();
         console.log(findnews);
         await newsModel.find({_id: id}).put(login);
         response.status(200).send("Message updated")
