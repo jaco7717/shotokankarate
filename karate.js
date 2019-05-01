@@ -21,7 +21,7 @@ app.set('view engine', 'hbs');
 app.set('views', __dirname+'/templates');
 app.use(session({secret: 'hemmelig', saveUninitialized: true, resave: true}));
 
-console.log('test');
+console.log('SERVER STARTING!');
 const loginSkema = new Schema({
     username: String,
     password: String
@@ -74,10 +74,7 @@ app.get('/api/news', async (request, response) => {
 
 app.post('/api/news', (request, response) => {
     let msgObj = request.body;
-
     let currentDate = (new Date().getDate() + "-" + (new Date().getMonth()+1)  +"-" +new Date().getFullYear());
-    console.log(currentDate);
-
     if (msgObj.headline) {
         let news = new newsModel({
             headline: msgObj.headline,
@@ -136,9 +133,7 @@ app.get('/logout', function (request, response) {
 app.post('/login', function (request, response) {
     const {username, password} = request.body;
     let login = request.body;
-    console.log(login);
     loginModel.find(login).exec().then(logins => {
-            console.log(logins);
             if(logins.length === 1){
                 request.session.username = username;
                 response.send({ok: true});
@@ -154,10 +149,6 @@ app.post('/login', function (request, response) {
 app.put('/api/news/:id', async function (request, response){
     let { id } = request.params;
     let msgObj = request.body;
-    console.log('UPDATE NEWS TEST')
-    console.log({id});
-    console.log(msgObj);
-
     if (msgObj.headline) {
         let news = new newsModel({
             headline: msgObj.headline,
