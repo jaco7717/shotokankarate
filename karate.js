@@ -75,9 +75,9 @@ app.get('/api/news', async (request, response) => {
 app.post('/api/news', (request, response) => {
     let msgObj = request.body;
 
-    let currentDate = (new Date().getDate() + "-" + new Date().getMonth()  +"-" +new Date().getFullYear());
+    let currentDate = (new Date().getDate() + "-" + (new Date().getMonth()+1)  +"-" +new Date().getFullYear());
     console.log(currentDate);
-    
+
     if (msgObj.headline) {
         let news = new newsModel({
             headline: msgObj.headline,
