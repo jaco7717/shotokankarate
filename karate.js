@@ -158,10 +158,10 @@ app.put('/api/news/:id', async function (request, response){
     console.log({id});
     console.log(msgObj);
 
-    if (msgObj.username) {
+    if (msgObj.headline) {
         let login = new loginModel({
-            username: msgObj.username,
-            password: msgObj.password,
+            headline: msgObj.headline,
+            content: msgObj.content,
         });
 
         let findnews = newsModel.find({_id: id}).exec();
