@@ -1,6 +1,6 @@
 <table>
     {{#each news}}
-        <ol> {{this.headline}}</ol>
+        <h3><ol> {{this.headline}}</ol></h3>
         <ol>{{this.date}}</ol>
         <ol>{{this.content}}</ol>
         <button class="button" id="{{_id}}" onclick="slet('{{this._id}}')"> slet</button>
