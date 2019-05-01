@@ -11,8 +11,8 @@ table.a {
     border-collapse: separate;
     border-spacing: 0;
     font-weight: 500;
+    line-height: 40px;
 
-    border-bottom: 2px solid black;
     font-size: 12px;
 
 }
@@ -36,6 +36,7 @@ tbody tr:hover {
 
 tbody tr:last-child td {
     border: none;
+    border-bottom: 2px solid black;
 }
 
 tbody td {
