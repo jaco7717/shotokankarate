@@ -59,7 +59,7 @@ app.post('/api/login', (request, response) => {
 
 const newsSkema = new Schema( {
     headline: String,
-    date: Date,
+    date: String,
     content: String
 });
 
@@ -74,13 +74,14 @@ app.get('/api/news', async (request, response) => {
 
 app.post('/api/news', (request, response) => {
     let msgObj = request.body;
-    let currentDate = new Date(new Date().getFullYear(),new Date().getMonth() , new Date().getDate());
-    //let formattedDate = currentDate.getDate() + "-" + (currentDate.getMonth() + 1) + "-" + currentDate.getFullYear();
+
+    let currentDate = (new Date().getDate() + "-" + (new Date().getMonth()+1)  +"-" +new Date().getFullYear());
+    console.log(currentDate);
 
     if (msgObj.headline) {
         let news = new newsModel({
             headline: msgObj.headline,
-            date : msgObj.date = formattedDate,
+            date : currentDate,
             content: msgObj.content,
         });
 
