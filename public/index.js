@@ -80,13 +80,24 @@ function edit(id, content, headline) {
 
 
 async function tilEdit(id, content, headline) {
-console.log(content);
-console.log(headline);
     let overskrift = prompt("Overskrift", headline);
     let text = prompt("text", content);
 
     if (overskrift != null && text != null ) {
         console.log("fungere");
-
     }
+
+    fetch('https://shotokankarate.herokuapp.com/api/news/' +id, {
+        method: "PUT",
+        body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/json' }
+    })
+        .then(resultat => {
+            if (resultat.status >= 400)
+                throw new Error(resultat.status);
+            else
+                return resultat.json();
+        })
+        .then(resultat => console.log(`Resultat: %o`, resultat))
+        .catch(fejl => console.log('Fejl: ' + fejl));
 }
