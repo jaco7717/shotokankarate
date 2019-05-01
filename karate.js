@@ -59,7 +59,7 @@ app.post('/api/login', (request, response) => {
 
 const newsSkema = new Schema( {
     headline: String,
-    date: { type: Date, default: Date.now },
+    date: Date,
     content: String
 });
 
