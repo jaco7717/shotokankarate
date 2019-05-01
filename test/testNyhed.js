@@ -56,19 +56,26 @@ describe('News test', function () {
         news[1].content.should.not.be.equal('12345');
     });
 
-    // it('TEST9 - test of Post into News', function (done) {
-    //     request(app)
-    //         .post('/api/news')
-    //         .send(data)
-    //         .set('Accept', 'application/json')
-    //         .expect('Content-Type', /text/)
-    //         .expect(200)
-    //         .end((err) => {
-    //             if (err) return done(err);
-    //             done();
-    //         });
-    // });
-    //
+    let object;
+
+    it('TEST9 - test of Post into News', function (done) {
+        request(app)
+            .post('/api/news')
+            .send(data)
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /text/)
+            .expect(200)
+            .then(response => {
+                return response.json()
+            })
+            .then(object = response.last())
+            .end((err) => {
+                if (err) return done(err);
+                done();
+            });
+
+    });
+
     // it('TEST10 - test of Delete of News', function (done) {
     //     request(app)
     //     let end;

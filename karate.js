@@ -96,7 +96,6 @@ app.post('/api/news', (request, response) => {
 
 app.delete('/api/news/:id', async (request, response) => {
     let { id } = request.params;
-    console.log('test')
 
     await newsModel.find({ _id: id }).deleteOne().exec();
 
@@ -150,6 +149,11 @@ app.post('/login', function (request, response) {
         }
     )
 });
+
+// app.put('/api/news/:id', function (request, response){
+//     let { id } = request.params;
+//
+// });
 
 let PORT = process.env.PORT || 8080;
 module.exports = app;
