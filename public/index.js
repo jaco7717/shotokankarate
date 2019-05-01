@@ -90,10 +90,12 @@ async function tilEdit(id, content, headline) {
     console.log(content)
     console.log(headline)
 
-    let data = {headline: headline, content: content};
+    let data = {headline: 'headline', content: 'content'};
     console.log(data)
 
-    fetch('https://shotokankarate.herokuapp.com/api/news/' +id, {
+    let url = 'https://shotokankarate.herokuapp.com/api/news/'+id;
+
+    fetch(url, {
         method: "PUT",
         body: JSON.stringify(data),
         headers: { 'Content-Type': 'application/json' }
