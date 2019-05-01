@@ -104,6 +104,7 @@ async function tilEdit(id, content, headline) {
             if (resultat.status >= 400)
                 throw new Error(resultat.status);
             else
+                update();
                 return resultat.json();
         })
         .then(resultat => console.log(`Resultat: %o`, resultat))
