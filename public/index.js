@@ -73,12 +73,20 @@ async function tilSlet(id) {
 }
 
 
-function edit(id) {
-    tilEdit(id);
+function edit(id, content, headline) {
+    tilEdit(id, content, headline);
 
 }
 
 
-async function tilEdit(id) {
-console.log(id);
+async function tilEdit(id, content, headline) {
+console.log(content);
+console.log(headline);
+    let overskrift = prompt("Overskrift", headline);
+    let text = prompt("text", content);
+
+    if (overskrift != null && text != null ) {
+        console.log("fungere");
+
+    }
 }
