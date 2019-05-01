@@ -59,7 +59,7 @@ app.post('/api/login', (request, response) => {
 
 const newsSkema = new Schema( {
     headline: String,
-    date: String,
+    date: Date,
     content: String
 });
 
@@ -74,12 +74,13 @@ app.get('/api/news', async (request, response) => {
 
 app.post('/api/news', (request, response) => {
     let msgObj = request.body;
-    let currentDate = new Date().toISOString().substring(0, 10);
-    console.log(currentDate);
+    let currentDate = new Date(new Date().getFullYear(),new Date().getMonth() , new Date().getDate());
+    //let formattedDate = currentDate.getDate() + "-" + (currentDate.getMonth() + 1) + "-" + currentDate.getFullYear();
+
     if (msgObj.headline) {
         let news = new newsModel({
             headline: msgObj.headline,
-            date : currentDate,
+            date : msgObj.date = formattedDate,
             content: msgObj.content,
         });
 
@@ -152,6 +153,7 @@ app.post('/login', function (request, response) {
 app.put('/api/news/:id', function (request, response){
     let { id } = request.params;
     let msgObj = request.body;
+    console.log('UPDATE NEWS TEST')
 
     if (msgObj.username) {
         let login = new loginModel({
@@ -159,7 +161,8 @@ app.put('/api/news/:id', function (request, response){
             password: msgObj.password,
         });
 
-
+        let findnews = newsModel.find({_id: id});
+        console.log(findnews);
         newsModel.find({_id: id}).put(login);
         response.status(200).send("Message updated")
 
