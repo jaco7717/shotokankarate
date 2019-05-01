@@ -155,6 +155,8 @@ app.put('/api/news/:id', async function (request, response){
     let { id } = request.params;
     let msgObj = request.body;
     console.log('UPDATE NEWS TEST')
+    console.log({id});
+    console.log(msgObj);
 
     if (msgObj.username) {
         let login = new loginModel({
