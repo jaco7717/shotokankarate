@@ -7,36 +7,24 @@
 }
 
 
-
-
 table.a {
-    text-align: left;
-
     border-collapse: separate;
     border-spacing: 0;
-    border: 2px solid #ed1c40;
+    font-weight: 600;
 
-    border-radius: .25rem;
 }
 
 thead tr:first-child {
-    background: #ed1c40;
-    color: #fff;
     border: none;
+    text-align: left;
 }
 
 th:first-child,
 td:first-child {
-    padding: 0 15px 0 20px;
+    padding: 0 1px 0 5px;
 }
 
-th {
-    font-weight: 500;
-}
 
-thead tr:last-child th {
-    border-bottom: 3px solid #ddd;
-}
 
 tbody tr:hover {
     background-color: #f2f2f2;
@@ -71,10 +59,13 @@ td:last-child {
 }
 
 
-.edit:hover {
+#button1:hover {
     color: #0a79df;
 }
 
-.delete:hover {
+#button2:hover {
     color: #dc2a2a;
+}
+#fb-share-button:hover {
+    color: green;
 }
