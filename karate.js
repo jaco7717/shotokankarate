@@ -155,16 +155,16 @@ app.put('/api/news/:id', async function (request, response){
     let { id } = request.params;
     let msgObj = request.body;
     console.log('UPDATE NEWS TEST')
+    console.log({id});
+    console.log(msgObj);
 
-    if (msgObj.username) {
-        let login = new loginModel({
-            username: msgObj.username,
-            password: msgObj.password,
+    if (msgObj.headline) {
+        let news = new newsModel({
+            headline: msgObj.headline,
+            content: msgObj.content,
         });
 
-        let findnews = newsModel.find({_id: id}).exec();
-        console.log(findnews);
-        await newsModel.find({_id: id}).put(login);
+        await newsModel.findOneAndUpdate({_id: id }, msgObj)
         response.status(200).send("Message updated")
 
     }

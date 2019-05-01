@@ -1,10 +1,10 @@
 const fetch = require('node-fetch');
 
-let url = 'https://shotokankarate.herokuapp.com/api/news/5cc6c90ee5fc6b00041f9e1b';
+let url = 'https://shotokankarate.herokuapp.com/api/news/';
 let data = {headline: 'NEWS', content: 'Fede nyheder'};
 
 fetch(url, {
-    method: "put",
+    method: "POST",
     body: JSON.stringify(data),
     headers: { 'Content-Type': 'application/json' }
 })
