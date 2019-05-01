@@ -149,10 +149,24 @@ app.post('/login', function (request, response) {
     )
 });
 
-// app.put('/api/news/:id', function (request, response){
-//     let { id } = request.params;
-//
-// });
+
+app.put('/api/news/:id', function (request, response){
+    let { id } = request.params;
+    let msgObj = request.body;
+
+    if (msgObj.username) {
+        let login = new loginModel({
+            username: msgObj.username,
+            password: msgObj.password,
+        });
+
+
+        newsModel.find({_id: id}).put(login);
+        response.status(200).send("Message updated")
+
+    }
+
+});
 
 let PORT = process.env.PORT || 8080;
 module.exports = app;
