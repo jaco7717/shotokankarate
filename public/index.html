@@ -15,27 +15,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
     <script src="https://cdn.jsdelivr.net/handlebarsjs/4.0.5/handlebars.min.js"></script>
 
-    <link href='../core/main.css' rel='stylesheet' />
-    <link href='../daygrid/main.css' rel='stylesheet' />
-
-    <script src='../core/main.js'></script>
-    <script src='../daygrid/main.js'></script>
-
-    <script>
-
-
-        document.addEventListener('DOMContentLoaded', function() {
-            let calendarEl = document.getElementById('calendar');
-
-            let calendar = new FullCalendar.Calendar(calendarEl, {
-                plugins: [ 'dayGrid' ]
-            });
-
-            calendar.render();
-        });
-
-    </script>
-    
 
 </head>
 <body>
@@ -98,7 +77,6 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="well">
-                            <div id='calendar'></div>
 
 
 
