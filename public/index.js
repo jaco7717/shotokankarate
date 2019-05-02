@@ -86,7 +86,7 @@ async function tilEdit(id, content, headline) {
     if (overskrift != null && text != null ) {
         console.log("fungere");
     }
-    
+
 
     let data = {headline: overskrift, content: text};
     console.log(data)
