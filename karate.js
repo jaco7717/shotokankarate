@@ -159,8 +159,47 @@ app.put('/api/news/:id', async function (request, response){
         response.status(200).send("Message updated")
 
     }
-
 });
+
+const calenderSkema = new Schema( {
+    headline: String,
+    date: String,
+    content: String
+});
+
+const calenderModel = mongoose.model('calender', calenderSkema);
+
+app.get('/api/calender', async (request, response) => {
+    response.json(await calenderModel.find().exec())
+});
+
+app.post('/api/calender', (request, response) => {
+    let msgObj = request.body;
+    let currentDate = (new Date().getDate() + "-" + (new Date().getMonth()+1)  +"-" +new Date().getFullYear());
+    if (msgObj.headline) {
+        let event = new newsModel({
+            headline: msgObj.headline,
+            date : currentDate,
+            content: msgObj.content,
+        });
+
+        event.save();
+
+        response.status(200).send("Message sent")
+    }
+});
+
+app.delete('/api/calender/:id', async (request, response) => {
+    let { id } = request.params;
+
+    await calenderModel.find({ _id: id }).deleteOne().exec();
+
+    response.status(200).send("Message sent");
+});
+
+
+
+
 
 let PORT = process.env.PORT || 8080;
 module.exports = app;
