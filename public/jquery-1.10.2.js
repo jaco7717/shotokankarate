@@ -18,7 +18,7 @@
 // you try to trace through "use strict" call chains. (#13335)
 // Support: Firefox 18+
 //"use strict";
-var
+let
 	// The deferred used on DOM ready
 	readyList,
 
@@ -122,7 +122,7 @@ jQuery.fn = jQuery.prototype = {
 
 	constructor: jQuery,
 	init: function( selector, context, rootjQuery ) {
-		var match, elem;
+		let match, elem;
 
 		// HANDLE: $(""), $(null), $(undefined), $(false)
 		if ( !selector ) {
@@ -249,7 +249,7 @@ jQuery.fn = jQuery.prototype = {
 	pushStack: function( elems ) {
 
 		// Build a new jQuery matched element set
-		var ret = jQuery.merge( this.constructor(), elems );
+		let ret = jQuery.merge( this.constructor(), elems );
 
 		// Add the old object onto the stack (as a reference)
 		ret.prevObject = this;
@@ -286,7 +286,7 @@ jQuery.fn = jQuery.prototype = {
 	},
 
 	eq: function( i ) {
-		var len = this.length,
+		let len = this.length,
 			j = +i + ( i < 0 ? len : 0 );
 		return this.pushStack( j >= 0 && j < len ? [ this[j] ] : [] );
 	},
@@ -312,7 +312,7 @@ jQuery.fn = jQuery.prototype = {
 jQuery.fn.init.prototype = jQuery.fn;
 
 jQuery.extend = jQuery.fn.extend = function() {
-	var src, copyIsArray, copy, name, options, clone,
+	let src, copyIsArray, copy, name, options, clone,
 		target = arguments[0] || {},
 		i = 1,
 		length = arguments.length,
@@ -468,7 +468,7 @@ jQuery.extend({
 	},
 
 	isPlainObject: function( obj ) {
-		var key;
+		let key;
 
 		// Must be an Object.
 		// Because of IE, we also have to check the presence of the constructor property.
@@ -505,7 +505,7 @@ jQuery.extend({
 	},
 
 	isEmptyObject: function( obj ) {
-		var name;
+		let name;
 		for ( name in obj ) {
 			return false;
 		}
