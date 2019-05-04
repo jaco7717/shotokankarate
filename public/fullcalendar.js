@@ -2050,11 +2050,7 @@ function BasicDayView(element, calendar) {
 	
 }
 
-;;
 
-setDefaults({
-	weekMode: 'fixed'
-});
 
 
 function BasicView(element, calendar, viewName) {
@@ -2603,101 +2599,9 @@ function BasicEventRenderer() {
 
 ;;
 
-fcViews.agendaWeek = AgendaWeekView;
-
-function AgendaWeekView(element, calendar) {
-	var t = this;
-	
-	
-	// exports
-	t.render = render;
-	
-	
-	// imports
-	AgendaView.call(t, element, calendar, 'agendaWeek');
-	var opt = t.opt;
-	var renderAgenda = t.renderAgenda;
-	var skipHiddenDays = t.skipHiddenDays;
-	var getCellsPerWeek = t.getCellsPerWeek;
-	var formatDates = calendar.formatDates;
-
-	
-	function render(date, delta) {
-
-		if (delta) {
-			addDays(date, delta * 7);
-		}
-
-		var start = addDays(cloneDate(date), -((date.getDay() - opt('firstDay') + 7) % 7));
-		var end = addDays(cloneDate(start), 7);
-
-		var visStart = cloneDate(start);
-		skipHiddenDays(visStart);
-
-		var visEnd = cloneDate(end);
-		skipHiddenDays(visEnd, -1, true);
-
-		var colCnt = getCellsPerWeek();
-
-		t.title = formatDates(
-			visStart,
-			addDays(cloneDate(visEnd), -1),
-			opt('titleFormat')
-		);
-
-		t.start = start;
-		t.end = end;
-		t.visStart = visStart;
-		t.visEnd = visEnd;
-
-		renderAgenda(colCnt);
-	}
-
-}
-
-;;
-
-fcViews.agendaDay = AgendaDayView;
 
 
-function AgendaDayView(element, calendar) {
-	var t = this;
-	
-	
-	// exports
-	t.render = render;
-	
-	
-	// imports
-	AgendaView.call(t, element, calendar, 'agendaDay');
-	var opt = t.opt;
-	var renderAgenda = t.renderAgenda;
-	var skipHiddenDays = t.skipHiddenDays;
-	var formatDate = calendar.formatDate;
-	
-	
-	function render(date, delta) {
 
-		if (delta) {
-			addDays(date, delta);
-		}
-		skipHiddenDays(date, delta < 0 ? -1 : 1);
-
-		var start = cloneDate(date, true);
-		var end = addDays(cloneDate(start), 1);
-
-		t.title = formatDate(date, opt('titleFormat'));
-
-		t.start = t.visStart = start;
-		t.end = t.visEnd = end;
-
-		renderAgenda(1);
-	}
-	
-
-}
-
-;;
 
 setDefaults({
 	allDaySlot: true,
