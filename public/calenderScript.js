@@ -1,3 +1,5 @@
+const fetch = require('node-fetch');
+
 
     $(document).ready(function () {
         let date = new Date();
@@ -69,7 +71,7 @@
                 let headline = prompt('headline Title:');
                 let content = prompt('content:');
                 if (headline) {
-                    const fetch = require('node-fetch');
+
 
                     let url = 'https://shotokankarate.herokuapp.com/api/calender';
                     let data = {headline: headline, date:y-m-d, content: content};
