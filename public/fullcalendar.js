@@ -15,7 +15,7 @@
 
 ;;
 
-var defaults = {
+let defaults = {
 
 	// display
 	defaultView: 'month',
@@ -93,7 +93,7 @@ var defaults = {
 };
 
 // right-to-left defaults
-var rtlDefaults = {
+let rtlDefaults = {
 	header: {
 		left: 'next,prev today',
 		center: '',

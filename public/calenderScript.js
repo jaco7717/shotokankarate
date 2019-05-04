@@ -72,7 +72,7 @@
 
 
                     let url = 'https://shotokankarate.herokuapp.com/api/calender';
-                    let data = {headline: headline, date:y-m-d, content: content};
+                    let data = {headline: headline, date: new Date(y, m, d ), content: content};
 
                     fetch(url, {
                         method: "POST",
