@@ -1,5 +1,3 @@
-const fetch = require('node-fetch');
-
 
     $(document).ready(function () {
         let date = new Date();
