@@ -64,9 +64,31 @@
             },
             allDaySlot: false,
             selectHelper: true,
+
             select: function (start, end, allDay) {
-                let title = prompt('Event Title:');
-                if (title) {
+                let headline = prompt('headline Title:');
+                let content = prompt('content:');
+                if (headline) {
+                    const fetch = require('node-fetch');
+
+                    let url = 'https://shotokankarate.herokuapp.com/api/calender';
+                    let data = {headline: headline, date:y-m-d, content: content};
+
+                    fetch(url, {
+                        method: "POST",
+                        body: JSON.stringify(data),
+                        headers: { 'Content-Type': 'application/json'}
+                    })
+                        .then(resultat => {
+                            if (resultat.status >= 400)
+                                throw new Error(resultat.status);
+                            else
+                                return resultat.json();
+                        })
+                        .then(resultat => console.log(`Resultat: %o`, resultat))
+                        .catch(fejl => console.log('Fejl: ' + fejl));
+
+
                     calendar.fullCalendar('renderEvent',
                         {
                             title: title,

@@ -163,7 +163,7 @@ app.put('/api/news/:id', async function (request, response){
 
 const calenderSkema = new Schema( {
     headline: String,
-    date: String,
+    date: Date,
     content: String
 });
 
@@ -175,11 +175,11 @@ app.get('/api/calender', async (request, response) => {
 
 app.post('/api/calender', (request, response) => {
     let msgObj = request.body;
-    let currentDate = (new Date().getDate() + "-" + (new Date().getMonth()+1)  +"-" +new Date().getFullYear());
+
     if (msgObj.headline) {
         let event = new calenderModel({
             headline: msgObj.headline,
-            date : currentDate,
+            date : msgObj.date,
             content: msgObj.content,
         });
 

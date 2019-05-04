@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 
 let url = 'https://shotokankarate.herokuapp.com/api/calender';
-let data = {headline: 'NEWS', content: 'CONTENT'};
+let data = {headline: 'NEWS', date: 2019-1-23, content: 'CONTENT'};
 
 fetch(url, {
     method: "POST",
