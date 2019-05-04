@@ -4634,7 +4634,7 @@ function View(element, calendar, viewName) {
 	---------------------------------------------------------------------------------*/
 	
 	
-	
+
 	
 	
 	function elongateEvents(events, dayDelta, minuteDelta) {
