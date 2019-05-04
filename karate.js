@@ -164,7 +164,8 @@ app.put('/api/news/:id', async function (request, response){
 const calenderSkema = new Schema( {
     headline: String,
     date: Date,
-    content: String
+    content: String,
+    className: String
 });
 
 const calenderModel = mongoose.model('calender', calenderSkema);
@@ -181,6 +182,7 @@ app.post('/api/calender', (request, response) => {
             headline: msgObj.headline,
             date : msgObj.date,
             content: msgObj.content,
+            className: 'info',
         });
 
         event.save();
