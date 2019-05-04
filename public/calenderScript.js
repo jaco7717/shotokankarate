@@ -68,7 +68,7 @@
             select: function (start, end, allDay) {
                 let headline = prompt('headline Title:');
                 let content = prompt('content:');
-                if (headline) {
+                if (headline && content) {
 
 
                     let url = 'https://shotokankarate.herokuapp.com/api/calender';
