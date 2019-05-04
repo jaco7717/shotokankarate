@@ -128,8 +128,9 @@
 
             events: [
                 {
-                    title: 'All Day Event',
+                    title: 'Special event i Herning ',
                     start: new Date(y, m, 1)
+
                 },
                 {
                     id: 999,
