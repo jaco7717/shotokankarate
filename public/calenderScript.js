@@ -129,7 +129,8 @@
             events: [
                 {
                     title: 'Special event i Herning ',
-                    start: new Date(y, m, 1)
+                    start: new Date(y, m, 1),
+                    className: 'info'
 
                 },
                 {
