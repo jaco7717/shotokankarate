@@ -177,7 +177,7 @@ app.post('/api/calender', (request, response) => {
     let msgObj = request.body;
     let currentDate = (new Date().getDate() + "-" + (new Date().getMonth()+1)  +"-" +new Date().getFullYear());
     if (msgObj.headline) {
-        let event = new newsModel({
+        let event = new calenderModel({
             headline: msgObj.headline,
             date : currentDate,
             content: msgObj.content,
@@ -196,9 +196,6 @@ app.delete('/api/calender/:id', async (request, response) => {
 
     response.status(200).send("Message sent");
 });
-
-
-
 
 
 let PORT = process.env.PORT || 8080;

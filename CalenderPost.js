@@ -1,12 +1,12 @@
 const fetch = require('node-fetch');
 
-let url = 'https://shotokankarate.herokuapp.com/api/news';
-let data = {headline: 'nyhed', content: 'CONTENT'};
+let url = 'https://shotokankarate.herokuapp.com/api/calender';
+let data = {headline: 'NEWS', content: 'CONTENT'};
 
 fetch(url, {
     method: "POST",
     body: JSON.stringify(data),
-    headers: { 'Content-Type': 'application/json' }
+    headers: { 'Content-Type': 'application/json'}
 })
     .then(resultat => {
         if (resultat.status >= 400)
