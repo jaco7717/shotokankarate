@@ -1,4 +1,4 @@
-onload = () => {
+
     $(document).ready(function () {
         let date = new Date();
         let d = date.getDate();
@@ -148,4 +148,3 @@ onload = () => {
 
     });
 
-}
