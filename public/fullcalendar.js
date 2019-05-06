@@ -60,7 +60,7 @@ let defaults = {
 	
 	// locale
 	isRTL: false,
-	firstDay: 1,
+	firstDay: 0,
 	monthNames: ['Januar','Feburar','Marts','April','Maj','Juni','Juli','August','September','Oktober','November','December'],
 	monthNamesShort: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
 	dayNames: ['Søndag ','Mandag','Tirsdag','Onsdag','Torsdag','Fredag','Lørdag'],
