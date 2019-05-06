@@ -65,13 +65,13 @@ $(document).ready(function () {
         selectHelper: true,
 
         select: function (start, end, allDay) {
-            let headline = prompt('headline Title:');
+            let title = prompt('Title:');
             let content = prompt('content:');
-            if (headline && content) {
+            if (title && content) {
 
 
                 let url = 'https://shotokankarate.herokuapp.com/api/calender';
-                let data = {headline: headline, date: new Date(y, m, d), content: content};
+                let data = {title: title, date: new Date(y, m, d), content: content};
 
                 fetch(url, {
                     method: "POST",
@@ -90,7 +90,7 @@ $(document).ready(function () {
 
                 calendar.fullCalendar('renderEvent',
                     {
-                        headline: headline,
+                        title: title,
                         date: date,
                         content: content,
                     },
@@ -99,11 +99,11 @@ $(document).ready(function () {
             }
             calendar.fullCalendar('unselect');
         },
-        
+
 
         events: [
             {
-                headline: 'Special event i Herning ',
+                title: 'Special event i Herning ',
                 content: 'Hele dagen er der baks og riv',
                 date: new Date(y, m, 1),
 
