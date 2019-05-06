@@ -65,8 +65,8 @@ $(document).ready(function () {
             let hour = prompt('Time');
             let min = prompt('Minut:');
 
-            let hourInt = parseInt(hour,10);
-            let minInt =  parseInt(min,10);
+            let hourInt = parseInt(hour);
+            let minInt =  parseInt(min);
 
             if (title && content) {
 
