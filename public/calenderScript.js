@@ -62,20 +62,18 @@ $(document).ready(function () {
         select: function (start, end, allDay) {
             let title = prompt('Title:');
             let content = prompt('content:');
-            let hour = prompt('Time:');
+            let hour = prompt('Time');
             let min = prompt('Minut:');
 
             let hourInt = parseInt(hour);
-            let minInt =  parseInt(min);
-console.log(hour);
-            console.log(hourInt);
+            let minInt = parseInt(min);
+
             if (title && content) {
 
 
                 let url = 'https://shotokankarate.herokuapp.com/api/calender';
                 let data = {title: title, date: new Date(y, m, d, hourInt, minInt), content: content};
-                console.log(data);
-                
+
                 fetch(url, {
                     method: "POST",
                     body: JSON.stringify(data),
@@ -105,13 +103,18 @@ console.log(hour);
         },
 
 
+
+
+
+
+
+
         events: [
             {
                 title: 'Special event i Herning ',
                 content: 'Hele dagen er der baks og riv',
                 date: new Date(y, m, 1, 12,12),
                 allDay: false,
-                className: 'info'
 
             },
             {
@@ -148,6 +151,21 @@ console.log(hour);
                 allDay: false,
             }
         ],
+
+        async function getcalender() {
+            let url = 'https://shotokankarate.herokuapp.com/api/calender/';
+            fetch(url, {
+                method: "GET",
+            })
+                .then(response => {
+                    if (response.status >= 400)
+                        throw new Error(response.status);
+                    else
+                    return response.json();
+                })
+                .then(resultat => events = resultat))
+                .catch(fejl => console.log('Fejl: ' + fejl));
+        }
     });
 
 
