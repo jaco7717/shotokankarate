@@ -3460,7 +3460,6 @@ function AgendaView(element, calendar, viewName) {
 
 
 	function reportDayClick(date, allDay, ev) {
-		date.format();
 		trigger('dayClick', dayBodyCells[dateToCell(date).col], date, allDay, ev);
 	}
 	
