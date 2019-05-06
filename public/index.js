@@ -1,8 +1,9 @@
 onload = async () => {
     update();
     addNews();
-
+    getCalenderdata();
 };
+
 
 
 async function update() {
@@ -107,4 +108,9 @@ async function tilEdit(id, content, headline) {
         })
         .then(resultat => console.log(`Resultat: %o`, resultat))
         .catch(fejl => console.log('Fejl: ' + fejl));
+}
+
+async function getCalenderdata() {
+    const response = await fetch('https://shotokankarate.herokuapp.com/api/calender')
+    events = await response.json();
 }

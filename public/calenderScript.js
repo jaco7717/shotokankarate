@@ -105,13 +105,6 @@ $(document).ready(function () {
 
         events: []
 
-        async function getCalenderdata() {
-            const response =fetch('https://shotokankarate.herokuapp.com/api/calender')
-            events =response.json();
-        },
-
-        getCalenderdata();
-
 
 
 
