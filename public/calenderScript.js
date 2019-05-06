@@ -71,14 +71,21 @@ $(document).ready(function () {
             if (title && content) {
 
 
+                console.log(start);
+                console.log('dag' + start.getDate());
+                console.log(start.day);
+                console.log('måned' + start.getMonth());
+                console.log(start.month);
 
 
                 let url = 'https://shotokankarate.herokuapp.com/api/calender';
-                let data = {title: title, date: new Date(start.getFullYear(),start.getMonth(),start.getDay(), hourInt, minInt), content: content};
+                let data = {
+                    title: title,
+                    date: new Date(start.getFullYear(), start.getDay(), start.getMonth()),
+                    content: content
+                };
 
-                console.log(start.getDay());
-                console.log(start.getFullYear())
-                console.log(start.getMonth())
+
                 fetch(url, {
                     method: "POST",
                     body: JSON.stringify(data),
