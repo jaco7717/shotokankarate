@@ -103,70 +103,30 @@ $(document).ready(function () {
         },
 
 
-
-
-
-
-
-
-        events: [
-            {
-                title: 'Special event i Herning ',
-                content: 'Hele dagen er der baks og riv',
-                date: new Date(y, m, 1, 12,12),
-                allDay: false,
-
+        events: {
+            url: 'https://shotokankarate.herokuapp.com/api/calender',
+            type: 'get',
+            data: {
+                title: String,
+                date: Date,
+                content: String,
+                className: String,
+                allDay: Boolean,
             },
-            {
-                id: 999,
-                title: 'Repeating Event',
-                start: new Date(y, m, d - 3, 16, 0),
-                allDay: false,
-                className: 'info'
-            },
-            {
-                id: 999,
-                title: 'Repeating Event',
-                start: new Date(y, m, d + 4, 16, 0),
-                allDay: false,
-                className: 'info'
-            },
-            {
-                title: 'Meeting',
-                start: new Date(y, m, d, 10, 30),
-                allDay: false,
-                className: 'important'
-            },
-            {
-                title: 'Lunch',
-                start: new Date(y, m, d, 12, 0),
-                end: new Date(y, m, d, 14, 0),
-                allDay: false,
-                className: 'important'
-            },
-            {
-                title: 'Birthday Party',
-                start: new Date(y, m, d + 1, 19, 0),
-                end: new Date(y, m, d + 1, 22, 30),
-                allDay: false,
+            error: function() {
+                alert('There was an error while fetching events!');
             }
-        ],
-
-        async function getcalender() {
-            let url = 'https://shotokankarate.herokuapp.com/api/calender/';
-            fetch(url, {
-                method: "GET",
-            })
-                .then(response => {
-                    if (response.status >= 400)
-                        throw new Error(response.status);
-                    else
-                    return response.json();
-                })
-                .then(resultat => events = resultat))
-                .catch(fejl => console.log('Fejl: ' + fejl));
         }
+
+
+
+
+
+
     });
+
+
+
 
 
 });

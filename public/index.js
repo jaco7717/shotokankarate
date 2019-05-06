@@ -1,8 +1,8 @@
 onload = async () => {
     update();
     addNews();
-
 };
+
 
 
 async function update() {
@@ -108,3 +108,5 @@ async function tilEdit(id, content, headline) {
         .then(resultat => console.log(`Resultat: %o`, resultat))
         .catch(fejl => console.log('Fejl: ' + fejl));
 }
+
+
