@@ -128,11 +128,10 @@
 
             events: [
                 {
-                    title: 'Special event i Herning ',
+                    headline: 'Special event i Herning ',
                     content: 'Hele dagen er der baks og riv',
-                    start: new Date(y, m, 1),
-                    className: 'info'
-
+                    date: new Date(y, m, 1),
+                   
                 },
                 {
                     id: 999,
