@@ -72,8 +72,11 @@ $(document).ready(function () {
 
 
                 let url = 'https://shotokankarate.herokuapp.com/api/calender';
-                let data = {title: title, date: new Date(y, m, d, hourInt, minInt), content: content};
+                let data = {title: title, date: new Date(start.getFullYear(),start.getMonth(),start.getDay(), hourInt, minInt), content: content};
 
+
+
+                console.log(data);
                 fetch(url, {
                     method: "POST",
                     body: JSON.stringify(data),
@@ -89,17 +92,8 @@ $(document).ready(function () {
                     .catch(fejl => console.log('Fejl: ' + fejl));
 
 
-                calendar.fullCalendar('renderEvent',
-                    {
-                        title: title,
-                        date: date,
-                        content: content,
-                        className: className,
-                    },
-                    true // make the event "stick"
-                );
             }
-            calendar.fullCalendar('unselect');
+
         },
 
 
@@ -113,20 +107,13 @@ $(document).ready(function () {
                 className: String,
                 allDay: Boolean,
             },
-            error: function() {
+            error: function () {
                 alert('There was an error while fetching events!');
             }
         }
 
 
-
-
-
-
     });
-
-
-
 
 
 });
