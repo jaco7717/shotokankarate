@@ -103,12 +103,12 @@ $(document).ready(function () {
         },
 
 
-        events: [];
+        events: []
 
         async function getCalenderdata() {
-            const response = await fetch('https://shotokankarate.herokuapp.com/api/calender')
-            events = await response.json();
-        }
+            const response =fetch('https://shotokankarate.herokuapp.com/api/calender')
+            events =response.json();
+        },
 
         getCalenderdata();
 
