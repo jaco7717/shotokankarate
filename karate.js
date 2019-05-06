@@ -16,9 +16,9 @@ app.use(express.static('public'));
 
 app.use(express.json());
 app.use(morgan('tiny'));
-app.use(express.static(__dirname+'/filer'));
+app.use(express.static(__dirname + '/filer'));
 app.set('view engine', 'hbs');
-app.set('views', __dirname+'/templates');
+app.set('views', __dirname + '/templates');
 app.use(session({secret: 'hemmelig', saveUninitialized: true, resave: true}));
 
 console.log('SERVER STARTING!');
@@ -57,7 +57,7 @@ app.post('/api/login', (request, response) => {
 
 // GET api/news
 
-const newsSkema = new Schema( {
+const newsSkema = new Schema({
     headline: String,
     date: String,
     content: String
@@ -74,11 +74,11 @@ app.get('/api/news', async (request, response) => {
 
 app.post('/api/news', (request, response) => {
     let msgObj = request.body;
-    let currentDate = (new Date().getDate() + "-" + (new Date().getMonth()+1)  +"-" +new Date().getFullYear());
+    let currentDate = (new Date().getDate() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getFullYear());
     if (msgObj.headline) {
         let news = new newsModel({
             headline: msgObj.headline,
-            date : currentDate,
+            date: currentDate,
             content: msgObj.content,
         });
 
@@ -92,9 +92,9 @@ app.post('/api/news', (request, response) => {
 // DELETE /api/news
 
 app.delete('/api/news/:id', async (request, response) => {
-    let { id } = request.params;
+    let {id} = request.params;
 
-    await newsModel.find({ _id: id }).deleteOne().exec();
+    await newsModel.find({_id: id}).deleteOne().exec();
 
     response.status(200).send("Message sent");
 });
@@ -111,8 +111,7 @@ app.get('/session', function (request, response) {
     const username = request.session.username;
     if (username) {
         response.render('session', {username});
-    }
-    else {
+    } else {
         response.render('login');
     }
 });
@@ -121,24 +120,21 @@ app.get('/logout', function (request, response) {
     request.session.destroy(function (err) {
         if (err) {
             console.log(err);
-        }
-        else {
+        } else {
             response.redirect('/');
         }
     });
 });
 
 
-
 app.post('/login', function (request, response) {
     const {username, password} = request.body;
     let login = request.body;
     loginModel.find(login).exec().then(logins => {
-            if(logins.length === 1){
+            if (logins.length === 1) {
                 request.session.username = username;
                 response.send({ok: true});
-            }
-            else{
+            } else {
                 response.send({ok: false});
             }
         }
@@ -146,8 +142,8 @@ app.post('/login', function (request, response) {
 });
 
 
-app.put('/api/news/:id', async function (request, response){
-    let { id } = request.params;
+app.put('/api/news/:id', async function (request, response) {
+    let {id} = request.params;
     let msgObj = request.body;
     if (msgObj.headline) {
         let news = new newsModel({
@@ -155,17 +151,18 @@ app.put('/api/news/:id', async function (request, response){
             content: msgObj.content,
         });
 
-        await newsModel.findOneAndUpdate({_id: id }, msgObj)
+        await newsModel.findOneAndUpdate({_id: id}, msgObj)
         response.status(200).send("Message updated")
 
     }
 });
 
-const calenderSkema = new Schema( {
+const calenderSkema = new Schema({
     title: String,
     date: Date,
     content: String,
-    className: String
+    className: String,
+    allDay: Boolean,
 });
 
 const calenderModel = mongoose.model('calender', calenderSkema);
@@ -180,9 +177,10 @@ app.post('/api/calender', (request, response) => {
     if (msgObj.title) {
         let event = new calenderModel({
             title: msgObj.title,
-            date : msgObj.date,
+            date: msgObj.date,
             content: msgObj.content,
             className: 'info',
+            allDay: false,
         });
 
         event.save();
@@ -192,9 +190,9 @@ app.post('/api/calender', (request, response) => {
 });
 
 app.delete('/api/calender/:id', async (request, response) => {
-    let { id } = request.params;
+    let {id} = request.params;
 
-    await calenderModel.find({ _id: id }).deleteOne().exec();
+    await calenderModel.find({_id: id}).deleteOne().exec();
 
     response.status(200).send("Message sent");
 });
