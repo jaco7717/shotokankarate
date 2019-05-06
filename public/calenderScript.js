@@ -1,5 +1,7 @@
 
-const moment = require('moment');
+let moment = require('moment');
+
+
 $(document).ready(function () {
     let date = new Date();
     let d = date.getDate();
