@@ -131,7 +131,7 @@
                     headline: 'Special event i Herning ',
                     content: 'Hele dagen er der baks og riv',
                     date: new Date(y, m, 1),
-                   
+
                 },
                 {
                     id: 999,

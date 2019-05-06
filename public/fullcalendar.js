@@ -63,8 +63,8 @@ let defaults = {
 	firstDay: 0,
 	monthNames: ['Januar','Feburar','Marts','April','Maj','Juni','Juli','August','September','Oktober','November','December'],
 	monthNamesShort: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
-	dayNames: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
-	dayNamesShort: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
+	dayNames: ['Søndag ','Mandag','Tirsdag','Onsdag','Torsdag','Fredag','Lørdag'],
+	dayNamesShort: ['Søn','Man','Tir','Ons','Tor','Fri','Lør'],
 	buttonText: {
 		prev: "<span class='fc-text-arrow'>&lsaquo;</span>",
 		next: "<span class='fc-text-arrow'>&rsaquo;</span>",
