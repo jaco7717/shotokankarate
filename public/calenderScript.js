@@ -59,6 +59,7 @@ $(document).ready(function () {
         allDaySlot: false,
         selectHelper: true,
 
+
         select: function (start, end, allDay) {
             let title = prompt('Title:');
             let content = prompt('content:');
@@ -110,13 +111,19 @@ $(document).ready(function () {
                 className: String,
                 allDay: Boolean,
             },
+
             error: function () {
                 alert('There was an error while fetching events!');
             }
-        }
+
+
+        },
+        calendar: refetchEvents(),
 
 
     });
+
+
 
 
 });
