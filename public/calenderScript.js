@@ -62,12 +62,13 @@ $(document).ready(function () {
         select: function (start, end, allDay) {
             let title = prompt('Title:');
             let content = prompt('content:');
-            let hour = prompt('Time');
+            let hour = prompt('Time:');
             let min = prompt('Minut:');
 
-            let hourInt = parseInt(hour,10);
-            let minInt =  parseInt(min,10);
-
+            let hourInt = parseInt(hour);
+            let minInt =  parseInt(min);
+console.log(hour);
+            console.log(hourInt);
             if (title && content) {
 
 
@@ -107,7 +108,9 @@ $(document).ready(function () {
             {
                 title: 'Special event i Herning ',
                 content: 'Hele dagen er der baks og riv',
-                date: new Date(y, m, 1),
+                date: new Date(y, m, 1, 12,12),
+                allDay: false,
+                className: 'info'
 
             },
             {
