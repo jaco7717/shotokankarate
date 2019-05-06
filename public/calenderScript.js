@@ -1,7 +1,3 @@
-
-let moment = require('moment');
-
-
 $(document).ready(function () {
     let date = new Date();
     let d = date.getDate();
@@ -73,16 +69,21 @@ $(document).ready(function () {
             let minInt = parseInt(min);
 
             if (title && content) {
-console.log(start);
-                console.log(start.getDay());
+
+
+                console.log(start);
+                console.log('dag' + start.getDay());
                 console.log(start.day);
+                console.log('måned' + start.getMonth());
+                console.log(start.month);
 
-let datoern =  new moment(start.getFullYear(),start.getMonth(),start.getDay());
-
-console.log(datoern);
 
                 let url = 'https://shotokankarate.herokuapp.com/api/calender';
-                let data = {title: title, date: new moment(datoern, hourInt, minInt), content: content};
+                let data = {
+                    title: title,
+                    date: new Date(start.getFullYear(), start.getDay(), start.getMonth()),
+                    content: content
+                };
 
 
                 fetch(url, {
