@@ -89,17 +89,9 @@ console.log(date);
                     .catch(fejl => console.log('Fejl: ' + fejl));
 
 
-                calendar.fullCalendar('renderEvent',
-                    {
-                        title: title,
-                        date: date,
-                        content: content,
-                        className: className,
-                    },
-                    true // make the event "stick"
-                );
+
             }
-            calendar.fullCalendar('unselect');
+           
         },
 
 
