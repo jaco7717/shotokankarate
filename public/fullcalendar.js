@@ -113,7 +113,6 @@ let rtlDefaults = {
 
 
 
-;;
 
 var fc = $.fullCalendar = { version: "1.6.4" };
 var fcViews = fc.views = {};
@@ -187,8 +186,8 @@ function setDefaults(d) {
  
 function Calendar(element, options, eventSources) {
 	var t = this;
-	
-	
+
+    renderView();
 	// exports
 	t.options = options;
 	t.render = render;
