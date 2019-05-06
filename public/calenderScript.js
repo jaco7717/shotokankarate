@@ -53,7 +53,8 @@ $(document).ready(function () {
         titleFormat: {
             month: 'MMMM yyyy', // September 2009
             week: "MMMM yyyy", // September 2009
-            day: 'MMMM yyyy'                  // Tuesday, Sep 8, 2009
+            day: 'MMMM yyyy',                  // Tuesday, Sep 8, 2009
+
         },
         allDaySlot: false,
         selectHelper: true,
@@ -61,11 +62,17 @@ $(document).ready(function () {
         select: function (start, end, allDay) {
             let title = prompt('Title:');
             let content = prompt('content:');
+            let hour = prompt('Time');
+            let min = prompt('Minut:');
+
+            let hourInt = parseInt(hour,10);
+            let minInt =  parseInt(min,10);
+
             if (title && content) {
 
 
                 let url = 'https://shotokankarate.herokuapp.com/api/calender';
-                let data = {title: title, date: new Date(y, m, d), content: content};
+                let data = {title: title, date: new Date(y, m, d, hourInt, minInt), content: content};
 
                 fetch(url, {
                     method: "POST",
