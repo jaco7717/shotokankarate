@@ -70,13 +70,12 @@ $(document).ready(function () {
 
             if (title && content) {
 
-
+                let dato = start;
                 let url = 'https://shotokankarate.herokuapp.com/api/calender';
-                let data = {title: title, date: new Date(start, hourInt, minInt), content: content};
-
-                console.log(start.day);
-                console.log(start.month);
-                console.log(start.year);
+                let data = {title: title, date: new Date(dato, hourInt, minInt), content: content};
+console.log(dato);
+console.log(start);
+                
                 console.log(data);
                 fetch(url, {
                     method: "POST",
