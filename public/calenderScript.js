@@ -151,21 +151,7 @@ $(document).ready(function () {
                 allDay: false,
             }
         ],
-
-        async function getcalender() {
-            let url = 'https://shotokankarate.herokuapp.com/api/calender/';
-            fetch(url, {
-                method: "GET",
-            })
-                .then(response => {
-                    if (response.status >= 400)
-                        throw new Error(response.status);
-                    else
-                    return response.json();
-                })
-                .then(resultat => events = resultat))
-                .catch(fejl => console.log('Fejl: ' + fejl));
-        }
+        
     });
 
 
