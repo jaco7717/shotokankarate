@@ -69,12 +69,9 @@ $(document).ready(function () {
             let minInt = parseInt(min);
 
             if (title && content) {
-
-
-
-
+console.log(start);
                 let url = 'https://shotokankarate.herokuapp.com/api/calender';
-                let data = {title: title, start: start, content: content};
+                let data = {title: title, date: new Date(start.getFullYear(),start.getMonth(),start.getDay(), hourInt, minInt), content: content};
 
 
                 fetch(url, {
