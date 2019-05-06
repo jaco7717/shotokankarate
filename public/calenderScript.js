@@ -103,7 +103,20 @@ $(document).ready(function () {
         },
 
 
-        events: []
+        events: {
+            url: 'https://shotokankarate.herokuapp.com/api/calender',
+            type: 'get',
+            data: {
+                title: String,
+                date: Date,
+                content: String,
+                className: String,
+                allDay: Boolean,
+            },
+            error: function() {
+                alert('There was an error while fetching events!');
+            }
+        }
 
 
 
@@ -111,6 +124,7 @@ $(document).ready(function () {
 
 
     });
+
 
 
 
