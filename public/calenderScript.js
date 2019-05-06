@@ -72,7 +72,7 @@ $(document).ready(function () {
 
 
                 console.log(start);
-                console.log('dag' + start.getUTCDay());
+                console.log('dag' + start.getDate());
                 console.log(start.day);
                 console.log('måned' + start.getMonth());
                 console.log(start.month);
