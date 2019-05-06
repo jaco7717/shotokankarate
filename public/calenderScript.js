@@ -93,6 +93,7 @@ $(document).ready(function () {
                         title: title,
                         date: date,
                         content: content,
+                        className: className,
                     },
                     true // make the event "stick"
                 );
