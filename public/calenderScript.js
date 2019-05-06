@@ -92,19 +92,7 @@ let date1 = new Date(start.getFullYear(),start.getMonth(),start.getDate(), hourI
                     .catch(fejl => console.log('Fejl: ' + fejl));
 
 
-                calendar.fullCalendar('renderEvent',
-                    {
-                        title: title,
-                        date: date1,
-                        content: content,
-                        className: className,
-                        allDay: false,
-
-                    },
-                    true // make the event "stick"
-                );
-
-            calendar.fullCalendar('unselect');
+               location.reload()
 
             }
             
