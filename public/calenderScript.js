@@ -74,6 +74,9 @@ $(document).ready(function () {
                 let url = 'https://shotokankarate.herokuapp.com/api/calender';
                 let data = {title: title, date: new Date(start.year, start.month, start.day, hourInt, minInt), content: content};
 console.log(date);
+console.log(start);
+                console.log(end);
+                console.log(allDay);
                 fetch(url, {
                     method: "POST",
                     body: JSON.stringify(data),
