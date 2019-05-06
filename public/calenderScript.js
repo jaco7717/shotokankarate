@@ -110,6 +110,7 @@ console.log(hour);
                 content: 'Hele dagen er der baks og riv',
                 date: new Date(y, m, 1, 12,12),
                 allDay: false,
+                className: 'info'
 
             },
             {
