@@ -5483,7 +5483,45 @@ function DayEventRenderer() {
 	}
 
 	
-
+	function draggableDayEvent(event, eventElement) {
+		var hoverListener = getHoverListener();
+		var dayDelta;
+		eventElement.draggable({
+			delay: 50,
+			opacity: opt('dragOpacity'),
+			revertDuration: opt('dragRevertDuration'),
+			start: function(ev, ui) {
+				trigger('eventDragStart', eventElement, event, ev, ui);
+				hideEvents(event, eventElement);
+				hoverListener.start(function(cell, origCell, rowDelta, colDelta) {
+					eventElement.draggable('option', 'revert', !cell || !rowDelta && !colDelta);
+					clearOverlays();
+					if (cell) {
+						var origDate = cellToDate(origCell);
+						var date = cellToDate(cell);
+						dayDelta = dayDiff(date, origDate);
+						renderDayOverlay(
+							addDays(cloneDate(event.start), dayDelta),
+							addDays(exclEndDay(event), dayDelta)
+						);
+					}else{
+						dayDelta = 0;
+					}
+				}, ev, 'drag');
+			},
+			stop: function(ev, ui) {
+				hoverListener.stop();
+				clearOverlays();
+				trigger('eventDragStop', eventElement, event, ev, ui);
+				if (dayDelta) {
+					eventDrop(this, event, dayDelta, 0, event.allDay, ev, ui);
+				}else{
+					eventElement.css('filter', ''); // clear IE opacity side-effects
+					showEvents(event, eventElement);
+				}
+			}
+		});
+	}
 
 	
 	function resizableDayEvent(event, element, segment) {
