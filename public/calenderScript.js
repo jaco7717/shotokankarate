@@ -1,5 +1,5 @@
-import {Moment} from "moment";
 
+const moment = require('moment');
 $(document).ready(function () {
     let date = new Date();
     let d = date.getDate();
@@ -74,10 +74,13 @@ $(document).ready(function () {
 console.log(start);
                 console.log(start.getDay());
                 console.log(start.day);
-                
-let datoern =  new Moment(start.getFullYear(),start.getMonth(),start.getDay());
+
+let datoern =  new moment(start.getFullYear(),start.getMonth(),start.getDay());
+
+console.log(datoern);
+
                 let url = 'https://shotokankarate.herokuapp.com/api/calender';
-                let data = {title: title, date: new Moment(start.getFullYear(),start.getMonth(),start.getDay(), hourInt, minInt), content: content};
+                let data = {title: title, date: new moment(datoern, hourInt, minInt), content: content};
 
 
                 fetch(url, {
