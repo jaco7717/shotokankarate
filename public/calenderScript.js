@@ -103,56 +103,23 @@ $(document).ready(function () {
         },
 
 
+        events: [];
+
+        async function getCalenderdata() {
+            const response = await fetch('https://shotokankarate.herokuapp.com/api/calender')
+            events = await response.json();
+        }
+
+        getCalenderdata();
 
 
 
 
 
 
-        events: [
-            {
-                title: 'Special event i Herning ',
-                content: 'Hele dagen er der baks og riv',
-                date: new Date(y, m, 1, 12,12),
-                allDay: false,
-
-            },
-            {
-                id: 999,
-                title: 'Repeating Event',
-                start: new Date(y, m, d - 3, 16, 0),
-                allDay: false,
-                className: 'info'
-            },
-            {
-                id: 999,
-                title: 'Repeating Event',
-                start: new Date(y, m, d + 4, 16, 0),
-                allDay: false,
-                className: 'info'
-            },
-            {
-                title: 'Meeting',
-                start: new Date(y, m, d, 10, 30),
-                allDay: false,
-                className: 'important'
-            },
-            {
-                title: 'Lunch',
-                start: new Date(y, m, d, 12, 0),
-                end: new Date(y, m, d, 14, 0),
-                allDay: false,
-                className: 'important'
-            },
-            {
-                title: 'Birthday Party',
-                start: new Date(y, m, d + 1, 19, 0),
-                end: new Date(y, m, d + 1, 22, 30),
-                allDay: false,
-            }
-        ],
-        
     });
+
+
 
 
 });
