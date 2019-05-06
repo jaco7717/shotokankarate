@@ -62,12 +62,13 @@ $(document).ready(function () {
         select: function (start, end, allDay) {
             let title = prompt('Title:');
             let content = prompt('content:');
-            let hour = prompt('Time');
+            let hour = prompt('Time:');
             let min = prompt('Minut:');
 
             let hourInt = parseInt(hour);
             let minInt =  parseInt(min);
-
+console.log(hour);
+            console.log(hourInt);
             if (title && content) {
 
 
