@@ -4542,6 +4542,7 @@ function View(element, calendar, viewName) {
 				if (!eventElement.hasClass('ui-draggable-dragging') &&
 					!eventElement.hasClass('ui-resizable-resizing')) {
 						return trigger('eventClick', this, event, ev);
+
 					}
 			})
 			.hover(

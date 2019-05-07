@@ -189,6 +189,11 @@ app.post('/api/calender', (request, response) => {
     }
 });
 
+app.get('/api/calender/:id', async (request, response) => {
+    let id = request.params.id;
+    response.json(await calenderModel.find({_id: id}).exec())
+});
+
 app.delete('/api/calender/:id', async (request, response) => {
     let {id} = request.params;
 
