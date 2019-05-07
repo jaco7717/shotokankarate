@@ -185,11 +185,11 @@ async function toDeleteMember(id) {
         .catch(fejl => console.log('Fejl: ' + fejl));
 }
 
-function editMember(id, name, age, email, password) {
-    toEditMember(id, name, age, email, password);
+function editMember(id, name, age, email) {
+    toEditMember(id, name, age, email);
 }
 
-async function toEditMember(id, name, age, email, password) {
+async function toEditMember(id, name, age, email) {
     let navn = prompt("name", name);
     let alder = prompt("age", age);
     let mail = prompt("email", email);
