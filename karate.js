@@ -236,6 +236,31 @@ app.post('/api/members', (request, response) => {
 });
 
 // DELETE member
+app.delete('/api/members/:id', async (request, response) => {
+    let {id} = request.params;
+
+    await memberModel.find({_id: id}).deleteOne().exec();
+
+    response.status(200).send("Message sent");
+});
+
+// PUT member
+app.put('/api/members/:id', async function (request, response) {
+    let {id} = request.params;
+    let memberObj = request.body;
+    if (memberObj.name) {
+        let member = new newsModel({
+            name: memberObj.name,
+            age: memberObj.age,
+            email: memberObj.email,
+            password: memberObj.password,
+        });
+
+        await newsModel.findOneAndUpdate({_id: id}, memberObj);
+        response.status(200).send("Member updated")
+
+    }
+});
 
 
 
