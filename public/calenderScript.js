@@ -49,9 +49,7 @@ $(document).ready(function () {
             }
         },
 
-        rerenderEvents() {
-
-        },
+      
 
         eventClick: function(info) {
 
@@ -65,7 +63,7 @@ $(document).ready(function () {
         },
 
 
-
+    fullCalendar: rerenderEvents()
     });
 
 });
