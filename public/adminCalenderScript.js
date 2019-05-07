@@ -1,32 +1,4 @@
 $(document).ready(function () {
-    let date = new Date();
-    let d = date.getDate();
-    let m = date.getMonth();
-    let y = date.getFullYear();
-
-    /*  className colors
-
-    className: default(transparent), important(red), chill(pink), success(green), info(blue)
-
-    */
-
-
-    /* initialize the external events
-    -----------------------------------------------------------------*/
-
-    $('#external-events div.external-event').each(function () {
-
-        // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
-        // it doesn't need to have a start or end
-        let eventObject = {
-            title: $.trim($(this).text()) // use the element's text as the event title
-        };
-
-        // store the Event Object in the DOM element so we can get to it later
-        $(this).data('eventObject', eventObject);
-
-
-    });
 
 
     /* initialize the calendar
@@ -35,13 +7,14 @@ $(document).ready(function () {
     let calendar = $('#calendar').fullCalendar({
         header: {
             left: 'title',
-            center: 'agendaDay,agendaWeek,month',
+            center: 'month',
             right: 'prev,next today'
         },
-        editable: true,
+        editable: false,
         firstDay: 1, //  1(Monday) this can be changed to 0(Sunday) for the USA system
         selectable: true,
-        defaultView: 'month',
+        defaultSelected:  'today',
+        defaultView: 'today',
 
         axisFormat: 'h:mm',
         columnFormat: {
