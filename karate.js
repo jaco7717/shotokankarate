@@ -218,6 +218,11 @@ app.get('/api/members', async (request, response) => {
     response.json(await memberModel.find().exec())
 });
 
+app.get('/api/members/:id', async (request, response) => {
+    let id = request.params.id;
+    response.json(await memberModel.find({_id: id}).exec())
+});
+
 // POST member
 app.post('/api/members', (request, response) => {
     let memberObj = request.body;
