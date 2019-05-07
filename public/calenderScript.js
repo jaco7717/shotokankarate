@@ -86,7 +86,7 @@ $(document).ready(function () {
         },
 
         eventClick: function(info) {
-            console.log('TEST!')
+            console.log(info)
         },
 
 
