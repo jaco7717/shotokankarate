@@ -6,12 +6,13 @@ $(document).ready(function () {
     let calendar = $('#calendar').fullCalendar({
         header: {
             left: 'title',
-            center: 'month',
+            center: 'Month',
             right: 'prev,next today'
         },
         editable: false,
         firstDay: 1, //  1(Monday) this can be changed to 0(Sunday) for the USA system
         selectable: true,
+        select: 'month',
         defaultSelected:  'month',
         defaultView: 'month',
 
