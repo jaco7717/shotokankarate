@@ -208,7 +208,6 @@ const memberSkema = new Schema({
     name: String,
     age: String,
     email: String,
-    username: String,
     password: String,
 });
 
@@ -227,7 +226,6 @@ app.post('/api/members', (request, response) => {
             name: memberObj.name,
             age: memberObj.age,
             email: memberObj.email,
-            username: memberObj.username,
             password: memberObj.password,
         });
 

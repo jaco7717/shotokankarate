@@ -3,8 +3,7 @@ const fetch = require('node-fetch');
 let url = 'https://shotokankarate.herokuapp.com/api/members';
 let data = {name: "Mads scooterboi", age: "23",
     email: "scooterboi@mokaimail.com",
-    username: "randers4ever",
-    password: "1234"};
+    password: "randers4ever"};
 
 
 
