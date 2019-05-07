@@ -15,7 +15,7 @@
 
 
 
-var defaults = {
+let defaults = {
 
 	// display
 	defaultView: 'month',
@@ -71,7 +71,7 @@ var defaults = {
 		prevYear: "<span class='fc-text-arrow'>&laquo;</span>",
 		nextYear: "<span class='fc-text-arrow'>&raquo;</span>",
 		today: 'today',
-		month: 'Month',
+		month: 'month',
 		week: 'week',
 		day: 'day'
 	},
