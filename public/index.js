@@ -1,6 +1,7 @@
 onload = async () => {
     update();
     addNews();
+    addMember();
 };
 
 
@@ -13,6 +14,22 @@ async function update() {
     tekst.value = '';
     getNews();
 }
+
+async function updateMembers() {
+    const memberName = document.querySelector('#memberName');
+    const memberAge = document.querySelector('#memberAge');
+    const memberEmail = document.querySelector('#memberEmail');
+    const memberPassword = document.querySelector('#memberPassword');
+
+    memberName.value = '';
+    memberAge.value = '';
+    memberEmail.value = '';
+    memberPassword.value = '';
+
+    getMembers();
+}
+
+
 
 async function getNews() {
     const [template, userResponse] =
@@ -109,7 +126,43 @@ async function tilEdit(id, content, headline) {
         .catch(fejl => console.log('Fejl: ' + fejl));
 }
 
+async function getMembers() {
+    const [template, userResponse] =
+        await Promise.all([fetch('/members.hbs'), fetch('https://shotokankarate.herokuapp.com/api/members')]);
+    const templateText = await template.text();
+    const members = await userResponse.json();
+    const compiledTemplate = Handlebars.compile(templateText);
+    document.querySelector('#medlemmer').innerHTML = compiledTemplate({members});
+}
 
+
+async function addMember() {
+    document.querySelector('#saveMember').onclick = () => {
+        let url = 'https://shotokankarate.herokuapp.com/api/members';
+
+        const msg = {
+            name: document.querySelector('#memberName').value,
+            age: document.querySelector('#memberAge').value,
+            email: document.querySelector('#memberEmail').value,
+            password: document.querySelector('#memberPassword').value
+        };
+
+        fetch(url, {
+            method: "POST",
+            body: JSON.stringify(msg),
+            headers: {'Content-Type': 'application/json'}
+        })
+            .then(response => {
+                if (response.status >= 400)
+                    throw new Error(response.status);
+                else
+                    update();
+                return response.json();
+            })
+            .then(resultat => console.log(`Resultat: %o`, resultat))
+            .catch(fejl => console.log('Fejl: ' + fejl));
+    };
+}
 
 function deleteMember(id) {
     toDeleteMember(id);
@@ -131,23 +184,22 @@ async function toDeleteMember(id) {
         .catch(fejl => console.log('Fejl: ' + fejl));
 }
 
-function editMember(id, name, age, email, username, password) {
-    toEditMember(id, name, age, email, username, password);
+function editMember(id, name, age, email, password) {
+    toEditMember(id, name, age, email, password);
 }
 
-async function toEditMember(id, name, age, email, username, password) {
+async function toEditMember(id, name, age, email, password) {
     let navn = prompt("name", name);
     let alder = prompt("age", age);
     let mail = prompt("email", email);
-    let brugernavn = prompt("username", username);
     let kodeord = prompt("password", password);
 
-    if (navn != null && alder != null && mail != null && brugernavn != null && kodeord != null) {
+    if (navn != null && alder != null && mail != null && kodeord != null) {
         console.log("fungere editmember");
     }
 
 
-    let data = {name: navn, age: alder, email: mail, username: brugernavn, password: kodeord};
+    let data = {name: navn, age: alder, email: mail,  password: kodeord};
 
     let url = 'https://shotokankarate.herokuapp.com/api/members/'+id;
 
