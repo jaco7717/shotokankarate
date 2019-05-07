@@ -70,8 +70,8 @@ let defaults = {
 		next: "<span class='fc-text-arrow'>&rsaquo;</span>",
 		prevYear: "<span class='fc-text-arrow'>&laquo;</span>",
 		nextYear: "<span class='fc-text-arrow'>&raquo;</span>",
-		today: 'today',
-		month: 'Month',
+		today: 'Idag',
+		month: 'Måned',
 		week: 'week',
 		day: 'day'
 	},
