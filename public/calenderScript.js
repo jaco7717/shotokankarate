@@ -60,6 +60,10 @@ $(document).ready(function () {
             error: function () {
                 alert('There was an error while fetching events!');
             }
+        },
+
+        eventClick: function(info) {
+            console.log(info)
         }
 
 
