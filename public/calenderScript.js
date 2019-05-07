@@ -11,9 +11,9 @@ $(document).ready(function () {
         },
         editable: false,
         firstDay: 1, //  1(Monday) this can be changed to 0(Sunday) for the USA system
-        selectable: false,
+        selectable: true,
+        defaultSelected:  'Month',
         defaultView: 'Month',
-
 
         axisFormat: 'h:mm',
         columnFormat: {
