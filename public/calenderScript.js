@@ -1,8 +1,5 @@
 $(document).ready(function () {
-    let date = new Date();
-    let d = date.getDate();
-    let m = date.getMonth();
-    let y = date.getFullYear();
+
 
     /*  className colors
 
@@ -14,19 +11,7 @@ $(document).ready(function () {
     /* initialize the external events
     -----------------------------------------------------------------*/
 
-    $('#external-events div.external-event').each(function () {
-
-        // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
-        // it doesn't need to have a start or end
-        let eventObject = {
-            title: $.trim($(this).text()) // use the element's text as the event title
-        };
-
-        // store the Event Object in the DOM element so we can get to it later
-        $(this).data('eventObject', eventObject);
-
-
-    });
+    
 
 
     /* initialize the calendar
@@ -59,44 +44,7 @@ $(document).ready(function () {
         allDaySlot: false,
         selectHelper: true,
 
-        select: function (start, end, allDay) {
-            let title = prompt('Title:');
-            let content = prompt('content:');
-            let hour = prompt('Time');
-            let min = prompt('Minut:');
 
-            let hourInt = parseInt(hour);
-            let minInt = parseInt(min);
-
-            if (title && content) {
-
-
-let date1 = new Date(start.getFullYear(),start.getMonth(),start.getDate(), hourInt, minInt);
-
-                let url = 'https://shotokankarate.herokuapp.com/api/calender';
-                let data = {title: title, date: new Date(start.getFullYear(),start.getMonth(),start.getDate(), hourInt, minInt), content: content};
-
-
-                fetch(url, {
-                    method: "POST",
-                    body: JSON.stringify(data),
-                    headers: {'Content-Type': 'application/json'}
-                })
-                    .then(resultat => {
-                        if (resultat.status >= 400)
-                            throw new Error(resultat.status);
-                        else
-                            return resultat.json();
-                    })
-                    .then(resultat => console.log(`Resultat: %o`, resultat))
-                    .catch(fejl => console.log('Fejl: ' + fejl));
-
-
-               location.reload()
-
-            }
-            
-        },
 
 
         events: {
