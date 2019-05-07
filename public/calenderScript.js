@@ -49,11 +49,17 @@ $(document).ready(function () {
             }
         },
 
+        rerenderEvents() {
+
+        },
+
         eventClick: function(info) {
 
             let tekst = info.content;
 
             alert(tekst );
+
+
 
 
         },
