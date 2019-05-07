@@ -50,7 +50,7 @@ $(document).ready(function () {
             }
         },
 
-        eventClick: function(info) {
+        dayClick: function(info) {
             alert('Event: ' + info.event.title);
             alert('View: ' + info.view.type);
             console.log('TEST!')
