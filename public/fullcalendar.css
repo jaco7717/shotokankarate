@@ -268,7 +268,7 @@ html .fc,
 	border: 1px solid #FFF; /* default BORDER color */
 	background-color: #FFF; /* default BACKGROUND color */
 	color: #919191;               /* default TEXT color */
-	font-size: 12px;
+	font-size: 14px;
 	cursor: default;
 }
 .fc-event.chill{
