@@ -57,16 +57,16 @@ async function addMember() {
         })
             .then(response => {
                 if (response.status >= 400)
-
-                oprettet.innerHTML = ('Allerede oprettet');
-
+                    throw new Error(response.status);
                 else
                     updateMembers();
 
                 return response.json();
             })
             .then(resultat => console.log(`Resultat: %o`, resultat))
-            .catch(fejl => oprettet.innerHTML = ('Allerede oprettet'));
+            .catch(fejl => oprettet.innerHTML = "Allerede oprettet");
+
+
     };
 }
 
