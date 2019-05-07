@@ -234,9 +234,17 @@ app.post('/api/members', (request, response) => {
             password: memberObj.password,
         });
 
-        member.save();
+        memberModel.find(memberObj.email).exec().then(array => {
+           if (array.length ===1) {
+               response.status(406).send("Error");
+           } else {
+               member.save()
+               response.status(200).send("Message sent")
+           }
+        }
 
-        response.status(200).send("Message sent")
+        )
+
     }
 });
 
