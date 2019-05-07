@@ -58,6 +58,7 @@ async function addMember() {
                     throw new Error(response.status);
                 else
                     updateMembers();
+
                 return response.json();
             })
             .then(resultat => console.log(`Resultat: %o`, resultat))
@@ -65,3 +66,17 @@ async function addMember() {
     };
 }
 
+async function updateMembers() {
+    const memberName = document.querySelector('#memberName');
+    const memberAge = document.querySelector('#memberAge');
+    const memberEmail = document.querySelector('#memberEmail');
+    const memberPassword = document.querySelector('#memberPassword');
+    const oprettet = document.querySelector('#oprettet');
+
+    
+    memberName.value = '';
+    memberAge.value = '';
+    memberEmail.value = '';
+    memberPassword.value = '';
+    oprettet.value = 'Du er nu oprettet';
+}
