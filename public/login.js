@@ -1,6 +1,7 @@
 onload = () => {
     getNewsUserPage();
     loginButton();
+    addMember();
 };
 
 async function loginButton() {
@@ -34,5 +35,33 @@ async function getNewsUserPage() {
     const newsUserPage = await userResponse.json();
     const compiledTemplate = Handlebars.compile(templateText);
     document.querySelector('#nyhederBrugerside').innerHTML = compiledTemplate({newsUserPage});
+}
+
+async function addMember() {
+    document.querySelector('#saveMember').onclick = () => {
+        let url = 'https://shotokankarate.herokuapp.com/api/members';
+
+        const msg = {
+            name: document.querySelector('#memberName').value,
+            age: document.querySelector('#memberAge').value,
+            email: document.querySelector('#memberEmail').value,
+            password: document.querySelector('#memberPassword').value
+        };
+
+        fetch(url, {
+            method: "POST",
+            body: JSON.stringify(msg),
+            headers: {'Content-Type': 'application/json'}
+        })
+            .then(response => {
+                if (response.status >= 400)
+                    throw new Error(response.status);
+                else
+                    updateMembers();
+                return response.json();
+            })
+            .then(resultat => console.log(`Resultat: %o`, resultat))
+            .catch(fejl => console.log('Fejl: ' + fejl));
+    };
 }
 
