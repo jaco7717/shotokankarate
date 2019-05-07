@@ -149,7 +149,7 @@ async function toEditMember(id, name, age, email, username, password) {
 
     let data = {name: navn, age: alder, email: mail, username: brugernavn, password: kodeord};
 
-
+    console.log("per123");
     let url = 'https://shotokankarate.herokuapp.com/api/members/'+id;
 
     fetch(url, {
@@ -169,6 +169,7 @@ async function toEditMember(id, name, age, email, username, password) {
 }
 
 $(document).ready(function () {
+    console.log("per")
 
     /* initialize the calendar
     -----------------------------------------------------------------*/
@@ -207,6 +208,7 @@ $(document).ready(function () {
         events: {
             url: 'https://shotokankarate.herokuapp.com/api/calender',
             type: 'get',
+
             data: {
                 title: String,
                 date: Date,
@@ -214,7 +216,9 @@ $(document).ready(function () {
                 className: String,
                 allDay: Boolean,
             },
+
             error: function () {
+
                 alert('There was an error while fetching events!');
             }
         },
