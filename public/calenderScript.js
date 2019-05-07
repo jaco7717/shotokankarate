@@ -1,19 +1,5 @@
 $(document).ready(function () {
 
-
-    /*  className colors
-
-    className: default(transparent), important(red), chill(pink), success(green), info(blue)
-
-    */
-
-
-    /* initialize the external events
-    -----------------------------------------------------------------*/
-
-
-
-
     /* initialize the calendar
     -----------------------------------------------------------------*/
 
