@@ -32,7 +32,42 @@ $(document).ready(function () {
         allDaySlot: false,
         selectHelper: true,
 
+        select: function (start, end, allDay) {
+            let title = prompt('Title:');
+            let content = prompt('content:');
+            let hour = prompt('Time');
+            let min = prompt('Minut:');
 
+            let hourInt = parseInt(hour);
+            let minInt = parseInt(min);
+
+            if (title && content) {
+
+
+                let url = 'https://shotokankarate.herokuapp.com/api/calender';
+                let data = {title: title, date: new Date(start.getFullYear(),start.getMonth(),start.getDate(), hourInt, minInt), content: content};
+
+
+                fetch(url, {
+                    method: "POST",
+                    body: JSON.stringify(data),
+                    headers: {'Content-Type': 'application/json'}
+                })
+                    .then(resultat => {
+                        if (resultat.status >= 400)
+                            throw new Error(resultat.status);
+                        else
+                            return resultat.json();
+                    })
+                    .then(resultat => console.log(`Resultat: %o`, resultat))
+                    .catch(fejl => console.log('Fejl: ' + fejl));
+
+
+                location.reload()
+
+            }
+
+        },
 
 
         events: {
@@ -51,8 +86,6 @@ $(document).ready(function () {
         },
 
         dayClick: function(info) {
-            alert('Event: ' + info.event.title);
-            alert('View: ' + info.view.type);
             console.log('TEST!')
         },
 
