@@ -75,7 +75,7 @@ let defaults = {
 		week: 'week',
 		day: 'day'
 	},
-	
+
 	// jquery-ui theming
 	theme: false,
 	buttonIcons: {
@@ -111,9 +111,6 @@ var rtlDefaults = {
 	}
 };
 
-
-
-;;
 
 var fc = $.fullCalendar = { version: "1.6.4" };
 var fcViews = fc.views = {};
