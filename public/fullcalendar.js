@@ -4694,7 +4694,7 @@ function View(element, calendar, viewName) {
 	function eventElementHandlers(event, eventElement) {
 		eventElement
 			.click(function(ev) {
-				
+
 						return trigger('eventClick', this, event, ev);
 
 			})

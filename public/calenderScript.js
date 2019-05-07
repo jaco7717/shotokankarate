@@ -86,7 +86,22 @@ $(document).ready(function () {
         },
 
         eventClick: function(info) {
-            console.log(info)
+            let id = info._id;
+            console.log(id);
+            let url = 'https://shotokankarate.herokuapp.com/api/calender/' + id;
+            console.log(url);
+            fetch(url, {
+                method: "DELETE",
+            })
+                .then(response => {
+                    if (response.status >= 400)
+                        throw new Error(response.status);
+                    else
+
+                    return response.json();
+                })
+                .then(resultat => console.log(`Resultat: %o`, resultat))
+                .catch(fejl => console.log('Fejl: ' + fejl));
         },
 
 
