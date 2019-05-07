@@ -193,14 +193,13 @@ async function toEditMember(id, name, age, email, password) {
     let navn = prompt("name", name);
     let alder = prompt("age", age);
     let mail = prompt("email", email);
-    let kodeord = prompt("password", password);
 
-    if (navn != null && alder != null && mail != null && kodeord != null) {
+    if (navn != null && alder != null && mail != null) {
         console.log("fungere editmember");
     }
 
 
-    let data = {name: navn, age: alder, email: mail,  password: kodeord};
+    let data = {name: navn, age: alder, email: mail};
 
     let url = 'https://shotokankarate.herokuapp.com/api/members/'+id;
 
