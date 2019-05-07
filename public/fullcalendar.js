@@ -26,7 +26,7 @@ let defaults = {
 		right: 'today prev,next'
 	},
 	weekends: true,
-	weekNumbers: true,
+	weekNumbers: false,
 	weekNumberCalculation: 'iso',
 	weekNumberTitle: 'W',
 	
@@ -71,7 +71,7 @@ let defaults = {
 		prevYear: "<span class='fc-text-arrow'>&laquo;</span>",
 		nextYear: "<span class='fc-text-arrow'>&raquo;</span>",
 		today: 'today',
-		month: 'month',
+		month: 'Month',
 		week: 'week',
 		day: 'day'
 	},
