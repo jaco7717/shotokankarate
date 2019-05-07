@@ -63,7 +63,7 @@ $(document).ready(function () {
         },
 
 
-    fullCalendar: rerenderEvents()
+    calender: rerenderEvents()
     });
 
 });
