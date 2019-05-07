@@ -1,5 +1,6 @@
 onload = async () => {
     update();
+    updateMembers();
     addNews();
     addMember();
 };
