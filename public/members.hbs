@@ -1,0 +1,28 @@
+<table class="a">
+    {{#each members}}
+
+        <tbody>
+        <tr>
+            <td><h5>{{this.name}}</h5></td>
+            <td>
+                <p>{{this.age}}</p>
+            </td>
+            <td>
+                <p>{{this.email}}</p>
+            </td>
+            <td>
+                <button class="button1" id="{{_id}}" onclick="deleteMember('{{this._id}}')"> Slet</button>
+            </td>
+            <td>
+                <button class="button2" id="{{_id}}"
+                        onclick="editMember('{{this._id}}', '{{this.name}}', '{{this.age}}','{{this.email}}')"> Ret
+                </button>
+            </td>
+
+        </tr>
+
+        </tbody>
+
+    {{/each}}
+</table>
+
