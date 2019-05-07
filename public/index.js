@@ -110,3 +110,61 @@ async function tilEdit(id, content, headline) {
 }
 
 
+
+function deleteMember(id) {
+    toDeleteMember(id);
+}
+
+async function toDeleteMember(id) {
+    let url = 'https://shotokankarate.herokuapp.com/api/members/' + id;
+    fetch(url, {
+        method: "DELETE",
+    })
+        .then(response => {
+            if (response.status >= 400)
+                throw new Error(response.status);
+            else
+                update();
+            return response.json();
+        })
+        .then(resultat => console.log(`Resultat: %o`, resultat))
+        .catch(fejl => console.log('Fejl: ' + fejl));
+}
+
+function editMember(id, name, age, email) {
+    toEditMember(id, name, age, email);
+}
+
+async function toEditMember(id, name, age, email) {
+    let navn = prompt("name", name);
+    let alder = prompt("age", age);
+    let mail = prompt("email", email);
+
+    if (navn != null && alder != null && mail != null) {
+        console.log("fungere editmember");
+    }
+
+
+    let data = {name: navn, age: alder, email: mail};
+
+
+    let url = 'https://shotokankarate.herokuapp.com/api/members/'+id;
+
+    fetch(url, {
+        method: "PUT",
+        body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/json' }
+    })
+        .then(resultat => {
+            if (resultat.status >= 400)
+                throw new Error(resultat.status);
+            else
+                update();
+            return resultat.json();
+        })
+        .then(resultat => console.log(`Resultat: %o`, resultat))
+        .catch(fejl => console.log('Fejl: ' + fejl));
+}
+
+
+
