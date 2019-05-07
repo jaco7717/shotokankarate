@@ -4694,17 +4694,18 @@ function View(element, calendar, viewName) {
 	function eventElementHandlers(event, eventElement) {
 		eventElement
 			.click(function(ev) {
-				if (!eventElement.hasClass('ui-draggable-dragging') &&
-					!eventElement.hasClass('ui-resizable-resizing')) {
+				console.log("jacob test1");
 						return trigger('eventClick', this, event, ev);
-					}
+
 			})
 			.hover(
 				function(ev) {
 					trigger('eventMouseover', this, event, ev);
+					console.log("jacob test2");
 				},
 				function(ev) {
 					trigger('eventMouseout', this, event, ev);
+					console.log("jacob test3");
 				}
 			);
 		// TODO: don't fire eventMouseover/eventMouseout *while* dragging is occuring (on subject element)
