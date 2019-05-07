@@ -178,7 +178,7 @@ async function toDeleteMember(id) {
             if (response.status >= 400)
                 throw new Error(response.status);
             else
-                update();
+                updateMembers();
             return response.json();
         })
         .then(resultat => console.log(`Resultat: %o`, resultat))
@@ -212,7 +212,7 @@ async function toEditMember(id, name, age, email, password) {
             if (resultat.status >= 400)
                 throw new Error(resultat.status);
             else
-                update();
+                updateMembers();
             return resultat.json();
         })
         .then(resultat => console.log(`Resultat: %o`, resultat))
