@@ -178,7 +178,7 @@ async function toDeleteMember(id) {
             if (response.status >= 400)
                 throw new Error(response.status);
             else
-                update();
+                updateMembers();
             return response.json();
         })
         .then(resultat => console.log(`Resultat: %o`, resultat))
@@ -193,14 +193,13 @@ async function toEditMember(id, name, age, email, password) {
     let navn = prompt("name", name);
     let alder = prompt("age", age);
     let mail = prompt("email", email);
-    let kodeord = prompt("password", password);
 
-    if (navn != null && alder != null && mail != null && kodeord != null) {
+    if (navn != null && alder != null && mail != null) {
         console.log("fungere editmember");
     }
 
 
-    let data = {name: navn, age: alder, email: mail,  password: kodeord};
+    let data = {name: navn, age: alder, email: mail};
 
     let url = 'https://shotokankarate.herokuapp.com/api/members/'+id;
 
@@ -213,7 +212,7 @@ async function toEditMember(id, name, age, email, password) {
             if (resultat.status >= 400)
                 throw new Error(resultat.status);
             else
-                update();
+                updateMembers();
             return resultat.json();
         })
         .then(resultat => console.log(`Resultat: %o`, resultat))

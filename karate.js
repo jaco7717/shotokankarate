@@ -261,7 +261,7 @@ app.put('/api/members/:id', async function (request, response) {
             password: memberObj.password,
         });
 
-        await newsModel.findOneAndUpdate({_id: id}, memberObj);
+        await memberModel.findOneAndUpdate({_id: id}, memberObj);
         response.status(200).send("Member updated")
 
     }
