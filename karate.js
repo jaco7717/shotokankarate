@@ -235,13 +235,13 @@ app.post('/api/members', (request, response) => {
             password: memberObj.password,
         });
 
-        memberModel.find(memberObj).exec().then(array => {
+        memberModel.find().exec().then(array => {
             for (let i of array) {
                 if (i.email == memberObj.email) {
                     found = true;
                 }
             }
-            
+
             if (found === false){
                 member.save();
                 response.status(200).send("Message sent");
