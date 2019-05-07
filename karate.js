@@ -225,6 +225,7 @@ app.get('/api/members/:id', async (request, response) => {
 
 // POST member
 app.post('/api/members', (request, response) => {
+    let found = false;
     let memberObj = request.body;
     if (memberObj.name) {
         let member = new memberModel({
@@ -234,9 +235,23 @@ app.post('/api/members', (request, response) => {
             password: memberObj.password,
         });
 
-        member.save();
+        memberModel.find().exec().then(array => {
+            for (let i of array) {
+                if (i.email == memberObj.email) {
+                    found = true;
+                }
+            }
 
-        response.status(200).send("Message sent")
+            if (found === false){
+                member.save();
+                response.status(200).send("Message sent");
+            } else {
+                response.status(406).send("Error");
+            }
+        }
+
+        )
+
     }
 });
 
