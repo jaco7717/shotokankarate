@@ -131,22 +131,23 @@ async function toDeleteMember(id) {
         .catch(fejl => console.log('Fejl: ' + fejl));
 }
 
-function editMember(id, name, age, email) {
-    toEditMember(id, name, age, email);
+function editMember(id, name, age, email, username, password) {
+    toEditMember(id, name, age, email, username, password);
 }
 
-async function toEditMember(id, name, age, email) {
+async function toEditMember(id, name, age, email, username, password) {
     let navn = prompt("name", name);
     let alder = prompt("age", age);
     let mail = prompt("email", email);
+    let brugernavn = prompt("username", username);
+    let kodeord = prompt("password", password);
 
-    if (navn != null && alder != null && mail != null) {
+    if (navn != null && alder != null && mail != null && brugernavn != null && kodeord != null) {
         console.log("fungere editmember");
     }
 
 
-    let data = {name: navn, age: alder, email: mail};
-
+    let data = {name: navn, age: alder, email: mail, username: brugernavn, password: kodeord};
 
     let url = 'https://shotokankarate.herokuapp.com/api/members/'+id;
 
@@ -165,6 +166,9 @@ async function toEditMember(id, name, age, email) {
         .then(resultat => console.log(`Resultat: %o`, resultat))
         .catch(fejl => console.log('Fejl: ' + fejl));
 }
+
+
+
 
 
 

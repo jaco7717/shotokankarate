@@ -35,3 +35,4 @@ async function getNewsUserPage() {
     const compiledTemplate = Handlebars.compile(templateText);
     document.querySelector('#nyhederBrugerside').innerHTML = compiledTemplate({newsUserPage});
 }
+
