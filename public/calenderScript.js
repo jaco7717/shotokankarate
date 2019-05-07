@@ -86,7 +86,7 @@ $(document).ready(function () {
         },
 
         eventClick: function(info) {
-            let id = info.id();
+            let id = info.id;
             let url = 'https://shotokankarate.herokuapp.com/api/calender/' + id;
             fetch(url, {
                 method: "DELETE",
