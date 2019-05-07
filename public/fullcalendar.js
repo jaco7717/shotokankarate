@@ -483,7 +483,7 @@ function Calendar(element, options, eventSources) {
 	}
 
 
-	async function rerenderEvents(modifiedEventID) { // can be called as an API method
+	function rerenderEvents(modifiedEventID) { // can be called as an API method
 		clearEvents();
 		renderEvents(modifiedEventID);
 	}
