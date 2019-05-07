@@ -11,11 +11,18 @@
                 <p>{{this.email}}</p>
             </td>
             <td>
+                <p>{{this.username}}</p>
+            </td>
+            <td>
+                <p>{{this.password}}</p>
+            </td>
+            <td>
                 <button class="button1" id="{{_id}}" onclick="deleteMember('{{this._id}}')"> Slet</button>
             </td>
             <td>
                 <button class="button2" id="{{_id}}"
-                        onclick="editMember('{{this._id}}', '{{this.name}}', '{{this.age}}','{{this.email}}')"> Ret
+                        onclick="editMember('{{this._id}}', '{{this.name}}', '{{this.age}}','{{this.email}}',
+                                '{{this.username}}', '{{this.password}}')"> Ret
                 </button>
             </td>
 

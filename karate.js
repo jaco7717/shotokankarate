@@ -202,6 +202,48 @@ app.delete('/api/calender/:id', async (request, response) => {
     response.status(200).send("Message sent");
 });
 
+// Medlemmer
+
+const memberSkema = new Schema({
+    name: String,
+    age: String,
+    email: String,
+    username: String,
+    password: String,
+});
+
+const memberModel = mongoose.model('member', memberSkema);
+
+// GET member
+app.get('/api/members', async (request, response) => {
+    response.json(await memberModel.find().exec())
+});
+
+// POST member
+app.post('/api/members', (request, response) => {
+    let memberObj = request.body;
+    if (memberObj.name) {
+        let member = new memberModel({
+            name: memberObj.name,
+            age: memberObj.age,
+            email: memberObj.email,
+            username: memberObj.username,
+            password: memberObj.password,
+        });
+
+        member.save();
+
+        response.status(200).send("Message sent")
+    }
+});
+
+// DELETE member
+
+
+
+
+
+
 
 let PORT = process.env.PORT || 8080;
 module.exports = app;
