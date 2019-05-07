@@ -9,12 +9,12 @@ $(document).ready(function () {
             center: 'Month',
             right: 'prev,next today'
         },
-        editable: false,
+        editable: true,
         firstDay: 1, //  1(Monday) this can be changed to 0(Sunday) for the USA system
         selectable: true,
-        select: 'month',
-        defaultSelected:  'month',
-        defaultView: 'month',
+        select: 'Month',
+        defaultSelected:  'Month',
+        defaultView: 'Month',
 
         axisFormat: 'h:mm',
         columnFormat: {

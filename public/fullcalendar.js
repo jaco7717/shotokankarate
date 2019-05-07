@@ -13,9 +13,9 @@
 (function($, undefined) {
 
 
-;;
 
-let defaults = {
+
+var defaults = {
 
 	// display
 	defaultView: 'month',
@@ -32,7 +32,7 @@ let defaults = {
 	
 	// editing
 	//editable: false,
-	//disableDragging: false,
+	disableDragging: true,
 	//disableResizing: false,
 	
 	allDayDefault: true,
@@ -61,17 +61,17 @@ let defaults = {
 	// locale
 	isRTL: false,
 	firstDay: 0,
-	monthNames: ['Januar','Feburar','Marts','April','Maj','Juni','Juli','August','September','Oktober','November','December'],
+	monthNames: ['January','February','March','April','May','June','July','August','September','October','November','December'],
 	monthNamesShort: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
-	dayNames: ['Søndag ','Mandag','Tirsdag','Onsdag','Torsdag','Fredag','Lørdag'],
-	dayNamesShort: ['Søn','Man','Tir','Ons','Tor','Fri','Lør'],
+	dayNames: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+	dayNamesShort: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
 	buttonText: {
 		prev: "<span class='fc-text-arrow'>&lsaquo;</span>",
 		next: "<span class='fc-text-arrow'>&rsaquo;</span>",
 		prevYear: "<span class='fc-text-arrow'>&laquo;</span>",
 		nextYear: "<span class='fc-text-arrow'>&raquo;</span>",
 		today: 'today',
-		month: 'month',
+		month: 'Month',
 		week: 'week',
 		day: 'day'
 	},
@@ -84,7 +84,7 @@ let defaults = {
 	},
 	
 	//selectable: false,
-	unselectAuto: true,
+	unselectAuto: false,
 	
 	dropAccept: '*',
 	
@@ -93,7 +93,7 @@ let defaults = {
 };
 
 // right-to-left defaults
-let rtlDefaults = {
+var rtlDefaults = {
 	header: {
 		left: 'next,prev today',
 		center: '',
@@ -113,6 +113,7 @@ let rtlDefaults = {
 
 
 
+;;
 
 var fc = $.fullCalendar = { version: "1.6.4" };
 var fcViews = fc.views = {};
@@ -186,8 +187,8 @@ function setDefaults(d) {
  
 function Calendar(element, options, eventSources) {
 	var t = this;
-
-
+	
+	
 	// exports
 	t.options = options;
 	t.render = render;
@@ -565,7 +566,6 @@ function Calendar(element, options, eventSources) {
 
 	function select(start, end, allDay) {
 		currentView.select(start, end, allDay===undefined ? true : allDay);
-		renderView();
 	}
 	
 
@@ -2005,10 +2005,62 @@ function MonthView(element, calendar) {
 	
 }
 
+;;
 
+fcViews.basicWeek = BasicWeekView;
 
+function BasicWeekView(element, calendar) {
+	var t = this;
+	
+	
+	// exports
+	t.render = render;
+	
+	
+	// imports
+	BasicView.call(t, element, calendar, 'basicWeek');
+	var opt = t.opt;
+	var renderBasic = t.renderBasic;
+	var skipHiddenDays = t.skipHiddenDays;
+	var getCellsPerWeek = t.getCellsPerWeek;
+	var formatDates = calendar.formatDates;
+	
+	
+	function render(date, delta) {
 
+		if (delta) {
+			addDays(date, delta * 7);
+		}
 
+		var start = addDays(cloneDate(date), -((date.getDay() - opt('firstDay') + 7) % 7));
+		var end = addDays(cloneDate(start), 7);
+
+		var visStart = cloneDate(start);
+		skipHiddenDays(visStart);
+
+		var visEnd = cloneDate(end);
+		skipHiddenDays(visEnd, -1, true);
+
+		var colCnt = getCellsPerWeek();
+
+		t.start = start;
+		t.end = end;
+		t.visStart = visStart;
+		t.visEnd = visEnd;
+
+		t.title = formatDates(
+			visStart,
+			addDays(cloneDate(visEnd), -1),
+			opt('titleFormat')
+		);
+
+		renderBasic(1, colCnt, false);
+	}
+	
+	
+}
+
+;;
 
 fcViews.basicDay = BasicDayView;
 
@@ -2050,7 +2102,11 @@ function BasicDayView(element, calendar) {
 	
 }
 
+;;
 
+setDefaults({
+	weekMode: 'fixed'
+});
 
 
 function BasicView(element, calendar, viewName) {
@@ -2599,9 +2655,101 @@ function BasicEventRenderer() {
 
 ;;
 
+fcViews.agendaWeek = AgendaWeekView;
+
+function AgendaWeekView(element, calendar) {
+	var t = this;
+	
+	
+	// exports
+	t.render = render;
+	
+	
+	// imports
+	AgendaView.call(t, element, calendar, 'agendaWeek');
+	var opt = t.opt;
+	var renderAgenda = t.renderAgenda;
+	var skipHiddenDays = t.skipHiddenDays;
+	var getCellsPerWeek = t.getCellsPerWeek;
+	var formatDates = calendar.formatDates;
+
+	
+	function render(date, delta) {
+
+		if (delta) {
+			addDays(date, delta * 7);
+		}
+
+		var start = addDays(cloneDate(date), -((date.getDay() - opt('firstDay') + 7) % 7));
+		var end = addDays(cloneDate(start), 7);
+
+		var visStart = cloneDate(start);
+		skipHiddenDays(visStart);
+
+		var visEnd = cloneDate(end);
+		skipHiddenDays(visEnd, -1, true);
+
+		var colCnt = getCellsPerWeek();
+
+		t.title = formatDates(
+			visStart,
+			addDays(cloneDate(visEnd), -1),
+			opt('titleFormat')
+		);
+
+		t.start = start;
+		t.end = end;
+		t.visStart = visStart;
+		t.visEnd = visEnd;
+
+		renderAgenda(colCnt);
+	}
+
+}
+
+;;
+
+fcViews.agendaDay = AgendaDayView;
 
 
+function AgendaDayView(element, calendar) {
+	var t = this;
+	
+	
+	// exports
+	t.render = render;
+	
+	
+	// imports
+	AgendaView.call(t, element, calendar, 'agendaDay');
+	var opt = t.opt;
+	var renderAgenda = t.renderAgenda;
+	var skipHiddenDays = t.skipHiddenDays;
+	var formatDate = calendar.formatDate;
+	
+	
+	function render(date, delta) {
 
+		if (delta) {
+			addDays(date, delta);
+		}
+		skipHiddenDays(date, delta < 0 ? -1 : 1);
+
+		var start = cloneDate(date, true);
+		var end = addDays(cloneDate(start), 1);
+
+		t.title = formatDate(date, opt('titleFormat'));
+
+		t.start = t.visStart = start;
+		t.end = t.visEnd = end;
+
+		renderAgenda(1);
+	}
+	
+
+}
+
+;;
 
 setDefaults({
 	allDaySlot: true,
@@ -4542,7 +4690,6 @@ function View(element, calendar, viewName) {
 				if (!eventElement.hasClass('ui-draggable-dragging') &&
 					!eventElement.hasClass('ui-resizable-resizing')) {
 						return trigger('eventClick', this, event, ev);
-
 					}
 			})
 			.hover(
@@ -4635,7 +4782,20 @@ function View(element, calendar, viewName) {
 	---------------------------------------------------------------------------------*/
 	
 	
-
+	function moveEvents(events, dayDelta, minuteDelta, allDay) {
+		minuteDelta = minuteDelta || 0;
+		for (var e, len=events.length, i=0; i<len; i++) {
+			e = events[i];
+			if (allDay !== undefined) {
+				e.allDay = allDay;
+			}
+			addMinutes(addDays(e.start, dayDelta, true), minuteDelta);
+			if (e.end) {
+				e.end = addMinutes(addDays(e.end, dayDelta, true), minuteDelta);
+			}
+			normalizeEvent(e, options);
+		}
+	}
 	
 	
 	function elongateEvents(events, dayDelta, minuteDelta) {
