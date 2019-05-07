@@ -49,6 +49,8 @@ $(document).ready(function () {
             }
         },
 
+      
+
         eventClick: function(info) {
 
             let tekst = info.content;
@@ -56,10 +58,12 @@ $(document).ready(function () {
             alert(tekst );
 
 
+
+
         },
 
 
-
+    fullCalendar: rerenderEvents()
     });
 
 });
