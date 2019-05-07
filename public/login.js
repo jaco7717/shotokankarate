@@ -64,7 +64,7 @@ async function addMember() {
                 return response.json();
             })
             .then(resultat => console.log(`Resultat: %o`, resultat))
-            .catch(fejl => oprettet.innerHTML = "Allerede oprettet");
+            .catch(fejl => oprettet.innerHTML = 'Allerede oprettet')
 
 
     };
