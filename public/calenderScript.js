@@ -85,9 +85,11 @@ $(document).ready(function () {
             }
         },
 
-        dayClick: function(info) {
+        eventClick: function(info) {
             console.log('TEST!')
         },
+
+
 
 
     });
