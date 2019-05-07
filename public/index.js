@@ -1,5 +1,6 @@
 onload = async () => {
     update();
+    updateMembers();
     addNews();
     addMember();
 };
@@ -156,7 +157,7 @@ async function addMember() {
                 if (response.status >= 400)
                     throw new Error(response.status);
                 else
-                    update();
+                    updateMembers();
                 return response.json();
             })
             .then(resultat => console.log(`Resultat: %o`, resultat))
