@@ -26,7 +26,7 @@ let defaults = {
 		right: 'today prev,next'
 	},
 	weekends: true,
-	weekNumbers: false,
+	weekNumbers: true,
 	weekNumberCalculation: 'iso',
 	weekNumberTitle: 'W',
 	
