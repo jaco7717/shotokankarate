@@ -52,7 +52,7 @@ $(document).ready(function () {
         eventClick: function(info) {
 
             let tekst = info.content;
-            
+
             alert(tekst );
 
 
