@@ -823,8 +823,7 @@ function Header(calendar, options) {
 											.not('.' + tm + '-state-active')
 											.not('.' + tm + '-state-disabled')
 											.addClass(tm + '-state-hover');
-
-										console.log("test");
+										
 
 
 
