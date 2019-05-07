@@ -48,6 +48,7 @@ $(document).ready(function () {
                 let data = {title: title, date: new Date(start.getFullYear(),start.getMonth(),start.getDate(), hourInt, minInt), content: content};
 
 
+
                 fetch(url, {
                     method: "POST",
                     body: JSON.stringify(data),
@@ -63,11 +64,12 @@ $(document).ready(function () {
                     .catch(fejl => console.log('Fejl: ' + fejl));
 
 
-               location.reload()
+                location.reload()
 
             }
-            
+
         },
+
 
 
         events: {
@@ -83,7 +85,33 @@ $(document).ready(function () {
             error: function () {
                 alert('There was an error while fetching events!');
             }
-        }
+        },
+
+        eventClick: function(info) {
+            let id = info._id;
+            let tekst = info.title;
+
+            if (confirm("vil du slette: "+ tekst )) {
+                let url = 'https://shotokankarate.herokuapp.com/api/calender/' + id;
+                console.log(url);
+                fetch(url, {
+                    method: "DELETE",
+                })
+                    .then(response => {
+                        if (response.status >= 400)
+                            throw new Error(response.status);
+                        else
+
+                            return response.json();
+                    })
+                    .then(resultat => console.log(`Resultat: %o`, resultat))
+                    .catch(fejl => console.log('Fejl: ' + fejl));
+
+            } else {
+
+            }
+
+        },
 
 
     });
