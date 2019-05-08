@@ -38,12 +38,12 @@ async function getNewsUserPage() {
 }
 
 
-const oprettet = document.querySelector('#oprettet');
+
 
 async function addMember() {
     document.querySelector('#saveMember').onclick = () => {
         let url = 'https://shotokankarate.herokuapp.com/api/members';
-
+        const opret = document.querySelector('#oprettet');
         const msg = {
             name: document.querySelector('#memberName').value,
             age: document.querySelector('#memberAge').value,
@@ -59,7 +59,7 @@ async function addMember() {
             .then(response => {
                 if (response.status >= 400)
 
-                oprettet.innerHTML = 'Allerede oprettet';
+                opret.innerHTML = 'Allerede oprettet';
 
                 else
                     updateMembers();
@@ -68,6 +68,7 @@ async function addMember() {
             })
             .then(resultat => console.log(`Resultat: %o`, resultat))
             .catch(fejl => console.log('Fejl: ' + fejl));
+
 
 
     };
