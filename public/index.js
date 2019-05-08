@@ -1,5 +1,5 @@
 onload = async () => {
-    
+
     addNews();
     addMember();
     getNews();
@@ -97,7 +97,7 @@ async function tilSletNews(id) {
             if (response.status >= 400)
                 throw new Error(response.status);
             else
-                update();
+                getNews();
             return response.json();
         })
         .then(resultat => console.log(`Resultat: %o`, resultat))
