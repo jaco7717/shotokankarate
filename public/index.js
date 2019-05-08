@@ -6,7 +6,6 @@ onload = async () => {
 };
 
 
-
 async function update() {
     const overskrift = document.querySelector('#headline');
     const tekst = document.querySelector('#content');
@@ -29,7 +28,6 @@ async function updateMembers() {
 
     getMembers();
 }
-
 
 
 async function getNews() {
@@ -121,6 +119,7 @@ async function tilEdit(id, content, headline) {
             .catch(fejl => console.log('Fejl: ' + fejl));
     }
 }
+
 async function getMembers() {
     const [template, userResponse] =
         await Promise.all([fetch('/members.hbs'), fetch('https://shotokankarate.herokuapp.com/api/members')]);
@@ -136,28 +135,40 @@ async function addMember() {
         let url = 'https://shotokankarate.herokuapp.com/api/members';
         const opretMedlemAdmin = document.querySelector('#oprettetAdmin');
 
-        const msg = {
-            name: document.querySelector('#memberName').value,
-            age: document.querySelector('#memberAge').value,
-            email: document.querySelector('#memberEmail').value,
-            password: document.querySelector('#memberPassword').value
-        };
+        let nameTest = document.querySelector('#memberName').value;
+        let ageTest = document.querySelector('#memberAge').value;
+        let emailTest = document.querySelector('#memberEmail').value;
+        let password = document.querySelector('#memberPassword').value;
 
-        fetch(url, {
-            method: "POST",
-            body: JSON.stringify(msg),
-            headers: {'Content-Type': 'application/json'}
-        })
-            .then(response => {
-                if (response.status >= 400)
-                    opretMedlemAdmin.innerHTML = 'Allerede oprettet';
-            else
-                    updateMembers();
-                return response.json();
+        if (nameTest !== '' && ageTest !== '' && emailTest !== '' && password !== '') {
+            const msg = {
+                name: document.querySelector('#memberName').value,
+                age: document.querySelector('#memberAge').value,
+                email: document.querySelector('#memberEmail').value,
+                password: document.querySelector('#memberPassword').value
+            };
+
+            fetch(url, {
+                method: "POST",
+                body: JSON.stringify(msg),
+                headers: {'Content-Type': 'application/json'}
             })
-            .then(resultat => console.log(`Resultat: %o`, resultat))
-            .catch(fejl => console.log('Fejl: ' + fejl));
-    };
+                .then(response => {
+                    if (response.status >= 400)
+                        opretMedlemAdmin.innerHTML = 'Allerede oprettet';
+                    else
+                        updateMembers();
+                    return response.json();
+                })
+                .then(resultat => console.log(`Resultat: %o`, resultat))
+                .catch(fejl => console.log('Fejl: ' + fejl));
+        } else {
+            opretMedlemAdmin.innerHTML = 'Alle felter skal udfyldes';
+        }
+
+    }
+
+
 }
 
 function deleteMember(id) {
@@ -210,7 +221,7 @@ async function toEditMember(id, name, age, email) {
             .catch(fejl => console.log('Fejl: ' + fejl));
     } else {
 
-        alert('Der må ikke være tomme felter');
+        alert('FEJL - Der må ikke være tomme felter');
     }
 
 }
