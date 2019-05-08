@@ -85,5 +85,5 @@ async function updateMembers() {
     memberAge.value = '';
     memberEmail.value = '';
     memberPassword.value = '';
-    tjek.value = 'Du er nu oprettet';
+    tjek.innerHTML = 'Du er nu oprettet';
 }
