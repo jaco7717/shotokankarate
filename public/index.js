@@ -1,15 +1,18 @@
 onload = async () => {
-    update();
-    updateMembers();
+    
     addNews();
     addMember();
+    getNews();
+    getMembers();
 };
 
 
 async function update() {
     const overskrift = document.querySelector('#headline');
     const tekst = document.querySelector('#content');
+    let nyhedLabelUpdate = document.querySelector('#nyhedLabel').value;
 
+    nyhedLabelUpdate.innerHTML = 'Oprettet';
     overskrift.value = '';
     tekst.value = '';
     getNews();
@@ -45,36 +48,47 @@ async function getNews() {
 async function addNews() {
     document.querySelector('#saveNews').onclick = () => {
         let url = 'https://shotokankarate.herokuapp.com/api/news';
-
+        let nyhedLabel = document.querySelector('#nyhedLabel').value;
         const msg = {
             headline: document.querySelector('#headline').value,
             content: document.querySelector('#content').value
         };
 
-        fetch(url, {
-            method: "POST",
-            body: JSON.stringify(msg),
-            headers: {'Content-Type': 'application/json'}
-        })
-            .then(response => {
-                if (response.status >= 400)
-                    throw new Error(response.status);
-                else
-                    update();
-                return response.json();
+        let headlineTest = document.querySelector('#headline').value;
+        let contentTest = document.querySelector('#content').value;
+
+        if(headlineTest !== '' && contentTest !== '' ) {
+
+            fetch(url, {
+                method: "POST",
+                body: JSON.stringify(msg),
+                headers: {'Content-Type': 'application/json'}
             })
-            .then(resultat => console.log(`Resultat: %o`, resultat))
-            .catch(fejl => console.log('Fejl: ' + fejl));
+                .then(response => {
+                    if (response.status >= 400)
+                        throw new Error(response.status);
+                    else
+                        update();
+                    return response.json();
+                })
+                .then(resultat => console.log(`Resultat: %o`, resultat))
+                .catch(fejl => console.log('Fejl: ' + fejl));
+        } else {
+            nyhedLabel.innerHTML = 'Udfyld overskrift og tekst';
+        }
     };
 }
 
 function slet(id) {
-    tilSlet(id);
+    tilSletNews(id);
 
 }
 
 
-async function tilSlet(id) {
+async function tilSletNews(id) {
+
+    if (confirm("vil du slette: ")) {
+
     let url = 'https://shotokankarate.herokuapp.com/api/news/' + id;
     fetch(url, {
         method: "DELETE",
@@ -89,19 +103,19 @@ async function tilSlet(id) {
         .then(resultat => console.log(`Resultat: %o`, resultat))
         .catch(fejl => console.log('Fejl: ' + fejl));
 }
-
+}
 
 function edit(id, content, headline) {
-    tilEdit(id, content, headline);
+    tilEditNews(id, content, headline);
 
 }
 
 
-async function tilEdit(id, content, headline) {
+async function tilEditNews(id, content, headline) {
     let overskrift = prompt("Overskrift", headline);
     let text = prompt("text", content);
 
-    if (overskrift != null && text != null) {
+    if (overskrift !== '' && text !== '') {
         let data = {headline: overskrift, content: text};
         let url = 'https://shotokankarate.herokuapp.com/api/news/' + id;
 
@@ -119,6 +133,8 @@ async function tilEdit(id, content, headline) {
             })
             .then(resultat => console.log(`Resultat: %o`, resultat))
             .catch(fejl => console.log('Fejl: ' + fejl));
+    } else {
+        alert('FEJL - Der må ikke være tomme felter');
     }
 }
 

@@ -41,7 +41,7 @@ $(document).ready(function () {
             let hourInt = parseInt(hour);
             let minInt = parseInt(min);
 
-            if (title && content) {
+            if (title !== '' && content !== '' && hour !== '' && min !== '' ) {
 
 
                 let url = 'https://shotokankarate.herokuapp.com/api/calender';
@@ -66,6 +66,8 @@ $(document).ready(function () {
 
                 location.reload()
 
+            } else {
+                alert("Udfyld alle punkter for at oprette event")
             }
 
         },
