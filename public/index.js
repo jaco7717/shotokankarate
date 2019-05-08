@@ -208,6 +208,8 @@ async function toEditMember(id, name, age, email) {
             })
             .then(resultat => console.log(`Resultat: %o`, resultat))
             .catch(fejl => console.log('Fejl: ' + fejl));
+    } else {
+        alert('Der må ikke være tomme felter');
     }
 
 }
