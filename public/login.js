@@ -39,6 +39,7 @@ async function getNewsUserPage() {
 
 
 const oprettet = document.querySelector('#oprettet');
+
 async function addMember() {
     document.querySelector('#saveMember').onclick = () => {
         let url = 'https://shotokankarate.herokuapp.com/api/members';
@@ -66,7 +67,7 @@ async function addMember() {
                 return response.json();
             })
             .then(resultat => console.log(`Resultat: %o`, resultat))
-            .catch(fejl => oprettet.innerHTML = 'Allerede oprettet')
+            .catch(fejl => console.log('Fejl: ' + fejl));
 
 
     };
