@@ -189,7 +189,7 @@ async function toEditMember(id, name, age, email) {
     let alder = prompt("age", age);
     let mail = prompt("email", email);
 
-    if (navn != null && alder != null && mail != null) {
+    if (navn !== null && alder !== null && mail !== null) {
         let data = {name: navn, age: alder, email: mail};
 
         let url = 'https://shotokankarate.herokuapp.com/api/members/' + id;
