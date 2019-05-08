@@ -101,32 +101,26 @@ async function tilEdit(id, content, headline) {
     let overskrift = prompt("Overskrift", headline);
     let text = prompt("text", content);
 
-    if (overskrift != null && text != null ) {
-        console.log("fungere");
-    }
+    if (overskrift != null && text != null) {
+        let data = {headline: overskrift, content: text};
+        let url = 'https://shotokankarate.herokuapp.com/api/news/' + id;
 
-
-    let data = {headline: overskrift, content: text};
-
-
-    let url = 'https://shotokankarate.herokuapp.com/api/news/'+id;
-
-    fetch(url, {
-        method: "PUT",
-        body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json' }
-    })
-        .then(resultat => {
-            if (resultat.status >= 400)
-                throw new Error(resultat.status);
-            else
-                update();
-                return resultat.json();
+        fetch(url, {
+            method: "PUT",
+            body: JSON.stringify(data),
+            headers: {'Content-Type': 'application/json'}
         })
-        .then(resultat => console.log(`Resultat: %o`, resultat))
-        .catch(fejl => console.log('Fejl: ' + fejl));
+            .then(resultat => {
+                if (resultat.status >= 400)
+                    throw new Error(resultat.status);
+                else
+                    update();
+                return resultat.json();
+            })
+            .then(resultat => console.log(`Resultat: %o`, resultat))
+            .catch(fejl => console.log('Fejl: ' + fejl));
+    }
 }
-
 async function getMembers() {
     const [template, userResponse] =
         await Promise.all([fetch('/members.hbs'), fetch('https://shotokankarate.herokuapp.com/api/members')]);
@@ -196,31 +190,27 @@ async function toEditMember(id, name, age, email) {
     let mail = prompt("email", email);
 
     if (navn != null && alder != null && mail != null) {
-        console.log("fungere editmember");
+        let data = {name: navn, age: alder, email: mail};
+
+        let url = 'https://shotokankarate.herokuapp.com/api/members/' + id;
+
+        fetch(url, {
+            method: "PUT",
+            body: JSON.stringify(data),
+            headers: {'Content-Type': 'application/json'}
+        })
+            .then(resultat => {
+                if (resultat.status >= 400)
+                    throw new Error(resultat.status);
+                else
+                    updateMembers();
+                return resultat.json();
+            })
+            .then(resultat => console.log(`Resultat: %o`, resultat))
+            .catch(fejl => console.log('Fejl: ' + fejl));
     }
 
-
-    let data = {name: navn, age: alder, email: mail};
-
-    let url = 'https://shotokankarate.herokuapp.com/api/members/'+id;
-
-    fetch(url, {
-        method: "PUT",
-        body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json' }
-    })
-        .then(resultat => {
-            if (resultat.status >= 400)
-                throw new Error(resultat.status);
-            else
-                updateMembers();
-            return resultat.json();
-        })
-        .then(resultat => console.log(`Resultat: %o`, resultat))
-        .catch(fejl => console.log('Fejl: ' + fejl));
 }
-
-
 
 
 
