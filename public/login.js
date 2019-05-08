@@ -51,6 +51,14 @@ async function addMember() {
             password: document.querySelector('#memberPassword').value
         };
 
+
+        let nameTest = document.querySelector('#memberName').value;
+        let ageTest = document.querySelector('#memberAge').value;
+        let emailTest = document.querySelector('#memberEmail').value;
+        let password = document.querySelector('#memberPassword').value;
+
+        if (nameTest !== '' && ageTest !== '' && emailTest !== '' && password !== '') {
+
         fetch(url, {
             method: "POST",
             body: JSON.stringify(msg),
@@ -69,7 +77,9 @@ async function addMember() {
             .then(resultat => console.log(`Resultat: %o`, resultat))
             .catch(fejl => console.log('Fejl: ' + fejl));
 
-
+            }  else {
+            opret.innerHTML = 'Alle felter skal udfyldes';
+        }
 
     };
 }
