@@ -1,8 +1,15 @@
-<table class="b" >
+<table class="b">
     {{#each newsUserPage}}
-        <h3><ol> {{this.headline}}</ol></h3>
-        <ol>{{this.date}}</ol>
-        <ol>{{this.content}}</ol>
-        <br>
+        <tbody>
+        <tr>
+            <td><h5>{{this.headline}}</h5></td>
+            <td>
+                <p>{{this.date}}</p>
+            </td>
+            <td>
+                <p>{{this.content}}</p>
+            </td>
+        </tr>
+        </tbody>
     {{/each}}
 </table>

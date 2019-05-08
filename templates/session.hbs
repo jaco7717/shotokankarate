@@ -9,24 +9,20 @@
 
     <script async defer crossorigin="anonymous"
             src="https://connect.facebook.net/da_DK/sdk.js#xfbml=1&version=v3.2"></script>
-
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
     <script src="https://cdn.jsdelivr.net/handlebarsjs/4.0.5/handlebars.min.js"></script>
 
 
-    <script src='fullcalendar.js' ></script>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src='fullcalendar.js'></script>
 
 </head>
 <body>
-
 
 <div id="fb-root"></div>
 <div class="container">
@@ -35,14 +31,12 @@
     </div>
     <h2 align="center">Admin login</h2>
 
-
     <div class="container">
 
         <ul class="nav nav-tabs">
 
             <li class="active"><a data-toggle="tab" href="#menukalender">Kalender</a></li>
-            <li ><a data-toggle="tab" href="#menuNyheder">Nyheder</a></li>
-
+            <li><a data-toggle="tab" href="#menuNyheder">Nyheder</a></li>
             <li><a data-toggle="tab" href="#menutræningsinfo">Træningsinfo</a></li>
             <li><a data-toggle="tab" href="#menukontakt">Kontakt</a></li>
             <li><a data-toggle="tab" href="#menumedlemmer">Medlemmer</a></li>
@@ -61,9 +55,9 @@
 
                 </div>
             </div>
+
             <div id="menuNyheder" class="tab-pane fade ">
                 <div class="row">
-
                     <div class="col-sm-6">
 
                         <h3> Opret nyhed </h3>
@@ -71,6 +65,7 @@
                         <span class="a"> <textarea rows="6" cols="50" id="content"
                                                    placeholder="Indsæt brødtekst her"></textarea> </span><br>
                         <span class="a"> <button id="saveNews"> Opret </button></span> <br>
+
                     </div>
 
                     <div class="col-sm-6">
@@ -82,15 +77,15 @@
 
                 </div>
             </div>
+
             <div id="menukalender" class="tab-pane fade in active">
                 <div class="row">
                     <div class="col-sm-6">
-                        
                         <div id='calendar'></div>
                     </div>
-
                 </div>
             </div>
+
             <div id="menutræningsinfo" class="tab-pane fade">
                 <div class="row">
                     <div class="col-sm-6">
@@ -116,12 +111,11 @@
                             Du finder os her: Gramvej 10, Stilling
                         </p>
                         <br>
-                        <img id="Karatalokation" class="images" src="Pictures/KarateLokation.jpg" width="400"
-                             height="400">
+                        <img id="Karatalokation" class="images" src="Pictures/KarateLokation.jpg">
                     </div>
-
                 </div>
             </div>
+
             <div id="menukontakt" class="tab-pane fade">
                 <div class="row">
                     <div class="col-sm-6">
@@ -151,7 +145,6 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <h3>Medlemmer</h3>
-
                         <br>
                         <p>Medlemmer Navn</p>
                         <input id="memberName" placeholder="Navn">
@@ -167,14 +160,12 @@
                         <br>
                         <p>Medlemmer Password</p>
                         <input id="memberPassword" placeholder="password">
-
                         <br>
                         <br>
-                        <button id="saveMember"> Opret </button>
+                        <button id="saveMember"> Opret</button>
                         <p id="oprettetAdmin"></p>
 
                     </div>
-
                     <div class="col-sm-6">
                         <div class="well">
                             <p id="medlemmer"></p>
@@ -183,7 +174,6 @@
                     </div>
                 </div>
             </div>
-
 
 
         </div>
