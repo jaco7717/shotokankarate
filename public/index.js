@@ -140,6 +140,7 @@ async function getMembers() {
 async function addMember() {
     document.querySelector('#saveMember').onclick = () => {
         let url = 'https://shotokankarate.herokuapp.com/api/members';
+        const opretMedlemAdmin = document.querySelector('#oprettetAdmin');
 
         const msg = {
             name: document.querySelector('#memberName').value,
@@ -155,8 +156,8 @@ async function addMember() {
         })
             .then(response => {
                 if (response.status >= 400)
-                    throw new Error(response.status);
-                else
+                    opretMedlemAdmin.innerHTML = 'Allerede oprettet';
+            else
                     updateMembers();
                 return response.json();
             })
