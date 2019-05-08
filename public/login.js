@@ -37,8 +37,8 @@ async function getNewsUserPage() {
     document.querySelector('#nyhederBrugerside').innerHTML = compiledTemplate({newsUserPage});
 }
 
-const oprettet = document.querySelector('#oprettet');
 
+const oprettet = document.querySelector('#oprettet');
 async function addMember() {
     document.querySelector('#saveMember').onclick = () => {
         let url = 'https://shotokankarate.herokuapp.com/api/members';
@@ -57,7 +57,8 @@ async function addMember() {
         })
             .then(response => {
                 if (response.status >= 400)
-                    oprettet.innerHTML = 'Allerede oprettet';
+
+                oprettet.innerHTML = 'Allerede oprettet';
 
                 else
                     updateMembers();
