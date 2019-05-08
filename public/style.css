@@ -23,6 +23,7 @@ table.b {
 
 
     font-size: 12px;
+
 }
 
 thead tr:first-child {
@@ -51,9 +52,7 @@ tbody tr:last-child td {
 
 
 td:last-child {
-    text-align: right;
     padding-right: 10px;
-
 }
 
 #button1 {
