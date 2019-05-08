@@ -4,6 +4,13 @@ const app = require('../karate.js');
 const request = require('supertest');
 const should = require('should');
 
+let data = {
+    "name": "Post test name",
+    "age": "1234",
+    "email": "post@test.email",
+    "password": "testPassword"
+}
+
 
 
 describe('Member test', function(){
@@ -63,6 +70,23 @@ describe('Member test', function(){
         members[1].age.should.not.be.equal('45');
         members[1].email.should.not.be.equal('test2@test.dk');
         members[1].password.should.not.be.equal('passwordTest');
+    });
+
+    it("TEST# +4 - test of Post into api/members", function(done){
+        request(app)
+            .post('/api/members')
+            .send(data)
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /text/)
+            .expect(200)
+            .then(response => {
+                return response.json()
+            })
+            .then(object = response.last())
+            .end((err) =>{
+                if (err) return done(err);
+                done();
+            });
     });
 
 })
