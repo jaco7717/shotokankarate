@@ -77,12 +77,12 @@ async function updateMembers() {
     const memberAge = document.querySelector('#memberAge');
     const memberEmail = document.querySelector('#memberEmail');
     const memberPassword = document.querySelector('#memberPassword');
-    const oprettet = document.querySelector('#oprettet');
+    const tjek = document.querySelector('#oprettet');
 
 
     memberName.value = '';
     memberAge.value = '';
     memberEmail.value = '';
     memberPassword.value = '';
-    oprettet.value = 'Du er nu oprettet';
+    tjek.value = 'Du er nu oprettet';
 }
