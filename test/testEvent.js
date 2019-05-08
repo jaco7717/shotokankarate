@@ -7,7 +7,10 @@ const should = require('should');
 
 let data = {
     "title": "Post test Calender title",
-    "content": "Post test Calender content"
+    "content": "Post test Calender content",
+    "date": Date.now(),
+    "className": "Post test Calender className",
+    "allDay": false
 }
 
 describe ('Event test', function () {
@@ -21,6 +24,9 @@ describe ('Event test', function () {
 
         events[0].title.should.be.equal('test');
         events[0].content.should.be.equal('test');
+        events[0].date.should.be.equal("2019-05-06T08:00:00.000Z");
+        events[0].className.should.be.equal('info');
+        events[0].allDay.should.be.equal(false);
     });
 
     it("TEST12 - Incorrect headline & content", async function () {
@@ -32,6 +38,9 @@ describe ('Event test', function () {
 
         events[0].title.should.not.be.equal('1234');
         events[0].content.should.not.be.equal('4321');
+        events[0].date.should.not.be.equal("2020-05-06T08:00:00.000Z");
+        events[0].className.should.not.be.equal('test1234');
+        events[0].allDay.should.not.be.equal(true);
     });
 
 
@@ -44,6 +53,9 @@ describe ('Event test', function () {
 
         events[1].title.should.be.equal('tjek');
         events[1].content.should.be.equal('tjek');
+        events[1].date.should.be.equal("2019-05-06T10:00:00.000Z");
+        events[1].className.should.be.equal('info');
+        events[1].allDay.should.be.equal(false);
     });
 
     it("TEST14 - Incorrect headline & content", async function () {
@@ -55,6 +67,9 @@ describe ('Event test', function () {
 
         events[1].title.should.not.be.equal('testFejl');
         events[1].content.should.not.be.equal('1234');
+        events[1].date.should.not.be.equal("2020-05-06T10:00:00.000Z");
+        events[1].className.should.not.be.equal('test1234');
+        events[1].allDay.should.not.be.equal(true);
     });
 
     it('TEST15 - test of Post into api/Calender', function (done) {
