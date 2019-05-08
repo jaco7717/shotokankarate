@@ -3,12 +3,17 @@
 const app = require('../karate.js');
 const request = require('supertest');
 const should = require('should');
-
+const fetch = require('node-fetch');
+const newsModel = require('../public/NewsSkema');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 let data = {
     "headline": "Posttest headline",
     "content": "Posttest content"
 }
+
+let end;
 
 describe('News test', function () {
 
@@ -56,8 +61,6 @@ describe('News test', function () {
         news[1].content.should.not.be.equal('12345');
     });
 
-    let object;
-
     it('TEST9 - test of Post into News', function (done) {
         request(app)
             .post('/api/news')
@@ -65,33 +68,38 @@ describe('News test', function () {
             .set('Accept', 'application/json')
             .expect('Content-Type', /text/)
             .expect(200)
-            .then(response => {
-                return response.json()
-            })
-            .then(object = response.last())
-            .end((err) => {
+            .end(function (err, res) {
                 if (err) return done(err);
-                done();
+                done()
             });
 
     });
 
-    // it('TEST10 - test of Delete of News', function (done) {
-    //     request(app)
-    //     let end;
-    //     fetch('api/news')
-    //         .then(response = response.json())
-    //         .then(array => end = array.last())
-    //         .delete('/api/news/' + end
-    //         .send(data)
-    //         .set('Accept', 'application/json')
-    //         .expect('Content-Type', /text/)
-    //         .expect(200)
-    //         .end((err) => {
-    //             if (err) return done(err);
-    //             done();
-    //         });
-    // });
+    it('TEST10 - test of Delete of News', async function (done) {
 
+
+        const response = await request(app)
+            .get('/api/news')
+            .expect(200)
+            .expect('Content-Type', /json/);
+
+        const news = response.body;
+
+        console.log(news[news.length-1])
+            request(app)
+                .delete('/api/news/'+ news[news.length-1]._id)
+                .end(function(err, res){
+
+            done();
+            });
+
+
+
+
+
+        done();
+
+    })
 
 });
+

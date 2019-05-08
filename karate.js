@@ -21,6 +21,8 @@ app.set('view engine', 'hbs');
 app.set('views', __dirname + '/templates');
 app.use(session({secret: 'hemmelig', saveUninitialized: true, resave: true}));
 
+const newsModel = require('./public/NewsSkema')
+
 console.log('SERVER STARTING!');
 const loginSkema = new Schema({
     username: String,
@@ -57,13 +59,13 @@ app.post('/api/login', (request, response) => {
 
 // GET api/news
 
-const newsSkema = new Schema({
-    headline: String,
-    date: String,
-    content: String
-});
-
-const newsModel = mongoose.model('news', newsSkema);
+// const newsSkema = new Schema({
+//     headline: String,
+//     date: String,
+//     content: String
+// });
+//
+// const newsModel = mongoose.model('news', newsSkema);
 
 // GET
 app.get('/api/news', async (request, response) => {
