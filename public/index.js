@@ -128,7 +128,7 @@ async function tilEditNews(id, content, headline) {
                 if (resultat.status >= 400)
                     throw new Error(resultat.status);
                 else
-                    update();
+                    getNews();
                 return resultat.json();
             })
             .then(resultat => console.log(`Resultat: %o`, resultat))
@@ -202,7 +202,7 @@ async function toDeleteMember(id) {
             if (response.status >= 400)
                 throw new Error(response.status);
             else
-                updateMembers();
+                getMembers();
             return response.json();
         })
         .then(resultat => console.log(`Resultat: %o`, resultat))
@@ -232,7 +232,7 @@ async function toEditMember(id, name, age, email) {
                 if (resultat.status >= 400)
                     throw new Error(resultat.status);
                 else
-                    updateMembers();
+                    getMembers();
                 return resultat.json();
             })
             .then(resultat => console.log(`Resultat: %o`, resultat))
