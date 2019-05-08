@@ -189,7 +189,7 @@ async function toEditMember(id, name, age, email) {
     let alder = prompt("age", age);
     let mail = prompt("email", email);
 
-    if (navn !== null && alder !== null && mail !== null) {
+    if (navn !== '' && alder !== '' && mail !== '') {
         let data = {name: navn, age: alder, email: mail};
 
         let url = 'https://shotokankarate.herokuapp.com/api/members/' + id;
@@ -209,6 +209,7 @@ async function toEditMember(id, name, age, email) {
             .then(resultat => console.log(`Resultat: %o`, resultat))
             .catch(fejl => console.log('Fejl: ' + fejl));
     } else {
+
         alert('Der må ikke være tomme felter');
     }
 
