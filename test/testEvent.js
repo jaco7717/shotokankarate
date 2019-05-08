@@ -15,7 +15,7 @@ let data = {
 
 describe ('Event test', function () {
 
-    it("TEST11 - Correct headline & content", async function () {
+    it("TEST11 - Correct title, content, date, className & allDay", async function () {
         const response = await request(app)
             .get('/api/calender')
             .expect(200)
@@ -29,7 +29,7 @@ describe ('Event test', function () {
         events[0].allDay.should.be.equal(false);
     });
 
-    it("TEST12 - Incorrect headline & content", async function () {
+    it("TEST12 - Incorrect title, content, date, className & allDay", async function () {
         const response = await request(app)
             .get('/api/calender')
             .expect(200)
@@ -44,7 +44,7 @@ describe ('Event test', function () {
     });
 
 
-    it("TEST13 - Correct headline & content", async function () {
+    it("TEST13 - Correct title, content, date, className & allDay", async function () {
         const response = await request(app)
             .get('/api/calender')
             .expect(200)
@@ -58,7 +58,7 @@ describe ('Event test', function () {
         events[1].allDay.should.be.equal(false);
     });
 
-    it("TEST14 - Incorrect headline & content", async function () {
+    it("TEST14 - Incorrect title, content, date, className & allDay", async function () {
         const response = await request(app)
             .get('/api/calender')
             .expect(200)
