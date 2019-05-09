@@ -6,14 +6,14 @@ const router = express.Router();
 router
     // GET /api/login
 
-    .get('/api/login', async (request, response) => {
+    .get('/', async (request, response) => {
         response.json(await loginModel.find().exec())
 
     })
 
     // POST /api/login
 
-    .post('/api/login', (request, response) => {
+    .post('/', (request, response) => {
         let msgObj = request.body;
 
         if (msgObj.username) {

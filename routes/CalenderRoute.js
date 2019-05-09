@@ -5,12 +5,12 @@ const router = express.Router();
 router
 // GET Calender
 
-    .get('/api/calender', async (request, response) => {
+    .get('/', async (request, response) => {
         response.json(await calenderModel.find().exec())
     })
 
     // POST Calender
-    .post('/api/calender', (request, response) => {
+    .post('/', (request, response) => {
         let msgObj = request.body;
 
         if (msgObj.title) {
@@ -30,12 +30,12 @@ router
 
     // GET SINGLE Calender
 
-    .get('/api/calender/:id', async (request, response) => {
+    .get('/:id', async (request, response) => {
         let id = request.params.id;
         response.json(await calenderModel.find({_id: id}).exec())
     })
 
-    .delete('/api/calender/:id', async (request, response) => {
+    .delete('/:id', async (request, response) => {
         let {id} = request.params;
 
         await calenderModel.find({_id: id}).deleteOne().exec();
