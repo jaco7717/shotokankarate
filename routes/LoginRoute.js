@@ -61,8 +61,10 @@ router
             console.log(login)
                 if (logins.length === 1) {
                     request.session.username = username;
+                    console.log('RIGTIGT!');
                     response.send({ok: true});
                 } else {
+                    console.log("FEJL");
                     response.send({ok: false});
                 }
             }
