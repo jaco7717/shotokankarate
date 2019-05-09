@@ -25,10 +25,10 @@ app.use(session({secret: 'hemmelig', saveUninitialized: true, resave: true}));
 console.log('SERVER STARTING!');
 
 
-const newsRouter = require('./routes/newsRoute');
-const loginRouter = require('./routes/loginRoute');
-const memberRouter = require('./routes/memberRoute');
-const calenderRouter = require('./routes/calenderRoute');
+const newsRouter = require('./routes/NewsRoute');
+const loginRouter = require('./routes/LoginRoute');
+const memberRouter = require('./routes/MemberRoute');
+const calenderRouter = require('./routes/CalenderRoute');
 
 
 app.use('/api/news', newsRouter);
