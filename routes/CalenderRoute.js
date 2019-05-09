@@ -9,7 +9,7 @@ router
 // GET Calender
 
     .get('/', async (request, response) => {
-        controller.getAllNews(response);
+        controller.getAllNews();
     })
 
     // POST Calender
