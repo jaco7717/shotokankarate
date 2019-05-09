@@ -6,13 +6,13 @@ const news = require('../models/News');
 
 router
 // GET News
-    .get('/api/news', async (request, response) => {
+    .get('/', async (request, response) => {
         response.json(await news.find().exec())
     })
 
     // POST /api/news
 
-    .post('/api/news', (request, response) => {
+    .post('/', (request, response) => {
         let msgObj = request.body;
         let currentDate = (new Date().getDate() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getFullYear());
         if (msgObj.headline) {
@@ -31,7 +31,7 @@ router
 
     // DELETE /api/news
 
-    .delete('/api/news/:id', async (request, response) => {
+    .delete('/:id', async (request, response) => {
         let {id} = request.params;
 
         await newsModel.find({_id: id}).deleteOne().exec();
@@ -41,14 +41,14 @@ router
 
     // GET SINGLE NEWS
 
-    .get('/api/news/:id', async (request, response) => {
+    .get('/:id', async (request, response) => {
         let id = request.params.id;
         response.json(await newsModel.find({_id: id}).exec())
     })
 
     // EDIT Single news
 
-    .put('/api/news/:id', async function (request, response) {
+    .put('/:id', async function (request, response) {
         let {id} = request.params;
         let msgObj = request.body;
         if (msgObj.headline) {
