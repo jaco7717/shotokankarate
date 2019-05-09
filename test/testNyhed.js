@@ -86,14 +86,15 @@ describe('News test', function () {
         const news = response.body;
 
         console.log(news[news.length-1])
+        news[news.length-1].headline.should.be.equal('Posttest headline')
+        news[news.length-1].content.should.be.equal('Posttest content')
             request(app)
                 .delete('/api/news/'+ news[news.length-1]._id)
                 .end(function(err, res){
-
-
+                    console.log(err);
             })
-
         done();
+
 
     })
 
