@@ -140,7 +140,7 @@ async function tilEditNews(id, content, headline) {
 
 async function getMembers() {
     const [template, userResponse] =
-        await Promise.all([fetch('/members.hbs'), fetch('https://shotokankarate.herokuapp.com/api/members')]);
+        await Promise.all([fetch('/members.hbs'), fetch('https://shotokankarate.herokuapp.com/api/member')]);
     const templateText = await template.text();
     const members = await userResponse.json();
     const compiledTemplate = Handlebars.compile(templateText);
