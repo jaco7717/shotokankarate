@@ -30,12 +30,14 @@ const newsRouter = require('./routes/NewsRoute');
 const loginRouter = require('./routes/LoginRoute');
 const memberRouter = require('./routes/MemberRoute');
 const calenderRouter = require('./routes/CalenderRoute');
+const sessionRouter = require('./routes/SessionRoute');
 
 
 app.use('/api/news', newsRouter);
 app.use('/api/login', loginRouter);
 app.use('/api/member', memberRouter);
 app.use('/api/calender', calenderRouter);
+app.use('', sessionRouter);
 
 
 
