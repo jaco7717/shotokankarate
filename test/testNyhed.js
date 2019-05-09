@@ -90,12 +90,8 @@ describe('News test', function () {
                 .delete('/api/news/'+ news[news.length-1]._id)
                 .end(function(err, res){
 
-            done();
-            });
 
-
-
-
+            })
 
         done();
 
