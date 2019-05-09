@@ -9,7 +9,6 @@ router
 
     .get('/', async (request, response) => {
         response.json(await loginModel.find().exec())
-
     })
 
     // POST /api/login
@@ -68,6 +67,5 @@ router
             }
         )
     });
-
 
 module.exports = router;
