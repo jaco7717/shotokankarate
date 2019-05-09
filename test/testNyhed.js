@@ -78,25 +78,26 @@ describe('News test', function () {
     it('TEST10 - test of Delete of News', async function (done) {
 
 
-        const response = await request(app)
-            .get('/api/news')
-            .expect(200)
-            .expect('Content-Type', /json/);
+        // const response = await request(app)
+        //     .get('/api/news')
+        //     .expect(200)
+        //     .expect('Content-Type', /json/)
+        //     .end(function (err, res) {
+        //         if (err) return done(err);
+        //     });
 
-        const news = response.body;
+        const resp = await fetch('https://shotokankarate.herokuapp.com/api/news/');
 
-        console.log(news[news.length-1])
-        news[news.length-1].headline.should.be.equal('Posttest headline')
-        news[news.length-1].content.should.be.equal('Posttest content')
-            request(app)
-                .delete('/api/news/'+ news[news.length-1]._id)
-                .end(function(err, res){
-                    console.log(err);
-            })
-        done();
+
+        const news = resp.body;
+
+        console.log(news[news.length - 1])
+        news[news.length - 1].headline.should.be.equal('Posttest headline')
+        news[news.length - 1].content.should.be.equal('Posttest content')
 
 
     })
+
 
 });
 
