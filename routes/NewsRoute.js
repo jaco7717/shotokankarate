@@ -7,7 +7,7 @@ const newsModel = require('../models/News');
 router
 // GET News
     .get('/', async (request, response) => {
-        response.json(await news.find().exec())
+        response.json(await newsModel.find().exec())
     })
 
     // POST /api/news
