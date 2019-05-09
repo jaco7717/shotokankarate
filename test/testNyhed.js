@@ -4,7 +4,7 @@ const app = require('../karate.js');
 const request = require('supertest');
 const should = require('should');
 const fetch = require('node-fetch');
-const newsModel = require('../public/NewsSkema');
+const newsModel = require('../models/News');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
