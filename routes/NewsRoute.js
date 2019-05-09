@@ -2,7 +2,7 @@ const controller = require("../controller/controller");
 const express = require('express');
 const router = express.Router();
 
-const news = require('../models/News');
+const newsModel = require('../models/News');
 
 router
 // GET News

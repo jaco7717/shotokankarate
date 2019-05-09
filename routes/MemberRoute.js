@@ -2,6 +2,7 @@ const controller = require("../controller/controller");
 const express = require('express');
 const router = express.Router();
 
+const memberModel = require('../models/Member');
 
 router
 // GET member
