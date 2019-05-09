@@ -58,7 +58,7 @@ router
         const {username, password} = request.body;
         let login = request.body;
         loginModel.find(login).exec().then(logins => {
-            console.log(login)
+            console.log(logins)
                 if (logins.length === 1) {
                     request.session.username = username;
                     console.log('RIGTIGT!');
