@@ -1,9 +1,11 @@
+"use strict";
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const ObjectId = Schema.Types.ObjectId;
 const express = require('express');
-const app = express();
-app.use(express.json());
+
+
 const fetch = require('node-fetch');
 const morgan = require('morgan');
 const hbs = require('hbs');
@@ -12,11 +14,11 @@ const session = require('express-session');
 mongoose.Promise = Promise;
 mongoose.connect('mongodb+srv://emillouvmand:wRcL2zAmJgRDLBnh@cluster0-vtzjz.mongodb.net/karate?retryWrites=true', {useNewUrlParser: true});
 
-app.use(express.static('public'));
 
+const app = express();
+app.use(express.static('public'));
 app.use(express.json());
 app.use(morgan('tiny'));
-app.use(express.static(__dirname + '/filer'));
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/templates');
 app.use(session({secret: 'hemmelig', saveUninitialized: true, resave: true}));
