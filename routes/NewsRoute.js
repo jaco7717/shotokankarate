@@ -2,10 +2,12 @@ const controller = require("../controller/controller");
 const express = require('express');
 const router = express.Router();
 
+const news = require('../models/News');
+
 router
 // GET News
     .get('/api/news', async (request, response) => {
-        response.json(await newsModel.find().exec())
+        response.json(await news.find().exec())
     })
 
     // POST /api/news
