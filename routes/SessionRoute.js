@@ -49,9 +49,13 @@ router
     memberModel.find(login).exec().then(member => {
             if (member.length === 1) {
                 request.session.email = email;
+                console.log(email);
                 request.session.name = name;
+                console.log(name);
                 request.session.age = age;
+                console.log(age);
                 request.session.password = password;
+                console.log(password);
                 response.send({ok: true});
             } else {
                 response.send({ok: false});
@@ -62,10 +66,10 @@ router
 
 .get('/memberSession', function (request, response) {
     const email = request.session.email;
-    const name = request.name;
-    const age = request.age;
+    const name = request.session.name;
+    const age = request.session.age;
     const password = request.session.password;
-    const id = request.id;
+    const id = request.session.id;
 
     if (email) {
         response.render('memberSession', {id,email, name, age, password});
