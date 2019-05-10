@@ -7,7 +7,9 @@ const newsModel = require('../models/News');
 router
 // GET News
     .get('/', async (request, response) => {
-       controller.getAllNews(response);
+       controller.getAllNews()
+           .then (news => response.send(news))
+            .catch(error => response.status(400).send(error));
     })
 
     // POST /api/news
