@@ -20,9 +20,10 @@ async function loginButton() {
         if (svar.ok)
             window.location.href = "https://shotokankarate.herokuapp.com/session";
         else {
+            const dataMedlem = {email: username.value, password: password.value};
             const resultatMedlem = await fetch("https://shotokankarate.herokuapp.com/api/member", {
                 method: "POST",
-                body: JSON.stringify(data),
+                body: JSON.stringify(dataMedlem),
                 headers: {'Content-Type': 'application/json'}
             });
             const svarMedlem = await resultatMedlem.json();
