@@ -244,24 +244,24 @@ async function toEditMember(id, name, age, email) {
 
 }
 
-function toEditMemberM(id, name, age, email) {
-    toEditMemberMemberPart(id, name, age, email);
+function toEditMemberM(id, name, age, email, password) {
+    toEditMemberMemberPart(id, name, age, email, password);
 }
 
-async function toEditMemberMemberPart(id, name, age, email) {
+async function toEditMemberMemberPart(id, name, age, email, password) {
 
-    let navn = prompt("name", id);
-    let alder = prompt("age", name);
-    let mail = prompt("email", age);
-    let password = prompt("email", email);
+    let navn = prompt("name", name);
+    let alder = prompt("age", age);
+    let mail = prompt("email", email);
+    let adgangskode = prompt("email", password);
 
     console.log(navn);
     console.log(alder);
     console.log(mail);
-    console.log(password);
+    console.log(adgangskode);
 
     if (navn !== '' && alder !== '' && mail !== '' && password !== '') {
-        let data = {name: navn, age: alder, email: mail, password:password};
+        let data = {name: navn, age: alder, email: mail, password:adgangskode};
 
         let url = 'https://shotokankarate.herokuapp.com/api/members/' + id;
 
