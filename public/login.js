@@ -22,7 +22,7 @@ async function loginButton() {
             window.location.href = "https://shotokankarate.herokuapp.com/session";
     } else {
             const dataMedlem = {email: username.value, password: password.value};
-            console.log("test2");
+            console.log("test1");
             const resultatMedlem = await fetch("https://shotokankarate.herokuapp.com/member", {
 
                 method: "POST",
