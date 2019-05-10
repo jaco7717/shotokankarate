@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 const loginModel = require('../models/Login');
+const memberModel = require('../models/Member');
 
 router
     .get('/session', function (request, response) {
@@ -40,6 +41,20 @@ router
                 }
             }
         )
-    });
+    })
+
+.post('/member', function (request, response) {
+    const {email, password} = request.body;
+    let login = request.body;
+    memberModel.find(login).exec().then(member => {
+            if (member.length === 1) {
+                request.session.username = username;
+                response.send({ok: true});
+            } else {
+                response.send({ok: false});
+            }
+        }
+    )
+});
 
 module.exports = router;
