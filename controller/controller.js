@@ -11,7 +11,7 @@ const memberModel = require('../models/Member')
 
 exports.getAllNews = function() {
     return newsModel.find().exec();
-}
+};
 
 exports.postNews = function(msgObj) {
     let currentDate = (new Date().getDate() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getFullYear());
@@ -38,3 +38,33 @@ exports.updateSingleNews = function(id,msgObj) {
         return newsModel.findOneAndUpdate({_id: id}, msgObj)
         }
 };
+
+// --------------------------------------------------------------------------------------------------------------
+
+// Calender
+
+exports.getAllEvents = function() {
+    return calenderModel.find().exec();
+};
+
+exports.postEvent = function() {
+
+    if (msgObj.title) {
+        let event = new calenderModel({
+            title: msgObj.title,
+            date: msgObj.date,
+            content: msgObj.content,
+            className: 'info',
+            allDay: false,
+        });
+        return event.save();
+    }
+};
+
+exports.getSingleEvent = function(id) {
+    return calenderModel.find({_id: id}).exec()
+}
+
+exports.deleteSingleEvent = function() {
+    return calenderModel.find({_id: id}).deleteOne().exec();
+}
