@@ -43,39 +43,43 @@ router
         )
     })
 
-.post('/member', function (request, response) {
-    const {email, password, name, age} = request.body;
-    let login = request.body;
-    memberModel.find(login).exec().then(member => {
-            if (member.length === 1) {
-                request.session.email = email;
-                console.log(email);
-                request.session.name = member.name;
-                console.log(name);
-                request.session.age = member.age;
-                console.log(age);
-                request.session.password = password;
-                console.log(password);
-                response.send({ok: true});
-            } else {
-                response.send({ok: false});
+    .post('/member', function (request, response) {
+        const {email, password} = request.body;
+        let login = request.body;
+        memberModel.find(login).exec().then(member => {
+                if (member.length === 1) {
+                    request.session.email = email;
+                    request.session.name = login.name;
+                    request.session.age = login.age;
+                    console.log("age" + login.age);
+                    console.log("age" + member.age);
+                    console.log("age" + age);
+                    console.log("age" + request.body.age);
+                    console.log("age" +request.session.age);
+                    request.session.password = password;
+
+                    request.session.id = login.id;
+
+                    response.send({ok: true});
+                } else {
+                    response.send({ok: false});
+                }
             }
+        )
+    })
+
+    .get('/memberSession', function (request, response) {
+        const email = request.session.email;
+        const name = request.name;
+        const age = request.age;
+        const password = request.session.password;
+        const id = request.id;
+
+        if (email) {
+            response.render('memberSession', {id, email, name, age, password});
+        } else {
+            response.render('login');
         }
-    )
-})
-
-.get('/memberSession', function (request, response) {
-    const email = request.session.email;
-    const name = request.name;
-    const age = request.age;
-    const password = request.session.password;
-    const id = request.id;
-
-    if (email) {
-        response.render('memberSession', {id,email, name, age, password});
-    } else {
-        response.render('login');
-    }
-})
+    })
 
 module.exports = router;
