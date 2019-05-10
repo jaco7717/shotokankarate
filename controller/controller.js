@@ -10,7 +10,7 @@ const memberModel = require('../models/Member')
 // NEWS
 
 exports.getAllNews = function() {
-    return calenderModel.find().exec();
+    return newsModel.find().exec();
 }
 
 
@@ -23,7 +23,7 @@ exports.postNews = function(msgObj) {
             content: msgObj.content,
         });
 
-        news.save();
+       return news.save();
 
 
     }
