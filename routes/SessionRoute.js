@@ -50,9 +50,9 @@ router
             if (member.length === 1) {
                 request.session.email = email;
                 console.log(email);
-                request.session.name = name;
+                request.session.name = member.name;
                 console.log(name);
-                request.session.age = age;
+                request.session.age = member.age;
                 console.log(age);
                 request.session.password = password;
                 console.log(password);
@@ -66,10 +66,10 @@ router
 
 .get('/memberSession', function (request, response) {
     const email = request.session.email;
-    const name = request.session.name;
-    const age = request.session.age;
+    const name = request.name;
+    const age = request.age;
     const password = request.session.password;
-    const id = request.session.id;
+    const id = request.id;
 
     if (email) {
         response.render('memberSession', {id,email, name, age, password});
