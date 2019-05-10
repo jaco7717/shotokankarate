@@ -253,7 +253,7 @@ async function toEditMemberMemberPart(id, name, age, email, password) {
     let navn = prompt("name", name);
     let alder = prompt("age", age);
     let mail = prompt("email", email);
-    let adgangskode = prompt("email", password);
+    let adgangskode = prompt("adgangskode", password);
 
 
     console.log(name);
