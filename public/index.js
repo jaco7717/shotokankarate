@@ -244,12 +244,16 @@ async function toEditMember(id, name, age, email) {
 
 }
 
-async function toEditMemberMemberPart() {
+function toEditMemberM(id, name, age, email) {
+    toEditMemberMemberPart(id, name, age, email);
+}
 
-    let navn = prompt("name", session.name);
-    let alder = prompt("age", session.age);
-    let mail = prompt("email", session.email);
-    let password = prompt("email", session.password);
+async function toEditMemberMemberPart(id, name, age, email) {
+
+    let navn = prompt("name", id);
+    let alder = prompt("age", name);
+    let mail = prompt("email", age);
+    let password = prompt("email", email);
 
     console.log(navn);
     console.log(alder);
@@ -258,7 +262,7 @@ async function toEditMemberMemberPart() {
 
     if (navn !== '' && alder !== '' && mail !== '' && password !== '') {
         let data = {name: navn, age: alder, email: mail, password:password};
-        let id = session.id;
+
         let url = 'https://shotokankarate.herokuapp.com/api/members/' + id;
 
         fetch(url, {
