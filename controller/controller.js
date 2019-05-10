@@ -47,7 +47,7 @@ exports.getAllEvents = function() {
     return calenderModel.find().exec();
 };
 
-exports.postEvent = function() {
+exports.postEvent = function(msgObj) {
 
     if (msgObj.title) {
         let event = new calenderModel({
@@ -63,8 +63,74 @@ exports.postEvent = function() {
 
 exports.getSingleEvent = function(id) {
     return calenderModel.find({_id: id}).exec()
-}
+};
 
 exports.deleteSingleEvent = function() {
     return calenderModel.find({_id: id}).deleteOne().exec();
-}
+};
+
+// --------------------------------------------------------------------------------------------------------------
+
+// Login
+
+exports.getLogins = function() {
+    return loginModel.find().exec();
+};
+
+exports.postLogin = function(msgObj) {
+    if (msgObj.username) {
+        let login = new loginModel({
+            username: msgObj.username,
+            password: msgObj.password,
+        });
+        login.save();
+    }
+};
+
+// --------------------------------------------------------------------------------------------------------------
+
+// Member
+
+exports.getMembers = function() {
+    return memberModel.find().exec();
+};
+
+exports.getSingleMember = function(id) {
+    return memberModel.find({_id: id}).exec();
+};
+
+exports.postMember = function(memberObj) {
+    let found = false;
+    if (memberObj.name) {
+        let member = new memberModel({
+            name: memberObj.name,
+            age: memberObj.age,
+            email: memberObj.email,
+            password: memberObj.password,
+        });
+        memberModel.find().exec().then(array => {
+                for (let i of array) {
+                    if (i.email === memberObj.email) {
+                        found = true;
+                    }
+                }
+                if (found === false) {
+                    member.save();
+                }
+            }
+        )
+
+    }
+};
+
+exports.deleteMember = function(id) {
+    return memberModel.find({_id: id}).deleteOne().exec();
+};
+
+exports.updateMember = function(id, memberObj) {
+    if (memberObj.name) {
+        return memberModel.findOneAndUpdate({_id: id}, memberObj);
+
+    }
+
+};
