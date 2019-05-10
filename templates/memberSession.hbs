@@ -3,6 +3,7 @@
     <title>Admin Login</title>
     <script src="handlebars-v4.0.12.js"></script>
     <script src="index.js"></script>
+    <script src="login.js" defer></script>
 
 
     <script async defer crossorigin="anonymous"
@@ -33,6 +34,7 @@
         <ul class="nav nav-tabs">
 
             <li class="active"><a data-toggle="tab" href="#menukalender">Kalender</a></li>
+            <li><a data-toggle="tab" href="#menuMedlem">Oplysninger</a></li>
             <li><a data-toggle="tab" href="#menuNyheder">Nyheder</a></li>
             <li><a data-toggle="tab" href="#menuLogin">Login</a></li>
 
@@ -45,6 +47,15 @@
                         <h3>Login</h3>
                         <ol id="log ud"></ol>
                         <a href="/logout">Log ud</a>
+                    </div>
+
+                </div>
+            </div>
+            <div id="menuMedlem" class="tab-pane fade">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3>Rediger dine oplysninger her</h3>
+
                     </div>
 
                 </div>
@@ -72,7 +83,7 @@
             </div>
 
 
-            
+
 
         </div>
     </div>
