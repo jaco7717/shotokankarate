@@ -244,6 +244,48 @@ async function toEditMember(id, name, age, email) {
 
 }
 
+function toEditMemberM(id, name, age, email) {
+    toEditMemberMemberPart(id, name, age, email);
+}
+
+async function toEditMemberMemberPart(id, name, age, email) {
+
+    let navn = prompt("name", id);
+    let alder = prompt("age", name);
+    let mail = prompt("email", age);
+    let password = prompt("email", email);
+
+    console.log(navn);
+    console.log(alder);
+    console.log(mail);
+    console.log(password);
+
+    if (navn !== '' && alder !== '' && mail !== '' && password !== '') {
+        let data = {name: navn, age: alder, email: mail, password:password};
+
+        let url = 'https://shotokankarate.herokuapp.com/api/members/' + id;
+
+        fetch(url, {
+            method: "PUT",
+            body: JSON.stringify(data),
+            headers: {'Content-Type': 'application/json'}
+        })
+            .then(resultat => {
+                if (resultat.status >= 400)
+                    throw new Error(resultat.status);
+                else
+
+                return resultat.json();
+            })
+            .then(resultat => console.log(`Resultat: %o`, resultat))
+            .catch(fejl => console.log('Fejl: ' + fejl));
+    } else {
+
+        alert('FEJL - Der må ikke være tomme felter');
+    }
+
+}
+
 
 
 
