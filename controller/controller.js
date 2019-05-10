@@ -129,7 +129,8 @@ exports.deleteMember = function(id) {
 
 exports.updateMember = function(id, memberObj) {
     if (memberObj.name) {
-        return memberModel.findOneAndUpdate({_id: id}, memberObj);
+        // return memberModel.findOneAndUpdate({_id: id}, memberObj);
+        return send({ok: true});
 
     }
 
