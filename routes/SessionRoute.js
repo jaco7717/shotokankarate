@@ -49,6 +49,9 @@ router
     memberModel.find(login).exec().then(member => {
             if (member.length === 1) {
                 request.session.email = email;
+                request.session.name = name;
+                request.session.age = age;
+                request.session.password = password;
                 response.send({ok: true});
             } else {
                 response.send({ok: false});
@@ -63,6 +66,7 @@ router
     const age = request.session.age;
     const password = request.session.password;
     const id = request.session.id;
+
     if (email) {
         response.render('memberSession', {id,email, name, age, password});
     } else {
