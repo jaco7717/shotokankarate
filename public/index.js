@@ -255,10 +255,11 @@ async function toEditMemberMemberPart(id, name, age, email, password) {
     let mail = prompt("email", email);
     let adgangskode = prompt("email", password);
 
-    console.log(navn);
-    console.log(alder);
-    console.log(mail);
-    console.log(adgangskode);
+
+    console.log(name);
+    console.log(age);
+    console.log(email);
+    console.log(password);
 
     if (navn !== '' && alder !== '' && mail !== '' && password !== '') {
         let data = {name: navn, age: alder, email: mail, password:adgangskode};

@@ -59,8 +59,12 @@ router
 
 .get('/memberSession', function (request, response) {
     const email = request.session.email;
+    const navn = request.session.name;
+    const age = request.session.age;
+    const password = request.session.password;
+    
     if (email) {
-        response.render('memberSession', {email});
+        response.render('memberSession', {email}, {navn},{age},{password});
     } else {
         response.render('login');
     }
