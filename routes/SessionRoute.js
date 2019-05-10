@@ -49,15 +49,7 @@ router
         memberModel.find(login).exec().then(member => {
                 if (member.length === 1) {
                     request.session.email = email;
-                    request.session.name = login.name;
                     
-                    console.log("age" + login.age);
-                    console.log("age" + member.age);
-
-                    console.log("age" + request.body.age);
-                    console.log("age" +request.session.age);
-                    request.session.age = login.age;
-                    request.session.password = password;
 
                     request.session.id = login.id;
 
