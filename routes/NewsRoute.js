@@ -14,7 +14,7 @@ router
 
     // POST /api/news
 
-    .post('/', (request, response) => {
+    .post('/', async (request, response) => {
         let msgObj = request.body;
         controller.postNews(msgObj)
             .catch(error => response.status(400).send(error));
@@ -23,35 +23,29 @@ router
     // DELETE /api/news
 
     .delete('/:id', async (request, response) => {
-        let {id} = request.params;
-
-        await newsModel.find({_id: id}).deleteOne().exec();
-
-        response.status(200).send("Message sent");
+        let id = request.params.id;
+        controller.deleteSingleNews(id)
+            .catch(error => response.status(400).send(error));
     })
 
     // GET SINGLE NEWS
 
     .get('/:id', async (request, response) => {
         let id = request.params.id;
-        response.json(await newsModel.find({_id: id}).exec())
+        controller.getSingleNews(id)
+            .catch(error => response.status(400).send(error));
     })
 
     // EDIT Single news
 
     .put('/:id', async function (request, response) {
-        let {id} = request.params;
+        let id = request.params.id;
         let msgObj = request.body;
-        if (msgObj.headline) {
-            let news = new newsModel({
-                headline: msgObj.headline,
-                content: msgObj.content,
-            });
+        controller.updateSingleNews(id, msgObj)
+            .catch(error => response.status(400).send(error));
 
-            await newsModel.findOneAndUpdate({_id: id}, msgObj)
-            response.status(200).send("Message updated")
 
-        }
+
     });
 
 module.exports = router;
