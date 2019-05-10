@@ -9,6 +9,7 @@ async function loginButton() {
     const password = document.querySelector('#password');
     const button = document.querySelector('#button');
     const fejl = document.querySelector('#fejl');
+
     button.onclick = async () => {
         const data = {username: username.value, password: password.value};
         const resultat = await fetch("https://shotokankarate.herokuapp.com/login", {
@@ -17,12 +18,29 @@ async function loginButton() {
             headers: {'Content-Type': 'application/json'}
         });
         const svar = await resultat.json();
-        if (svar.ok)
+        if (svar.ok) {
             window.location.href = "https://shotokankarate.herokuapp.com/session";
-        else {
-            fejl.innerHTML = "Login fejl!";
-        }
     }
+            const dataMedlem = {email: username.value, password: password.value};
+        console.log(dataMedlem);
+            const resultatMedlem = await fetch("https://shotokankarate.herokuapp.com/api/member", {
+
+                method: "POST",
+                body: JSON.stringify(dataMedlem),
+                headers: {'Content-Type': 'application/json'}
+            });
+        console.log(resultatMedlem);
+            const svarMedlem = await resultatMedlem.json();
+            if (svarMedlem.ok)
+
+                console.log('ind med dig');
+            else {
+                fejl.innerHTML = "Login fejl!";
+            }
+        }
+
+
+
 
 }
 
