@@ -150,7 +150,7 @@ async function getMembers() {
 
 async function addMember() {
     document.querySelector('#saveMember').onclick = () => {
-        let url = 'https://shotokankarate.herokuapp.com/api/members';
+        let url = 'https://shotokankarate.herokuapp.com/api/member';
         const opretMedlemAdmin = document.querySelector('#oprettetAdmin');
 
         let nameTest = document.querySelector('#memberName').value;
@@ -194,7 +194,7 @@ function deleteMember(id) {
 }
 
 async function toDeleteMember(id) {
-    let url = 'https://shotokankarate.herokuapp.com/api/members/' + id;
+    let url = 'https://shotokankarate.herokuapp.com/api/member/' + id;
     fetch(url, {
         method: "DELETE",
     })
@@ -221,7 +221,7 @@ async function toEditMember(id, name, age, email) {
     if (navn !== '' && alder !== '' && mail !== '') {
         let data = {name: navn, age: alder, email: mail};
 
-        let url = 'https://shotokankarate.herokuapp.com/api/members/' + id;
+        let url = 'https://shotokankarate.herokuapp.com/api/member/' + id;
 
         fetch(url, {
             method: "PUT",
@@ -264,7 +264,7 @@ async function toEditMemberMemberPart(id, name, age, email, password) {
     if (navn !== '' && alder !== '' && mail !== '' && password !== '') {
         let data = {name: navn, age: alder, email: mail, password:adgangskode};
 
-        let url = 'https://shotokankarate.herokuapp.com/api/members/' + id;
+        let url = 'https://shotokankarate.herokuapp.com/api/member/' + id;
 
         fetch(url, {
             method: "PUT",
