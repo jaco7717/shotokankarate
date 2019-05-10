@@ -255,7 +255,7 @@ async function toEditMemberMemberPart(id, name, age, email, password) {
     let mail = prompt("email", email);
     let adgangskode = prompt("adgangskode", password);
 
-
+console.log(id);
     console.log(name);
     console.log(age);
     console.log(email);
