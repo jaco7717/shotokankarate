@@ -13,7 +13,6 @@ exports.getAllNews = function() {
     return newsModel.find().exec();
 }
 
-
 exports.postNews = function(msgObj) {
     let currentDate = (new Date().getDate() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getFullYear());
     if (msgObj.headline) {
@@ -22,9 +21,20 @@ exports.postNews = function(msgObj) {
             date: currentDate,
             content: msgObj.content,
         });
-
        return news.save();
-
-
     }
+};
+
+exports.getSingleNews = function(id) {
+    return newsModel.find({_id: id}).exec()
+};
+
+exports.deleteSingleNews = function(id) {
+    return newsModel.find({_id: id}).deleteOne().exec();
 }
+;
+exports.updateSingleNews = function(id,msgObj) {
+    if (msgObj.headline && msgObj.content) {
+        return newsModel.findOneAndUpdate({_id: id}, msgObj)
+        }
+};
