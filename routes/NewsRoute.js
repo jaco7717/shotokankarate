@@ -16,19 +16,8 @@ router
 
     .post('/', (request, response) => {
         let msgObj = request.body;
-        let currentDate = (new Date().getDate() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getFullYear());
-        if (msgObj.headline) {
-            let news = new newsModel({
-                headline: msgObj.headline,
-                date: currentDate,
-                content: msgObj.content,
-            });
-
-            news.save();
-
-            response.status(200).send("Message sent")
-
-        }
+        controller.postNews(msgObj)
+            .catch(error => response.status(400).send(error));
     })
 
     // DELETE /api/news
