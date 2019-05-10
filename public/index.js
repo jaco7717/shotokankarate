@@ -247,8 +247,21 @@ async function toEditMember(id, name, age, email) {
 function toEditMemberM(id, name, age, email, password) {
     toEditMemberMemberPart(id, name, age, email, password);
 }
+const controller = require("../controller/controller");
 
 async function toEditMemberMemberPart(id, name, age, email, password) {
+
+    let array = controller.getMembers();
+    let object;
+
+    for (let i of array) {
+        if (i.email === email) {
+            object = i;
+        }
+    }
+
+
+
 
     let navn = prompt("name", name);
     let alder = prompt("age", age);
@@ -256,10 +269,10 @@ async function toEditMemberMemberPart(id, name, age, email, password) {
     let adgangskode = prompt("adgangskode", password);
 
 
-    console.log(name);
-    console.log(age);
-    console.log(email);
-    console.log(password);
+    console.log(object.name);
+    console.log(object.age);
+    console.log(object.email);
+    console.log(object.password);
 
     if (navn !== '' && alder !== '' && mail !== '' && password !== '') {
         let data = {name: navn, age: alder, email: mail, password:adgangskode};
