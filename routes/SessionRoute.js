@@ -55,6 +55,15 @@ router
             }
         }
     )
-});
+})
+
+.get('/memberSession', function (request, response) {
+    const email = request.session.email;
+    if (email) {
+        response.render('memberSession', {email});
+    } else {
+        response.render('login');
+    }
+})
 
 module.exports = router;

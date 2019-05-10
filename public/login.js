@@ -32,8 +32,8 @@ async function loginButton() {
             console.log("test2");
             const svarMedlem = await resultatMedlem.json();
             if (svarMedlem.ok)
+                window.location.href = "https://shotokankarate.herokuapp.com/memberSession";
 
-                console.log('ind med dig');
             else {
                 fejl.innerHTML = "Login fejl!";
             }
