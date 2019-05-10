@@ -13,6 +13,7 @@ exports.getAllNews = function() {
     return calenderModel.find().exec();
 }
 
+
 exports.postNews = function(msgObj) {
     let currentDate = (new Date().getDate() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getFullYear());
     if (msgObj.headline) {
