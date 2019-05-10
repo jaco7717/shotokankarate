@@ -33,6 +33,7 @@ router
     .get('/:id', async (request, response) => {
         let id = request.params.id;
         controller.getSingleNews(id)
+            .then (news => response.send(news))
             .catch(error => response.status(400).send(error));
     })
 

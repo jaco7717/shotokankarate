@@ -10,7 +10,7 @@ router
 
     .get('/', async (request, response) => {
         controller.getAllEvents()
-            .then (news => response.send(news))
+            .then (events => response.send(events))
             .catch(error => response.status(400).send(error));
     })
 
@@ -26,6 +26,7 @@ router
     .get('/:id', async (request, response) => {
         let id = request.params.id;
         controller.getSingleNews(id)
+            .then (event => response.send(event))
             .catch(error => response.status(400).send(error));
     })
 
