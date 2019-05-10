@@ -23,9 +23,9 @@ describe('Member test', function(){
 
        const members = response.body;
 
-       members[0].name.should.be.equal('Mads Scooterboi full loco');
-       members[0].age.should.be.equal('12');
-       members[0].email.should.be.equal('scooterboi@mokai.breezer');
+       members[0].name.should.be.equal('Mads');
+       members[0].age.should.be.equal('24');
+       members[0].email.should.be.equal('mads@test.dk');
        members[0].password.should.be.equal('randers4ever');
     });
 
@@ -54,7 +54,7 @@ describe('Member test', function(){
 
        members[1].name.should.be.equal('Tomas');
        members[1].age.should.be.equal('23');
-       members[1].email.should.be.equal('Tomas@bangbang.com');
+       members[1].email.should.be.equal('Tomas@karate.com');
        members[1].password.should.be.equal('1234');
     });
 

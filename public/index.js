@@ -128,7 +128,7 @@ async function tilEditNews(id, content, headline) {
                 if (resultat.status >= 400)
                     throw new Error(resultat.status);
                 else
-                    update();
+                    getNews();
                 return resultat.json();
             })
             .then(resultat => console.log(`Resultat: %o`, resultat))
@@ -140,7 +140,7 @@ async function tilEditNews(id, content, headline) {
 
 async function getMembers() {
     const [template, userResponse] =
-        await Promise.all([fetch('/members.hbs'), fetch('https://shotokankarate.herokuapp.com/api/members')]);
+        await Promise.all([fetch('/members.hbs'), fetch('https://shotokankarate.herokuapp.com/api/member')]);
     const templateText = await template.text();
     const members = await userResponse.json();
     const compiledTemplate = Handlebars.compile(templateText);
@@ -202,7 +202,7 @@ async function toDeleteMember(id) {
             if (response.status >= 400)
                 throw new Error(response.status);
             else
-                updateMembers();
+                getMembers();
             return response.json();
         })
         .then(resultat => console.log(`Resultat: %o`, resultat))
@@ -232,7 +232,7 @@ async function toEditMember(id, name, age, email) {
                 if (resultat.status >= 400)
                     throw new Error(resultat.status);
                 else
-                    updateMembers();
+                    getMembers();
                 return resultat.json();
             })
             .then(resultat => console.log(`Resultat: %o`, resultat))
