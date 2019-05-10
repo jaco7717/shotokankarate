@@ -44,13 +44,13 @@ router
     })
 
 .post('/member', function (request, response) {
-    const {email, password} = request.body;
+    const {email, password, name, age} = request.body;
     let login = request.body;
     memberModel.find(login).exec().then(member => {
             if (member.length === 1) {
                 request.session.email = email;
-                request.session.name = request.name;
-                request.session.age = request.age;
+                request.session.name = name;
+                request.session.age = age;
                 request.session.password = password;
                 response.send({ok: true});
             } else {
