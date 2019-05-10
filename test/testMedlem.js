@@ -1,4 +1,4 @@
-//Test af oprettelse af medlemmer
+//Test af medlemmer
 
 const app = require('../karate.js');
 const request = require('supertest');
@@ -17,7 +17,7 @@ describe('Member test', function(){
 
     it("TEST# - test 1 of correct name, age, email and password", async function (){
        const response = await request(app)
-           .get('/api/members')
+           .get('/api/member')
            .expect(200)
            .expect('Content-Type', /json/);
 
@@ -31,7 +31,7 @@ describe('Member test', function(){
 
     it("TEST# +1 - test 1 of incorrect name, age, email and password", async function(){
        const response = await request(app)
-           .get('/api/members')
+           .get('/api/member')
            .expect(200)
            .expect('Content-Type', /json/);
 
@@ -46,7 +46,7 @@ describe('Member test', function(){
 
     it("TEST# +2 - test 2 of correct name, age, email and password", async function(){
        const response = await request(app)
-           .get('/api/members')
+           .get('/api/member')
            .expect(200)
            .expect('Content-Type', /json/);
 
@@ -60,7 +60,7 @@ describe('Member test', function(){
 
     it("TEST# +3 - test 2 of incorrect name, age, email and password", async function(){
         const response = await request(app)
-            .get('/api/members')
+            .get('/api/member')
             .expect(200)
             .expect('Content-Type', /json/);
 
@@ -74,7 +74,7 @@ describe('Member test', function(){
 
     it("TEST# +4 - test of Post into api/members", function(done){
         request(app)
-            .post('/api/members')
+            .post('/api/member')
             .send(data)
             .set('Accept', 'application/json')
             .expect('Content-Type', /text/)
@@ -85,7 +85,7 @@ describe('Member test', function(){
             .then(object = response.last())
             .end((err) =>{
                 if (err) return done(err);
-                done();
+                done()
             });
     });
 
