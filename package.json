@@ -3,14 +3,15 @@
   "version": "1.0.0",
   "dependencies": {
     "express": "^4.16.4",
-    "mongoose": "^5.5.0",
-    "node-fetch": "^2.3.0",
     "express-session": "^1.15.6",
+    "fine-uploader": "^5.16.2",
     "hbs": "^4.0.1",
+    "moment": "latest",
+    "mongoose": "^5.5.0",
     "morgan": "^1.9.1",
+    "node-fetch": "^2.3.0",
     "should": "latest",
-    "supertest": "latest",
-    "moment": "latest"
+    "supertest": "latest"
   },
   "main": "joke.js",
   "devDependencies": {},
