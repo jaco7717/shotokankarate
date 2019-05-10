@@ -20,23 +20,25 @@ async function loginButton() {
         const svar = await resultat.json();
         if (svar.ok) {
             window.location.href = "https://shotokankarate.herokuapp.com/session";
-    }
+    } else {
             const dataMedlem = {email: username.value, password: password.value};
-        console.log(dataMedlem);
-            const resultatMedlem = await fetch("https://shotokankarate.herokuapp.com/api/member", {
+            console.log("test1");
+            const resultatMedlem = await fetch("https://shotokankarate.herokuapp.com/member", {
 
                 method: "POST",
                 body: JSON.stringify(dataMedlem),
                 headers: {'Content-Type': 'application/json'}
             });
-        console.log(resultatMedlem);
+            console.log("test2");
             const svarMedlem = await resultatMedlem.json();
             if (svarMedlem.ok)
+                window.location.href = "https://shotokankarate.herokuapp.com/memberSession";
 
-                console.log('ind med dig');
             else {
                 fejl.innerHTML = "Login fejl!";
             }
+        }
+
         }
 
 
