@@ -49,8 +49,8 @@ router
     memberModel.find(login).exec().then(member => {
             if (member.length === 1) {
                 request.session.email = email;
-                request.session.name = name;
-                request.session.age = age;
+                request.session.name = member.name;
+                request.session.age = member.age;
                 request.session.password = password;
                 response.send({ok: true});
             } else {
