@@ -247,9 +247,11 @@ async function toEditMember(id, name, age, email) {
 function toEditMemberM(id, name, age, email, password) {
     toEditMemberMemberPart(id, name, age, email, password);
 }
- controller = require("../controller/controller");
+
 
 async function toEditMemberMemberPart(id, name, age, email, password) {
+
+    const controller = require("../controller/controller");
 
     let array = controller.getMembers();
     let object;
