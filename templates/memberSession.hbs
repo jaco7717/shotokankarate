@@ -1,10 +1,9 @@
-
 <html>
 <head>
     <title>Admin Login</title>
     <script src="handlebars-v4.0.12.js"></script>
     <script src="index.js"></script>
-    <script src="adminCalenderScript.js" defer></script>
+
 
     <script async defer crossorigin="anonymous"
             src="https://connect.facebook.net/da_DK/sdk.js#xfbml=1&version=v3.2"></script>
@@ -13,84 +12,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
     <script src="https://cdn.jsdelivr.net/handlebarsjs/4.0.5/handlebars.min.js"></script>
     <script src="fine-uploader/fine-uploader.core.min.js"></script>
-    <script type="text/template" id="qq-template">
-        <div class="qq-uploader-selector qq-uploader qq-gallery" qq-drop-area-text="Drop files here">
-            <div class="qq-total-progress-bar-container-selector qq-total-progress-bar-container">
-                <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" class="qq-total-progress-bar-selector qq-progress-bar qq-total-progress-bar"></div>
-            </div>
-            <div class="qq-upload-drop-area-selector qq-upload-drop-area" qq-hide-dropzone>
-                <span class="qq-upload-drop-area-text-selector"></span>
-            </div>
-            <div class="qq-upload-button-selector qq-upload-button">
-                <div>Upload a file</div>
-            </div>
-            <span class="qq-drop-processing-selector qq-drop-processing">
-                <span>Processing dropped files...</span>
-                <span class="qq-drop-processing-spinner-selector qq-drop-processing-spinner"></span>
-            </span>
-            <ul class="qq-upload-list-selector qq-upload-list" role="region" aria-live="polite" aria-relevant="additions removals">
-                <li>
-                    <span role="status" class="qq-upload-status-text-selector qq-upload-status-text"></span>
-                    <div class="qq-progress-bar-container-selector qq-progress-bar-container">
-                        <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" class="qq-progress-bar-selector qq-progress-bar"></div>
-                    </div>
-                    <span class="qq-upload-spinner-selector qq-upload-spinner"></span>
-                    <div class="qq-thumbnail-wrapper">
-                        <img class="qq-thumbnail-selector" qq-max-size="120" qq-server-scale>
-                    </div>
-                    <button type="button" class="qq-upload-cancel-selector qq-upload-cancel">X</button>
-                    <button type="button" class="qq-upload-retry-selector qq-upload-retry">
-                        <span class="qq-btn qq-retry-icon" aria-label="Retry"></span>
-                        Retry
-                    </button>
-
-                    <div class="qq-file-info">
-                        <div class="qq-file-name">
-                            <span class="qq-upload-file-selector qq-upload-file"></span>
-                            <span class="qq-edit-filename-icon-selector qq-btn qq-edit-filename-icon" aria-label="Edit filename"></span>
-                        </div>
-                        <input class="qq-edit-filename-selector qq-edit-filename" tabindex="0" type="text">
-                        <span class="qq-upload-size-selector qq-upload-size"></span>
-                        <button type="button" class="qq-btn qq-upload-delete-selector qq-upload-delete">
-                            <span class="qq-btn qq-delete-icon" aria-label="Delete"></span>
-                        </button>
-                        <button type="button" class="qq-btn qq-upload-pause-selector qq-upload-pause">
-                            <span class="qq-btn qq-pause-icon" aria-label="Pause"></span>
-                        </button>
-                        <button type="button" class="qq-btn qq-upload-continue-selector qq-upload-continue">
-                            <span class="qq-btn qq-continue-icon" aria-label="Continue"></span>
-                        </button>
-                    </div>
-                </li>
-            </ul>
-
-            <dialog class="qq-alert-dialog-selector">
-                <div class="qq-dialog-message-selector"></div>
-                <div class="qq-dialog-buttons">
-                    <button type="button" class="qq-cancel-button-selector">Close</button>
-                </div>
-            </dialog>
-
-            <dialog class="qq-confirm-dialog-selector">
-                <div class="qq-dialog-message-selector"></div>
-                <div class="qq-dialog-buttons">
-                    <button type="button" class="qq-cancel-button-selector">No</button>
-                    <button type="button" class="qq-ok-button-selector">Yes</button>
-                </div>
-            </dialog>
-
-            <dialog class="qq-prompt-dialog-selector">
-                <div class="qq-dialog-message-selector"></div>
-                <input type="text">
-                <div class="qq-dialog-buttons">
-                    <button type="button" class="qq-cancel-button-selector">Cancel</button>
-                    <button type="button" class="qq-ok-button-selector">Ok</button>
-                </div>
-            </dialog>
-        </div>
-    </script>
-
-
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet"
@@ -106,7 +27,6 @@
     <div class="container" id="header">
         <h1 align="center"> Skanderborg Shotokan Karate</h1>
     </div>
-    <h2 align="center">Admin login</h2>
 
     <div class="container">
 
@@ -114,10 +34,6 @@
 
             <li class="active"><a data-toggle="tab" href="#menukalender">Kalender</a></li>
             <li><a data-toggle="tab" href="#menuNyheder">Nyheder</a></li>
-            <li><a data-toggle="tab" href="#menutræningsinfo">Træningsinfo</a></li>
-            <li><a data-toggle="tab" href="#menukontakt">Kontakt</a></li>
-            <li><a data-toggle="tab" href="#menumedlemmer">Medlemmer</a></li>
-            <li><a data-toggle="tab" href="#menugalleri">Galleri</a></li>
             <li><a data-toggle="tab" href="#menuLogin">Login</a></li>
 
         </ul>
@@ -136,19 +52,10 @@
 
             <div id="menuNyheder" class="tab-pane fade ">
                 <div class="row">
-                    <div class="col-sm-6">
-
-                        <h3> Opret nyhed </h3>
-                        <span class="a"> <input id="headline" placeholder="Overskrift"></span><br>
-                        <span class="a"> <textarea rows="6" cols="50" id="content"
-                                                   placeholder="Indsæt brødtekst her"></textarea> </span><br>
-                        <span class="a"> <button id="saveNews"> Opret </button></span> <br>
-                        <p id="nyhedLabel"></p>
-                    </div>
 
                     <div class="col-sm-6">
                         <div class="well">
-                            <p id="nyheder"></p>
+                            <p id="nyhederBrugerside"></p>
 
                         </div>
                     </div>
@@ -164,111 +71,8 @@
                 </div>
             </div>
 
-            <div id="menutræningsinfo" class="tab-pane fade">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h3>Træningsinfo</h3>
-                        <p>
-                            Der trænes i Stilling hallen, hvis man er interesseret i karate er man
-                            velkommen til at komme at kigge på. Hvis man er interesseret i at prøve at
-                            træne med skal man først kontakte Sensei Henrik
-                        </p>
-                        <br>
-                        <br>
-                        <br>
-                        <p>
-                            Sommer træning:
-                        </p>
-                        <p>
-                            træning hver fredag indtil sommerferien kl. 16.30-18.00
-                            Der ud over forventes den seriøse karate udøver også at træne hjemme.
-                        </p>
-                    </div>
-                    <div class="col-sm-6">
-                        <p>
-                            Du finder os her: Gramvej 10, Stilling
-                        </p>
-                        <br>
-                        <img id="Karatalokation" class="images" src="Pictures/KarateLokation.jpg">
-                    </div>
-                </div>
-            </div>
 
-            <div id="menukontakt" class="tab-pane fade">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h3>Kontakt</h3>
-                        <p>
-                            Vil du gerne i kontakt med klubben, f.eks. for at få mulighed for at deltage
-                            i en prøvetime, så send venligst en mail til nedenstående addresse.
-                            Du er naturligvis også velkommen til at dukke op til en af vores træninger.
-                            Her kan vi dog ikke garantere for at du har mulighed for at træne med.
-                            Alle er dog velkomne til at komme og kigge på.
-                        </p>
-                        <br>
-                        <br>
-                        <p>
-                            Send en mail til
-                            Skanderborg Shotokan Karate-Do
-
-                            e-mail: info@skanderborgkarate.dk
-                        </p>
-
-                    </div>
-                </div>
-            </div>
-
-
-            <div id="menumedlemmer" class="tab-pane fade">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h3>Medlemmer</h3>
-                        <br>
-                        <p>Medlemmer Navn</p>
-                        <input id="memberName" placeholder="Navn">
-                        <br>
-                        <br>
-                        <p>Medlemmer Alder</p>
-                        <input id="memberAge" placeholder="Alder">
-                        <br>
-                        <br>
-                        <p>Medlemmer Email</p>
-                        <input id="memberEmail" placeholder="Email">
-                        <br>
-                        <br>
-                        <p>Medlemmer Password</p>
-                        <input id="memberPassword" placeholder="password">
-                        <br>
-                        <br>
-                        <button id="saveMember"> Opret</button>
-                        <p id="oprettetAdmin"></p>
-
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="well">
-                            <p id="medlemmer"></p>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="menugalleri" class="tab-pane fade">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h3>Galleri</h3>
-
-
-                        <button id="savePicture"> Opload </button>
-                        <div id="uploader"></div>
-                        <script>
-                            // Some options to pass to the uploader are discussed on the next page
-                            var uploader = new qq.FineUploader({
-                                element: document.getElementById("uploader")
-                            })
-                        </script>
-                    </div>
-                </div>
-            </div>
+            
 
         </div>
     </div>
