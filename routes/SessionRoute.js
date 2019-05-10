@@ -62,10 +62,10 @@ router
 
 .get('/memberSession', function (request, response) {
     const email = request.session.email;
-    const name = request.session.name;
-    const age = request.session.age;
+    const name = request.name;
+    const age = request.age;
     const password = request.session.password;
-    const id = request.session.id;
+    const id = request.id;
 
     if (email) {
         response.render('memberSession', {id,email, name, age, password});
