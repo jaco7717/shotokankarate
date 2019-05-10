@@ -48,10 +48,12 @@ router
         let login = request.body;
 let name;
 let age;
+let id;
         for (let n of controller.getMembers()) {
             if (n.password === password && n.email === email) {
 name = n.name;
 age = n.age;
+id = n.id;
 
             }
         }
@@ -62,6 +64,7 @@ age = n.age;
                     request.session.email = password;
                     request.session.name = name;
                     request.session.age = age;
+                    request.session.id = id;
                     response.send({ok: true});
                 } else {
                     response.send({ok: false});
@@ -75,12 +78,13 @@ age = n.age;
         const password = request.session.password;
         const name = request.session.name;
         const age = request.session.age;
+        const id = request.session.id;
 
         console.log(name);
 
 
         if (email) {
-            response.render('memberSession', {email, password, age, name});
+            response.render('memberSession', {id,name, age, password, email});
         } else {
             response.render('login');
         }
