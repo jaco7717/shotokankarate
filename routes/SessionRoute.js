@@ -48,7 +48,7 @@ router
     let login = request.body;
     memberModel.find(login).exec().then(member => {
             if (member.length === 1) {
-                request.session.username = username;
+                request.session.email = email;
                 response.send({ok: true});
             } else {
                 response.send({ok: false});
