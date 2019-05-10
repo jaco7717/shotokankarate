@@ -9,41 +9,30 @@ router
 // GET Calender
 
     .get('/', async (request, response) => {
-        response.json(await calenderModel.find().exec())
+        controller.getAllEvents()
+            .then (news => response.send(news))
+            .catch(error => response.status(400).send(error));
     })
 
     // POST Calender
     .post('/', (request, response) => {
         let msgObj = request.body;
-
-        if (msgObj.title) {
-            let event = new calenderModel({
-                title: msgObj.title,
-                date: msgObj.date,
-                content: msgObj.content,
-                className: 'info',
-                allDay: false,
-            });
-
-            event.save();
-
-            response.status(200).send("Message sent")
-        }
+        controller.postEvent(msgObj)
+            .catch(error => response.status(400).send(error));
     })
 
     // GET SINGLE Calender
 
     .get('/:id', async (request, response) => {
         let id = request.params.id;
-        response.json(await calenderModel.find({_id: id}).exec())
+        controller.getSingleNews(id)
+            .catch(error => response.status(400).send(error));
     })
 
     .delete('/:id', async (request, response) => {
         let {id} = request.params;
-
-        await calenderModel.find({_id: id}).deleteOne().exec();
-
-        response.status(200).send("Message sent");
+        controller.deleteSingleEvent(id)
+            .catch(error => response.status(400).send(error));
     });
 
 
