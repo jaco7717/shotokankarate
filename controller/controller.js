@@ -26,5 +26,5 @@ exports.postNews = function(msgObj) {
         news.save();
 
 
-
+    }
 }
