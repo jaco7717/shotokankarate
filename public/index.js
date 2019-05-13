@@ -259,7 +259,7 @@ async function toEditMemberMemberPart(id, name, age, email, password) {
 
     if (navn !== '' && alder !== '' && mail !== '' && password !== '') {
         let data = {name: navn, age: alder, email: mail, password:adgangskode};
-
+        console.log(id);
         let url = 'https://shotokankarate.herokuapp.com/api/member/' + id;
 
         fetch(url, {
