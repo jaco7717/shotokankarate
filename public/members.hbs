@@ -2,18 +2,21 @@
     {{#each members}}
         <tbody>
         <tr>
-        <th> Navn </th> <th> Alder </th> <th> Email </th>
         </tr>
         <tr>
-            <td><h5>{{this.name}}</h5></td>
+            <td><p> Navn: {{this.name}}</p></td>
+        </tr>
+        <tr>
             <td>
-                <p>{{this.age}}</p>
-            </td>
-            <td>
-                <p>{{this.email}}</p>
+                <p> Alder:  {{this.age}}</p>
             </td>
             <td>
                 <button class="button1" id="{{_id}}" onclick="deleteMember('{{this._id}}')"> Slet</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p> Email: {{this.email}}</p>
             </td>
             <td>
                 <button class="button2" id="{{_id}}"
