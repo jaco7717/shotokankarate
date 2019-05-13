@@ -29,7 +29,7 @@ table.b {
 thead tr:first-child {
     border: none;
     text-align: left;
-    padding-right: 10px;
+    padding-right: 5px;
 }
 
 th:first-child,
@@ -47,12 +47,12 @@ tbody tr:last-child td {
     border: none;
     border-bottom: 2px solid black;
 
-    padding-right: 10px;
+    padding-right: 5px;
 }
 
 
 td:last-child {
-    padding-right: 10px;
+    padding-right: 5px;
 }
 
 #button1 {
