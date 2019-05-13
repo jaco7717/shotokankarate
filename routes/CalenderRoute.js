@@ -25,7 +25,7 @@ router
 
     .get('/:id', async (request, response) => {
         let id = request.params.id;
-        controller.getSingleNews(id)
+        controller.getSingleEvent(id)
             .then (event => response.send(event))
             .catch(error => response.status(400).send(error));
     })
