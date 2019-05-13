@@ -103,7 +103,7 @@ td:last-child {
 .external-event {
     margin: 10px 0;
     padding: 2px 4px;
-    background: hsl(0, 100%, 70%);
+    background: #3366CC;
     color: #fff;
     font-size: .85em;
     cursor: pointer;

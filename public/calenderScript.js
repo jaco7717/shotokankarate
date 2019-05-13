@@ -52,10 +52,11 @@ $(document).ready(function () {
       
 
         eventClick: function(info) {
+            let date = info.date;
+            let titel = info.title;
+            let content = info.content;
 
-            let tekst = info.content;
-
-            alert(tekst );
+            alert(titel + " " + date + " " + '\n' + content );
 
 
 
