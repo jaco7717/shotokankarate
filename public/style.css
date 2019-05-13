@@ -1,6 +1,9 @@
-img {
+#KarateLogo{
     width: 250px;
     height: 250px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .tab-pane {
@@ -29,6 +32,14 @@ table.b {
 
     font-size: 12px;
 
+}
+
+table.c {
+    border-collapse: separate;
+    border-spacing: 0;
+    font-weight: 500;
+    font-size: 12px;
+    width: 100%;
 }
 
 thead tr:first-child {
