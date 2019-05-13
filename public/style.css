@@ -405,7 +405,7 @@ html .fc,
 .fc-event {
     border: 1px solid #FFF; /* default BORDER color */
     background-color: #FFF; /* default BACKGROUND color */
-    color: #919191; /* default TEXT color */
+    color: black; /* default TEXT color */
     font-size: 14px;
     cursor: default;
 }
