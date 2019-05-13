@@ -65,7 +65,7 @@ exports.getSingleEvent = function(id) {
     return calenderModel.find({_id: id}).exec()
 };
 
-exports.deleteSingleEvent = function() {
+exports.deleteSingleEvent = function(id) {
     return calenderModel.find({_id: id}).deleteOne().exec();
 };
 
