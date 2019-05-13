@@ -5,6 +5,10 @@
     display: block;
 }
 
+.title {
+    overflow: hidden;
+}
+
 .tab-pane {
     border-left: 1px solid #ddd;
     border-right: 1px solid #ddd;
