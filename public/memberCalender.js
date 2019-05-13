@@ -1,6 +1,3 @@
-const controller = require("../controller/controller");
-
-
 $(document).ready(function () {
 
     /* initialize the calendar
