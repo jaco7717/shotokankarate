@@ -6,7 +6,7 @@
 }
 
 .title {
-    overflow: hidden;
+    float: left;
 }
 
 .tab-pane {
