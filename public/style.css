@@ -58,16 +58,14 @@ td:last-child {
 #button1 {
     color: #aaa;
     cursor: pointer;
-    display: flex;
-    justify-content: right;
+    float: right;
     margin-top: -4px;
 }
 
 #button2 {
     color: #aaa;
     cursor: pointer;
-    display: flex;
-    justify-content: right;
+    float: right;
     margin-top: -4px;
 }
 
@@ -105,7 +103,7 @@ td:last-child {
 .external-event {
     margin: 10px 0;
     padding: 2px 4px;
-    background: #3366CC;
+    background: hsl(0, 100%, 70%);
     color: #fff;
     font-size: .85em;
     cursor: pointer;
