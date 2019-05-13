@@ -55,6 +55,9 @@ $(document).ready(function () {
             let titel = info.title;
             let found = false;
 
+            if (info.registered !== '') {
+                
+
             let registrered = info.registered;
             let regis = registrered.split(',');
 
@@ -96,7 +99,7 @@ $(document).ready(function () {
 
             }
 
-        }
+        }}
         });
 
 });
