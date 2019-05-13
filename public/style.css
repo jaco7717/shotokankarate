@@ -2,6 +2,7 @@
     width: 150px;
     height: 150px;
     float: right;
+    display: block;
 }
 
 .tab-pane {
