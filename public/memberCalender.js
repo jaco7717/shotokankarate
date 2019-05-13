@@ -57,13 +57,14 @@ $(document).ready(function () {
             console.log(id);
             console.log(titel);
             console.log(found);
-            
+
             if (info.registered !== '') {
 
 
             let registrered = info.registered;
-            let regis = registrered.split(',');
                 console.log(registrered);
+            let regis = registrered.split(',');
+                console.log(regis);
 
             for (let n of regis) {
                 if (request.session.name === n) {
