@@ -46,25 +46,13 @@ router
     .post('/member', function (request, response) {
         const {email, password} = request.body;
         let login = request.body;
-let name;
-let age;
-let id;
-        for (let n of controller.getMembers()) {
-            if (n.password === password && n.email === email) {
-name = n.name;
-age = n.age;
-id = n.id;
-
-            }
-        }
+        
 
         memberModel.find(login).exec().then(member => {
                 if (member.length === 1) {
                     request.session.email = email;
                     request.session.email = password;
-                    request.session.name = name;
-                    request.session.age = age;
-                    request.session.id = id;
+
                     response.send({ok: true});
                 } else {
                     response.send({ok: false});
@@ -80,11 +68,9 @@ id = n.id;
         const age = request.session.age;
         const id = request.session.id;
 
-        console.log(name);
-
 
         if (email) {
-            response.render('memberSession', {id,name, age, password, email});
+            response.render('memberSession', {id, name, age, password, email});
         } else {
             response.render('login');
         }
