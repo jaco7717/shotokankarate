@@ -1,7 +1,8 @@
 #KarateLogo{
     width: 250px;
     height: 250px;
-    align: middle;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .tab-pane {
