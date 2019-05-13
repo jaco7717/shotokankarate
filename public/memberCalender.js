@@ -81,7 +81,7 @@ $(document).ready(function () {
                         let url = 'https://shotokankarate.herokuapp.com/api/calender/' + id;
 
 
-                        let data = {registrered: reg};
+                        let data = {registered: reg};
 
 
                         fetch(url, {
