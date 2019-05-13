@@ -48,39 +48,36 @@ $(document).ready(function () {
                 alert('There was an error while fetching events!');
             }
         },
-        let: name1,
 
-        setName: function (name) {
-            name1 = name;
-        },
+
+
 
         eventClick: function (info) {
 
             let id = info._id;
             let titel = info.title;
             let found = false;
-            console.log(id);
-            console.log(titel);
-            console.log(found);
+
 
 
             if (info.registered !== '') {
 
 
             let registrered = info.registered;
-                console.log(name1);
+
+                let name = prompt('Den tilmeldtes navn:');
 
             let regis = registrered.split(',');
-                console.log(regis);
+                
             for (let n of regis) {
-                if (name1 === n) {
+                if (name === n) {
                     found = true;
 
                 }
             }
 
             if (!found) {
-                registrered += info.name;
+                registrered += name + ",";
 
                 if (confirm("Vil du tilmelde dig event? " + titel)) {
 
