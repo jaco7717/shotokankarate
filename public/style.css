@@ -58,14 +58,16 @@ td:last-child {
 #button1 {
     color: #aaa;
     cursor: pointer;
-
+    display: flex;
+    justify-content: right;
     margin-top: -4px;
 }
 
 #button2 {
     color: #aaa;
     cursor: pointer;
-
+    display: flex;
+    justify-content: right;
     margin-top: -4px;
 }
 
