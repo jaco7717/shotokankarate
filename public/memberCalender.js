@@ -59,17 +59,19 @@ $(document).ready(function () {
             console.log(titel);
             console.log(found);
 
+
             if (info.registered !== '') {
 
 
             let registrered = info.registered;
-                console.log(registrered);
+                console.log(this.name);
+
             let regis = registrered.split(',');
                 console.log(regis);
-
             for (let n of regis) {
-                if (request.session.name === n) {
+                if (this.name === n) {
                     found = true;
+
                 }
             }
 
