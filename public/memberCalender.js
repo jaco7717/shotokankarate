@@ -54,7 +54,7 @@ $(document).ready(function () {
             name1 = name;
         },
 
-        eventClick: function (info, request, response) {
+        eventClick: function (info) {
 
             let id = info._id;
             let titel = info.title;
