@@ -50,7 +50,7 @@ $(document).ready(function () {
         },
 
 
-        eventClick: function (info) {
+        eventClick: function (info, request, response) {
 
             let id = info._id;
             let titel = info.title;
@@ -64,12 +64,12 @@ $(document).ready(function () {
 
 
             let registrered = info.registered;
-                console.log(this.name);
+                console.log(request.session.name);
 
             let regis = registrered.split(',');
                 console.log(regis);
             for (let n of regis) {
-                if (this.name === n) {
+                if (request.session.name === n) {
                     found = true;
 
                 }
