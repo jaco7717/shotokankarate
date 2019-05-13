@@ -53,10 +53,8 @@ router
                     request.session.email = email;
                     request.session.password = password;
                     request.session._id = member[0]._id;
-                    console.log(member);
-                    console.log(member[0].email);
-                    console.log(member[0]._id);
-
+                    request.session.name = member[0].name;
+                    request.session.age = member[0].age;
                     response.send({ok: true});
                 } else {
                     response.send({ok: false});
