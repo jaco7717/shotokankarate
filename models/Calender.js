@@ -7,6 +7,7 @@ const calenderSkema = new Schema({
     content: String,
     className: String,
     allDay: Boolean,
+    registered: String,
 });
 
 module.exports = mongoose.model('calender', calenderSkema);
