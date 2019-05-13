@@ -52,7 +52,7 @@ $(document).ready(function () {
       
 
         eventClick: function(info) {
-            let date = info.date.getUTCDay();
+            let date = info.date;
             let titel = info.title;
             let content = info.content;
 
