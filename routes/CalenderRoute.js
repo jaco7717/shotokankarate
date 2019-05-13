@@ -10,7 +10,7 @@ router
 
     .get('/', async (request, response) => {
         controller.getAllEvents()
-            .then (events => response.send(events))
+            .then(events => response.send(events))
             .catch(error => response.status(400).send(error));
     })
 
@@ -26,14 +26,24 @@ router
     .get('/:id', async (request, response) => {
         let id = request.params.id;
         controller.getSingleEvent(id)
-            .then (event => response.send(event))
+            .then(event => response.send(event))
             .catch(error => response.status(400).send(error));
     })
+
+    // DELETE SINGLE EVENT
 
     .delete('/:id', async (request, response) => {
         let {id} = request.params;
         controller.deleteSingleEvent(id)
             .catch(error => response.status(400).send(error));
+    })
+
+    .put('/:id', async function (request, response) {
+        let id = request.params.id;
+        let msgObj = request.body;
+        controller.updateSingleEvent(id, msgObj)
+            .catch(error => response.status(400).send(error));
+
     });
 
 

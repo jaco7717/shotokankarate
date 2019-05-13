@@ -69,6 +69,10 @@ exports.deleteSingleEvent = function(id) {
     return calenderModel.find({_id: id}).deleteOne().exec();
 };
 
+exports.updateSingleEvent = function(id,msgObj) {
+        return calenderModel.findOneAndUpdate({_id: id}, msgObj)
+};
+
 // --------------------------------------------------------------------------------------------------------------
 
 // Login
