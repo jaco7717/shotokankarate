@@ -123,7 +123,6 @@ exports.postMember = function(memberObj) {
                 }
             }
         )
-
     }
 };
 
