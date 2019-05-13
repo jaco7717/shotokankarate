@@ -42,7 +42,7 @@ $(document).ready(function () {
                 content: String,
                 className: String,
                 allDay: Boolean,
-                registrered: String,
+                registered: String,
             },
             error: function () {
                 alert('There was an error while fetching events!');
