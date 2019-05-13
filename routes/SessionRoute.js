@@ -68,7 +68,7 @@ router
         const password = request.session.password;
         const name = request.session.name;
         const age = request.session.age;
-        const id = request.session.id;
+        const id = request.session._id;
 
 
         if (email) {
