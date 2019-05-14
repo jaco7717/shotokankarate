@@ -37,16 +37,15 @@ exports.deleteSingleNews = async function (id) {
     } else {
         throw new Error("Could not delete");
     }
-}
-;
+};
+
 exports.updateSingleNews = async function (id, msgObj) {
-    const array = await newsModel(find({_id: id}));
+    const array = await newsModel.find({_id: id});
     if (array[0]._id == id) {
         return newsModel.findOneAndUpdate({_id: id}, msgObj)
     } else {
         throw new Error("Could not update");
     }
-
 };
 
 // --------------------------------------------------------------------------------------------------------------
