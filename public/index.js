@@ -69,7 +69,9 @@ async function addNews() {
             })
                 .then(response => {
                     if (response.status >= 400)
+                        update();
                         throw new Error(response.status);
+
                     else
                         update();
                     console.log('test4');
@@ -179,6 +181,7 @@ async function addMember() {
             })
                 .then(response => {
                     if (response.status >= 400)
+                        updateMembers();
                         opretMedlemAdmin.innerHTML = 'Allerede oprettet';
                     else
                         updateMembers();
