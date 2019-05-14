@@ -31,9 +31,7 @@ async function addMember() {
             })
                 .then(response => {
                     if (response.status >= 400)
-
                         opret.innerHTML = 'Allerede oprettet';
-
                     else
                         updateMembers();
 
