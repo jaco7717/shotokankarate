@@ -116,7 +116,7 @@ $(document).ready(function () {
                     })
                     .then(resultat => console.log(`Resultat: %o`, resultat))
                     .catch(fejl => console.log('Fejl: ' + fejl));
-
+                location.reload()
             } else {
 
             }
