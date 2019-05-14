@@ -93,8 +93,9 @@ $(document).ready(function () {
             let id = info._id;
             let tekst = info.title;
             let content = info.content;
+            let regis = info.registered;
 
-            if (confirm("vil du slette: "+ tekst + " " + content )) {
+            if (confirm("vil du slette: "+ tekst + " " + content + '\n' + "deltagere: " + regis)) {
                 let url = 'https://shotokankarate.herokuapp.com/api/calender/' + id;
                 console.log(url);
                 fetch(url, {
