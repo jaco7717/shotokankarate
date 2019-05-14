@@ -31,7 +31,7 @@ router
     // DELETE member
     .delete('/:id',  (request, response) => {
         let {id} = request.params;
-        controller.deleteMember(id)
+        controller.deleteMember(id).then (e=> response.send(e))
             .catch(error => response.status(400).send(error));
     })
 
