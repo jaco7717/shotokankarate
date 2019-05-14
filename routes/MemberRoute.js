@@ -23,7 +23,6 @@ router
     // POST member
     .post('/', (request, response) => {
         let memberObj = request.body;
-        console.log(memberObj);
         controller.postMember(memberObj).then(e => response.send(e))
             .catch(error => response.status(400).send({error}));
     })
@@ -39,7 +38,7 @@ router
     .put('/:id', (request, response) => {
         let {id} = request.params;
         let memberObj = request.body;
-        controller.updateMember(id, memberObj)
+        controller.updateMember(id, memberObj).then (e=> response.send(e))
             .catch(error => response.status(400).send(error));
     })
 

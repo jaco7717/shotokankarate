@@ -12,21 +12,18 @@ exports.getAllNews = function () {
     return newsModel.find().exec();
 };
 
-exports.postNews = function (msgObj) {
-    return new Promise((resolve, reject) => {
-        let currentDate = (new Date().getDate() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getFullYear());
-        if (msgObj.headline) {
-            let news = new newsModel({
-                headline: msgObj.headline,
-                date: currentDate,
-                content: msgObj.content,
-            });
-            news.save().then((e) => resolve(e)).catch(err => reject(err));
-        } else {
-            reject("No headline.")
-        }
-    })
-
+exports.postNews = async function (msgObj) {
+    let currentDate = (new Date().getDate() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getFullYear());
+    if (msgObj.headline) {
+        let news = new newsModel({
+            headline: msgObj.headline,
+            date: currentDate,
+            content: msgObj.content,
+        });
+        return news.save()
+    } else {
+        throw new Error("Could not post");
+    }
 };
 
 exports.getSingleNews = function (id) {
@@ -34,13 +31,22 @@ exports.getSingleNews = function (id) {
 };
 
 exports.deleteSingleNews = function (id) {
-    return newsModel.find({_id: id}).deleteOne().exec();
+    const array = newsModel.find({_id: id});
+    if (array[0]._id == id) {
+        return newsModel.find({_id: id}).deleteOne()
+    } else {
+        throw new Error("Could not delete");
+    }
 }
 ;
 exports.updateSingleNews = function (id, msgObj) {
-    if (msgObj.headline && msgObj.content) {
+    const array = newsModel(find({_id: id}));
+    if (array[0]._id == id) {
         return newsModel.findOneAndUpdate({_id: id}, msgObj)
+    } else {
+        throw new Error("Could not update");
     }
+
 };
 
 // --------------------------------------------------------------------------------------------------------------
@@ -134,23 +140,20 @@ exports.postMember = async function (memberObj) {
     }
 }
 
-exports.deleteMember =  async function (id) {
-
+exports.deleteMember = async function (id) {
     const array = await memberModel.find({_id: id});
-    // Only 2 '==' on purpose
     if (array[0]._id == id) {
-        console.log('TEST1');
         return memberModel.find({_id: id}).deleteOne();
     } else {
-        console.log('TEST2')
-        throw new Error ("Could not delete")
+        throw new Error("Could not delete")
     }
-
 };
 
 exports.updateMember = function (id, memberObj) {
-    if (memberObj.name) {
+    const array = memberModel.find({_id: id});
+    if (array[0]._id = id) {
         return memberModel.findOneAndUpdate({_id: id}, memberObj);
+    } else {
+        throw new Error("Could not update");
     }
-
 };

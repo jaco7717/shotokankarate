@@ -16,7 +16,7 @@ router
 
     .post('/', (request, response) => {
         let msgObj = request.body;
-        controller.postNews(msgObj).then(e => res.send(e))
+        controller.postNews(msgObj).then(e => response.send(e))
             .catch(error => response.status(400).send(error));
     })
 
@@ -24,7 +24,7 @@ router
 
     .delete('/:id', async (request, response) => {
         let id = request.params.id;
-        controller.deleteSingleNews(id)
+        controller.deleteSingleNews(id).then (e=> response.send(e))
             .catch(error => response.status(400).send(error));
     })
 
@@ -33,7 +33,7 @@ router
     .get('/:id', async (request, response) => {
         let id = request.params.id;
         controller.getSingleNews(id)
-            .then (news => response.send(news))
+            .then (news => response.send(news)).then (e=> response.send(e))
             .catch(error => response.status(400).send(error));
     })
 
@@ -42,7 +42,7 @@ router
     .put('/:id', async function (request, response) {
         let id = request.params.id;
         let msgObj = request.body;
-        controller.updateSingleNews(id, msgObj)
+        controller.updateSingleNews(id, msgObj).then (e=> response.send(e))
             .catch(error => response.status(400).send(error));
 
 
