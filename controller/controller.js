@@ -26,12 +26,12 @@ exports.postNews = async function (msgObj) {
     }
 };
 
-exports.getSingleNews = function (id) {
-    return newsModel.find({_id: id}).exec()
+exports.getSingleNews = async function (id) {
+    return newsModel.find({_id: id}).exec();
 };
 
-exports.deleteSingleNews = function (id) {
-    const array = newsModel.find({_id: id});
+exports.deleteSingleNews = async function (id) {
+    const array = await newsModel.find({_id: id});
     if (array[0]._id == id) {
         return newsModel.find({_id: id}).deleteOne()
     } else {
@@ -39,8 +39,8 @@ exports.deleteSingleNews = function (id) {
     }
 }
 ;
-exports.updateSingleNews = function (id, msgObj) {
-    const array = newsModel(find({_id: id}));
+exports.updateSingleNews = async function (id, msgObj) {
+    const array = await newsModel(find({_id: id}));
     if (array[0]._id == id) {
         return newsModel.findOneAndUpdate({_id: id}, msgObj)
     } else {
@@ -150,7 +150,7 @@ exports.deleteMember = async function (id) {
 };
 
 exports.updateMember = function (id, memberObj) {
-    const array = memberModel.find({_id: id});
+    const array = await memberModel.find({_id: id});
     if (array[0]._id = id) {
         return memberModel.findOneAndUpdate({_id: id}, memberObj);
     } else {
