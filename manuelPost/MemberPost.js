@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 
-let url = 'https://shotokankarate.herokuapp.com/api/members';
+let url = 'https://shotokankarate.herokuapp.com/api/member';
 let data = {name: "Mads scooterboi", age: "23",
     email: "scooterboi@mokaimail.com",
     password: "randers4ever"};
