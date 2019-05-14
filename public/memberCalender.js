@@ -63,10 +63,15 @@ $(document).ready(function () {
                 let reg = info.registered;
 
                 let name = prompt('Den tilmeldtes navn:');
-                
+
 
                 if (!found) {
-                    let reg = registered += (name + ",");
+                    let reg;
+                    if (registered === undefined) {
+                        reg = name + ',';
+                    } else {
+                        reg = registered += (name + ',');
+                    }
 
                     if (confirm("Vil du tilmelde dig event? " + titel)) {
 
