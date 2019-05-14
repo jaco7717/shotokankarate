@@ -1,6 +1,3 @@
-const fetch = require('node-fetch');
-
-
 onload = () => {
 
     loginButton();
