@@ -25,7 +25,7 @@ router
         let memberObj = request.body;
         console.log(memberObj);
         controller.postMember(memberObj).then(e => res.send(e))
-            .catch(error => response.status(400).send(error));
+            .catch(error => response.status(400).send({error}));
     })
 
     // DELETE member

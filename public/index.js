@@ -172,6 +172,8 @@ async function addMember() {
                 password: document.querySelector('#memberPassword').value
             };
 
+            console.log(JSON.stringify(msg));
+
             fetch(url, {
                 method: "POST",
                 body: JSON.stringify(msg),
