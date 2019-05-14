@@ -1,3 +1,5 @@
+const Template = require("hbs");
+
 onload = async () => {
 
     addNews();
@@ -6,6 +8,8 @@ onload = async () => {
     getMembers();
 
 };
+
+Template.registerHelper('reverseArray', (array) => array.reverse());
 
 
 async function update() {
@@ -35,7 +39,6 @@ async function updateMembers() {
 
     getMembers();
 }
-
 
 async function getNews() {
     const [template, userResponse] =
