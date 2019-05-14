@@ -45,7 +45,7 @@ $(document).ready(function () {
 
 
                 let url = 'https://shotokankarate.herokuapp.com/api/calender';
-                let data = {title: title, date: new Date(start.getFullYear(),start.getMonth(),start.getDate(), hourInt, minInt), content: content};
+                let data = {title: title, date: new Date(start.getFullYear(),start.getMonth(),start.getDate(), hourInt, minInt), content: content, registered: ''};
 
 
 
