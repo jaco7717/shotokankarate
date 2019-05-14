@@ -14,9 +14,9 @@ router
 
     // POST /api/news
 
-    .post('/', async (request, response) => {
+    .post('/', (request, response) => {
         let msgObj = request.body;
-        controller.postNews(msgObj)
+        controller.postNews(msgObj).then(e => res.send(e))
             .catch(error => response.status(400).send(error));
     })
 

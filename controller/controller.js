@@ -14,15 +14,20 @@ exports.getAllNews = function() {
 };
 
 exports.postNews = function(msgObj) {
-    let currentDate = (new Date().getDate() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getFullYear());
-    if (msgObj.headline) {
-        let news = new newsModel({
-            headline: msgObj.headline,
-            date: currentDate,
-            content: msgObj.content,
-        });
-       return news.save();
-    }
+    return new Promise((resolve, reject) => {
+        let currentDate = (new Date().getDate() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getFullYear());
+        if (msgObj.headline) {
+            let news = new newsModel({
+                headline: msgObj.headline,
+                date: currentDate,
+                content: msgObj.content,
+            });
+            news.save().then((e) => resolve(e)).catch(err => reject(err));
+        } else {
+            reject("No headline.")
+        }
+    })
+
 };
 
 exports.getSingleNews = function(id) {

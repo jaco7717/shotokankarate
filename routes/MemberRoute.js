@@ -23,7 +23,8 @@ router
     // POST member
     .post('/', (request, response) => {
         let memberObj = request.body;
-        controller.postMember(memberObj)
+        console.log(memberObj);
+        controller.postMember(memberObj).then(e => res.send(e))
             .catch(error => response.status(400).send(error));
     })
 
