@@ -44,7 +44,6 @@ async function getNews() {
     const news = await userResponse.json();
     const compiledTemplate = Handlebars.compile(templateText);
     document.querySelector('#nyheder').innerHTML = compiledTemplate({news});
-    console.log('test3');
 }
 
 
