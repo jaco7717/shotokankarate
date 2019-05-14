@@ -21,7 +21,7 @@ router
     })
 
     // POST member
-    .post('/', (request, response) => {
+    .post('/', async (request, response) => {
         let memberObj = request.body;
         controller.postMember(memberObj)
             .catch(error => response.status(400).send(error));
