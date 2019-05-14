@@ -34,6 +34,7 @@ async function addMember() {
                         opret.innerHTML = 'Allerede oprettet';
                     else
                         updateMembers();
+                    location.reload();
 
                     return response.json();
                 })
