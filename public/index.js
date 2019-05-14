@@ -4,14 +4,14 @@ onload = async () => {
     addMember();
     getNews();
     getMembers();
-  
+
 };
 
 
 async function update() {
     const overskrift = document.querySelector('#headline');
     const tekst = document.querySelector('#content');
-    let nyhedLabelUpdate = document.querySelector('#nyhedLabel').value;
+    const nyhedLabelUpdate = document.querySelector('#nyhedLabel');
 
     nyhedLabelUpdate.innerHTML = 'Oprettet';
     overskrift.value = '';
