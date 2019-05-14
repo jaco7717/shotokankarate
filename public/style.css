@@ -5,10 +5,6 @@
     display: block;
 }
 
-.h1, .h3 {
-    text-align: center;
-}
-
 .tab-pane {
     border-left: 1px solid #ddd;
     border-right: 1px solid #ddd;
