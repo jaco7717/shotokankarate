@@ -4,9 +4,6 @@ onload = () => {
 
 };
 
-
-
-
 async function getNewsUserPage() {
     const [template, userResponse] =
         await Promise.all([fetch('/newsUserPage.hbs'), fetch('https://shotokankarate.herokuapp.com/api/news')]);
