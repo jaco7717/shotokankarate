@@ -1,5 +1,3 @@
-const hbs = require("hbs");
-
 onload = async () => {
 
     addNews();
@@ -8,8 +6,6 @@ onload = async () => {
     getMembers();
 
 };
-
-hbs.registerHelper('reverseNews', (array) => array.reverse());
 
 
 async function update() {
