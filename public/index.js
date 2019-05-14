@@ -4,17 +4,20 @@ onload = async () => {
     addMember();
     getNews();
     getMembers();
+
 };
+
 
 
 async function update() {
     const overskrift = document.querySelector('#headline');
     const tekst = document.querySelector('#content');
-    let nyhedLabelUpdate = document.querySelector('#nyhedLabel').value;
+    const nyhedLabelUpdate = document.querySelector('#nyhedLabel');
 
     nyhedLabelUpdate.innerHTML = 'Oprettet';
     overskrift.value = '';
     tekst.value = '';
+
     getNews();
 }
 
@@ -34,7 +37,6 @@ async function updateMembers() {
     getMembers();
 }
 
-
 async function getNews() {
     const [template, userResponse] =
         await Promise.all([fetch('/news.hbs'), fetch('https://shotokankarate.herokuapp.com/api/news')]);
@@ -42,6 +44,7 @@ async function getNews() {
     const news = await userResponse.json();
     const compiledTemplate = Handlebars.compile(templateText);
     document.querySelector('#nyheder').innerHTML = compiledTemplate({news});
+    console.log('test3');
 }
 
 
@@ -66,9 +69,11 @@ async function addNews() {
             })
                 .then(response => {
                     if (response.status >= 400)
-                        throw new Error(response.status);
+                       throw new Error(response.status);
+
                     else
                         update();
+
                     return response.json();
                 })
                 .then(resultat => console.log(`Resultat: %o`, resultat))
@@ -77,6 +82,7 @@ async function addNews() {
             nyhedLabel.innerHTML = 'Udfyld overskrift og tekst';
         }
     };
+
 }
 
 function slet(id) {
@@ -173,6 +179,7 @@ async function addMember() {
             })
                 .then(response => {
                     if (response.status >= 400)
+
                         opretMedlemAdmin.innerHTML = 'Allerede oprettet';
                     else
                         updateMembers();
