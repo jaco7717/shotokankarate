@@ -36,12 +36,12 @@ router
     })
 
     // PUT member
-    .put('/:id',(request, response) {
+    .put('/:id', (request, response) => {
         let {id} = request.params;
         let memberObj = request.body;
         controller.updateMember(id, memberObj)
             .catch(error => response.status(400).send(error));
-    });
+    })
 
 
 module.exports = router;
