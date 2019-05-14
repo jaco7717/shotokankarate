@@ -98,7 +98,11 @@ $(document).ready(function () {
             let content = info.content;
             let regis = info.registered;
 
-            if (confirm("vil du slette: " + tekst + " " + content + '\n' + "deltagere: " + regis)) {
+            if (regis === undefined) {
+                regis = 'Ingen tilmeldte';
+            }
+
+            if (confirm("vil du slette: " + tekst + " " + content + '\n' + "Deltagere: " + regis)) {
                 let url = 'https://shotokankarate.herokuapp.com/api/calender/' + id;
                 fetch(url, {
                     method: "DELETE",
