@@ -82,7 +82,7 @@ async function addNews() {
             nyhedLabel.innerHTML = 'Udfyld overskrift og tekst';
         }
     };
-   
+
 }
 
 function slet(id) {
