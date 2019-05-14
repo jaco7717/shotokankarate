@@ -8,6 +8,7 @@ onload = async () => {
 };
 
 
+
 async function update() {
     const overskrift = document.querySelector('#headline');
     const tekst = document.querySelector('#content');
@@ -35,7 +36,6 @@ async function updateMembers() {
 
     getMembers();
 }
-
 
 async function getNews() {
     const [template, userResponse] =
