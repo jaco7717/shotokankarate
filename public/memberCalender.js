@@ -63,15 +63,7 @@ $(document).ready(function () {
                 let reg = info.registered;
 
                 let name = prompt('Den tilmeldtes navn:');
-
-                let regis = reg.split(',');
-
-                for (let n of regis) {
-                    if (name === n) {
-                        found = true;
-
-                    }
-                }
+                
 
                 if (!found) {
                     let reg = registered += (name + ",");
