@@ -1,7 +1,7 @@
 onload = () => {
     getNewsUserPage();
     loginButton();
-    addMember();
+
 };
 
 async function loginButton() {
@@ -57,61 +57,3 @@ async function getNewsUserPage() {
 
 
 
-async function addMember() {
-    document.querySelector('#saveMember').onclick = () => {
-        let url = 'https://shotokankarate.herokuapp.com/api/member';
-        const opret = document.querySelector('#oprettet');
-        const msg = {
-            name: document.querySelector('#memberName').value,
-            age: document.querySelector('#memberAge').value,
-            email: document.querySelector('#memberEmail').value,
-            password: document.querySelector('#memberPassword').value
-        };
-
-
-        let nameTest = document.querySelector('#memberName').value;
-        let ageTest = document.querySelector('#memberAge').value;
-        let emailTest = document.querySelector('#memberEmail').value;
-        let password = document.querySelector('#memberPassword').value;
-
-        if (nameTest !== '' && ageTest !== '' && emailTest !== '' && password !== '') {
-
-        fetch(url, {
-            method: "POST",
-            body: JSON.stringify(msg),
-            headers: {'Content-Type': 'application/json'}
-        })
-            .then(response => {
-                if (response.status >= 400)
-
-                opret.innerHTML = 'Allerede oprettet';
-
-                else
-                    updateMembers();
-
-                return response.json();
-            })
-            .then(resultat => console.log(`Resultat: %o`, resultat))
-            .catch(fejl => console.log('Fejl: ' + fejl));
-
-            }  else {
-            opret.innerHTML = 'Alle felter skal udfyldes';
-        }
-
-    };
-}
-
-async function updateMembers() {
-    const memberName = document.querySelector('#memberName');
-    const memberAge = document.querySelector('#memberAge');
-    const memberEmail = document.querySelector('#memberEmail');
-    const memberPassword = document.querySelector('#memberPassword');
-    const tjek = document.querySelector('#oprettet');
-
-
-    memberName.value = '';
-    memberAge.value = '';
-    memberEmail.value = '';
-    memberPassword.value = '';
-    tjek.innerHTML = 'Du er nu oprettet';
-}
