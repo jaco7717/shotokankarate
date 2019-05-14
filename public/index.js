@@ -13,11 +13,11 @@ async function update() {
     const overskrift = document.querySelector('#headline');
     const tekst = document.querySelector('#content');
     const nyhedLabelUpdate = document.querySelector('#nyhedLabel');
-    console.log('test2');
+
     nyhedLabelUpdate.innerHTML = 'Oprettet';
     overskrift.value = '';
     tekst.value = '';
-    console.log('test1');
+
     getNews();
 }
 
@@ -73,7 +73,7 @@ async function addNews() {
 
                     else
                         update();
-                    console.log('test4');
+
                     return response.json();
                 })
                 .then(resultat => console.log(`Resultat: %o`, resultat))
@@ -82,8 +82,7 @@ async function addNews() {
             nyhedLabel.innerHTML = 'Udfyld overskrift og tekst';
         }
     };
-    console.log('test5');
-    update();
+   
 }
 
 function slet(id) {
