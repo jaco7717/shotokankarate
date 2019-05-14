@@ -149,7 +149,7 @@ exports.deleteMember = async function (id) {
     }
 };
 
-exports.updateMember = function (id, memberObj) {
+exports.updateMember = async function (id, memberObj) {
     const array = await memberModel.find({_id: id});
     if (array[0]._id = id) {
         return memberModel.findOneAndUpdate({_id: id}, memberObj);
