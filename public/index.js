@@ -1,5 +1,3 @@
-const Template = require("hbs");
-
 onload = async () => {
 
     addNews();
@@ -9,7 +7,6 @@ onload = async () => {
 
 };
 
-Template.registerHelper('reverseArray', (array) => array.reverse());
 
 
 async function update() {
