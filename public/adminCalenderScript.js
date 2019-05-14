@@ -13,7 +13,7 @@ $(document).ready(function () {
         editable: false,
         firstDay: 1, //  1(Monday) this can be changed to 0(Sunday) for the USA system
         selectable: true,
-        defaultSelected:  'today',
+        defaultSelected: 'today',
         defaultView: 'month',
 
         axisFormat: 'h:mm',
@@ -41,12 +41,16 @@ $(document).ready(function () {
             let hourInt = parseInt(hour);
             let minInt = parseInt(min);
 
-            if (title !== '' && content !== '' && hour !== '' && min !== '' ) {
+            if (title !== '' && content !== '' && hour !== '' && min !== '') {
 
 
                 let url = 'https://shotokankarate.herokuapp.com/api/calender';
-                let data = {title: title, date: new Date(start.getFullYear(),start.getMonth(),start.getDate(), hourInt, minInt), content: content, registered: ''};
-
+                let data = {
+                    title: title,
+                    date: new Date(start.getFullYear(), start.getMonth(), start.getDate(), hourInt, minInt),
+                    content: content,
+                    registered: ''
+                };
 
 
                 fetch(url, {
@@ -73,7 +77,6 @@ $(document).ready(function () {
         },
 
 
-
         events: {
             url: 'https://shotokankarate.herokuapp.com/api/calender',
             type: 'get',
@@ -89,14 +92,14 @@ $(document).ready(function () {
             }
         },
 
-        eventClick: function(info) {
+        eventClick: function (info) {
             let id = info._id;
             let tekst = info.title;
             let content = info.content;
+            let regis = info.registered;
 
-            if (confirm("vil du slette: "+ tekst + " " + content )) {
+            if (confirm("vil du slette: " + tekst + " " + content + '\n' + "deltagere: " + regis)) {
                 let url = 'https://shotokankarate.herokuapp.com/api/calender/' + id;
-                console.log(url);
                 fetch(url, {
                     method: "DELETE",
                 })
