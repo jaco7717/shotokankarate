@@ -22,14 +22,12 @@ async function loginButton() {
             window.location.href = "https://shotokankarate.herokuapp.com/session";
     } else {
             const dataMedlem = {email: username.value, password: password.value};
-            console.log("test1");
             const resultatMedlem = await fetch("https://shotokankarate.herokuapp.com/member", {
 
                 method: "POST",
                 body: JSON.stringify(dataMedlem),
                 headers: {'Content-Type': 'application/json'}
             });
-            console.log("test2");
             const svarMedlem = await resultatMedlem.json();
             if (svarMedlem.ok)
                 window.location.href = "https://shotokankarate.herokuapp.com/memberSession";
@@ -61,7 +59,7 @@ async function getNewsUserPage() {
 
 async function addMember() {
     document.querySelector('#saveMember').onclick = () => {
-        let url = 'https://shotokankarate.herokuapp.com/api/members';
+        let url = 'https://shotokankarate.herokuapp.com/api/member';
         const opret = document.querySelector('#oprettet');
         const msg = {
             name: document.querySelector('#memberName').value,
