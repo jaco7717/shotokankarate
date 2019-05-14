@@ -6,14 +6,14 @@ const memberModel = require('../models/Member');
 
 router
 // GET member
-    .get('/', async (request, response) => {
+    .get('/',  (request, response) => {
         controller.getMembers()
             .then(members => response.send(members))
             .catch(error => response.status(400).send(error));
     })
 
 
-    .get('/:id', async (request, response) => {
+    .get('/:id',  (request, response) => {
         let id = request.params.id;
         controller.getSingleMember(id)
             .then(member => response.send(member))
@@ -29,14 +29,14 @@ router
     })
 
     // DELETE member
-    .delete('/:id', async (request, response) => {
+    .delete('/:id',  (request, response) => {
         let {id} = request.params;
         controller.deleteMember(id)
             .catch(error => response.status(400).send(error));
     })
 
     // PUT member
-    .put('/:id', async function (request, response) {
+    .put('/:id',(request, response) {
         let {id} = request.params;
         let memberObj = request.body;
         controller.updateMember(id, memberObj)

@@ -127,15 +127,22 @@ exports.postMember = async function (memberObj) {
         if (found === false) {
             return member.save();
         } else {
-            throw new Error("Ikke fundet.")
+            throw new Error("Not Found")
         }
     } else {
-        throw new Error("Intet navn.")
+        throw new Error("Need all information")
     }
 }
 
-exports.deleteMember = function (id) {
-    return memberModel.find({_id: id}).deleteOne().exec();
+exports.deleteMember =  async function (id) {
+
+    const array = await memberModel.find({_id: id});
+    if (array[0]._id === id) {
+        memberModel.find({_id: id}).deleteOne()
+    } else {
+        throw new Error ("Could not delete")
+    }
+
 };
 
 exports.updateMember = function (id, memberObj) {
