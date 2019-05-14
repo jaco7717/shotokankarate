@@ -138,6 +138,8 @@ exports.deleteMember =  async function (id) {
 
     const array = await memberModel.find({_id: id});
     if (array[0]._id === id) {
+        console.log(array[0]);
+        console.log(id);
         memberModel.find({_id: id}).deleteOne()
     } else {
         throw new Error ("Could not delete")
