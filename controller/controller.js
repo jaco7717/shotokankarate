@@ -1,4 +1,3 @@
-
 "use strict"
 
 const newsModel = require('../models/News')
@@ -9,11 +8,11 @@ const memberModel = require('../models/Member')
 
 // NEWS
 
-exports.getAllNews = function() {
+exports.getAllNews = function () {
     return newsModel.find().exec();
 };
 
-exports.postNews = function(msgObj) {
+exports.postNews = function (msgObj) {
     return new Promise((resolve, reject) => {
         let currentDate = (new Date().getDate() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getFullYear());
         if (msgObj.headline) {
@@ -30,29 +29,29 @@ exports.postNews = function(msgObj) {
 
 };
 
-exports.getSingleNews = function(id) {
+exports.getSingleNews = function (id) {
     return newsModel.find({_id: id}).exec()
 };
 
-exports.deleteSingleNews = function(id) {
+exports.deleteSingleNews = function (id) {
     return newsModel.find({_id: id}).deleteOne().exec();
 }
 ;
-exports.updateSingleNews = function(id,msgObj) {
+exports.updateSingleNews = function (id, msgObj) {
     if (msgObj.headline && msgObj.content) {
         return newsModel.findOneAndUpdate({_id: id}, msgObj)
-        }
+    }
 };
 
 // --------------------------------------------------------------------------------------------------------------
 
 // Calender
 
-exports.getAllEvents = function() {
+exports.getAllEvents = function () {
     return calenderModel.find().exec();
 };
 
-exports.postEvent = function(msgObj) {
+exports.postEvent = function (msgObj) {
 
     if (msgObj.title) {
         let event = new calenderModel({
@@ -66,27 +65,27 @@ exports.postEvent = function(msgObj) {
     }
 };
 
-exports.getSingleEvent = function(id) {
+exports.getSingleEvent = function (id) {
     return calenderModel.find({_id: id}).exec()
 };
 
-exports.deleteSingleEvent = function(id) {
+exports.deleteSingleEvent = function (id) {
     return calenderModel.find({_id: id}).deleteOne().exec();
 };
 
-exports.updateSingleEvent = function(id,msgObj) {
-        return calenderModel.findOneAndUpdate({_id: id}, msgObj)
+exports.updateSingleEvent = function (id, msgObj) {
+    return calenderModel.findOneAndUpdate({_id: id}, msgObj)
 };
 
 // --------------------------------------------------------------------------------------------------------------
 
 // Login
 
-exports.getLogins = function() {
+exports.getLogins = function () {
     return loginModel.find().exec();
 };
 
-exports.postLogin = function(msgObj) {
+exports.postLogin = function (msgObj) {
     if (msgObj.username) {
         let login = new loginModel({
             username: msgObj.username,
@@ -100,15 +99,15 @@ exports.postLogin = function(msgObj) {
 
 // Member
 
-exports.getMembers = function() {
+exports.getMembers = function () {
     return memberModel.find().exec();
 };
 
-exports.getSingleMember = function(id) {
+exports.getSingleMember = function (id) {
     return memberModel.find({_id: id}).exec();
 };
 
-exports.postMember = function(memberObj) {
+exports.postMember = async function (memberObj) {
     let found = false;
     if (memberObj.name) {
         let member = new memberModel({
@@ -117,25 +116,29 @@ exports.postMember = function(memberObj) {
             email: memberObj.email,
             password: memberObj.password,
         });
-        memberModel.find().exec().then(array => {
-                for (let i of array) {
-                    if (i.email === memberObj.email) {
-                        found = true;
-                    }
-                }
-                if (found === false) {
-                    member.save();
-                }
-            }
-        )
-    }
-};
 
-exports.deleteMember = function(id) {
+        const array = await memberModel.find().exec();
+
+        for (let i of array) {
+            if (i.email === memberObj.email) {
+                found = true;
+            }
+        }
+        if (found === false) {
+            return member.save();
+        } else {
+            throw new Error("Ikke fundet.")
+        }
+    } else {
+        throw new Error("Intet navn.")
+    }
+}
+
+exports.deleteMember = function (id) {
     return memberModel.find({_id: id}).deleteOne().exec();
 };
 
-exports.updateMember = function(id, memberObj) {
+exports.updateMember = function (id, memberObj) {
     if (memberObj.name) {
         return memberModel.findOneAndUpdate({_id: id}, memberObj);
     }
