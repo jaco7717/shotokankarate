@@ -50,8 +50,6 @@ $(document).ready(function () {
         },
 
 
-
-
         eventClick: function (info) {
 
             let id = info._id;
@@ -59,56 +57,56 @@ $(document).ready(function () {
             let found = false;
 
 
-
             if (info.registered !== '') {
 
-
-            let registrered = info.registered;
+                let registered = info.registered;
+                let reg = info.registered;
 
                 let name = prompt('Den tilmeldtes navn:');
 
-            let regis = registrered.split(',');
-                
-            for (let n of regis) {
-                if (name === n) {
-                    found = true;
+                let regis = reg.split(',');
 
+                for (let n of regis) {
+                    if (name === n) {
+                        found = true;
+
+                    }
                 }
-            }
 
-            if (!found) {
-                registrered += name + ",";
+                if (!found) {
+                    let reg = registered += (name + ",");
 
-                if (confirm("Vil du tilmelde dig event? " + titel)) {
+                    if (confirm("Vil du tilmelde dig event? " + titel)) {
 
-                    let url = 'https://shotokankarate.herokuapp.com/api/calender/' + id;
-
-
-                    let data = {registrered: registrered};
+                        let url = 'https://shotokankarate.herokuapp.com/api/calender/' + id;
 
 
-                    fetch(url, {
-                        method: "PUT",
-                        body: JSON.stringify(data),
-                        headers: {'Content-Type': 'application/json'}
-                    })
-                        .then(resultat => {
-                            if (resultat.status >= 400)
-                                throw new Error(resultat.status);
-                            else
+                        let data = {registered: reg};
 
-                                return resultat.json();
+
+                        fetch(url, {
+                            method: "PUT",
+                            body: JSON.stringify(data),
+                            headers: {'Content-Type': 'application/json'}
                         })
-                        .then(resultat => console.log(`Resultat: %o`, resultat))
-                        .catch(fejl => console.log('Fejl: ' + fejl));
+                            .then(resultat => {
+                                if (resultat.status >= 400)
+                                    throw new Error(resultat.status);
+                                else
 
+                                    return resultat.json();
+                            })
+                            .then(resultat => console.log(`Resultat: %o`, resultat))
+                            .catch(fejl => console.log('Fejl: ' + fejl));
+
+
+                    }
 
                 }
 
             }
-
-        }}
-        });
+        }
+    });
 
 });
 
