@@ -23,7 +23,7 @@ async function updateMembers() {
     const memberAge = document.querySelector('#memberAge');
     const memberEmail = document.querySelector('#memberEmail');
     const memberPassword = document.querySelector('#memberPassword');
-    const adminLabel = document.querySelector('#oprettetAdmin');
+    const adminLabel = document.querySelector('#createAdmin');
 
     memberName.value = '';
     memberAge.value = '';
