@@ -1,12 +1,12 @@
-"use strict"
+"use strict";
 
-const newsModel = require('../models/News')
-const calenderModel = require('../models/Calender')
-const loginModel = require('../models/Login')
-const memberModel = require('../models/Member')
+const newsModel = require('../models/News');
+const calenderModel = require('../models/Calender');
+const loginModel = require('../models/Login');
+const memberModel = require('../models/Member');
 
 
-// NEWS
+//-NEWS--------------------------------------------------------------------------------------
 
 exports.getAllNews = function () {
     return newsModel.find().exec();
@@ -48,9 +48,7 @@ exports.updateSingleNews = async function (id, msgObj) {
     }
 };
 
-// --------------------------------------------------------------------------------------------------------------
-
-// Calender
+//-Calender--------------------------------------------------------------------------------------
 
 exports.getAllEvents = function () {
     return calenderModel.find().exec();
@@ -82,9 +80,7 @@ exports.updateSingleEvent = function (id, msgObj) {
     return calenderModel.findOneAndUpdate({_id: id}, msgObj)
 };
 
-// --------------------------------------------------------------------------------------------------------------
-
-// Login
+//-Login--------------------------------------------------------------------------------------
 
 exports.getLogins = function () {
     return loginModel.find().exec();
@@ -100,9 +96,7 @@ exports.postLogin = function (msgObj) {
     }
 };
 
-// --------------------------------------------------------------------------------------------------------------
-
-// Member
+//-Member--------------------------------------------------------------------------------------
 
 exports.getMembers = function () {
     return memberModel.find().exec();
@@ -137,7 +131,7 @@ exports.postMember = async function (memberObj) {
     } else {
         throw new Error("Need all information")
     }
-}
+};
 
 exports.deleteMember = async function (id) {
     const array = await memberModel.find({_id: id});

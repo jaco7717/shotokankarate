@@ -2,7 +2,7 @@
 <head>
     <title>Admin Login</title>
     <script src="handlebars-v4.0.12.js"></script>
-    <script src="memberIndex.js" ></script>
+    <script src="memberIndex.js"></script>
 
     <script src="memberCalender.js" defer></script>
 
@@ -29,16 +29,16 @@
     <div class="container" id="header">
         <div><img id="KarateLogo" class="images" src="Pictures/KarateLogo.jpg"></div>
         <div><h1> Skanderborg Shotokan Karate </h1></div>
-        <div> <h3> Karate, et valg for livet... </h3></div>
+        <div><h3> Karate, et valg for livet... </h3></div>
     </div>
 
     <div class="container">
 
         <ul class="nav nav-tabs">
 
-            <li class="active"><a data-toggle="tab" href="#menukalender">Kalender</a></li>
-            <li><a data-toggle="tab" href="#menuNyheder">Nyheder</a></li>
-            <li><a data-toggle="tab" href="#menuMedlem">Oplysninger</a></li>
+            <li class="active"><a data-toggle="tab" href="#menuCalender">Kalender</a></li>
+            <li><a data-toggle="tab" href="#menuNews">Nyheder</a></li>
+            <li><a data-toggle="tab" href="#menuMember">Oplysninger</a></li>
             <li><a data-toggle="tab" href="#menuLogin">Login</a></li>
 
         </ul>
@@ -54,7 +54,7 @@
 
                 </div>
             </div>
-            <div id="menuMedlem" class="tab-pane fade">
+            <div id="menuMember" class="tab-pane fade">
                 <div class="row">
                     <div class="col-sm-6">
                         <h3>Rediger dine oplysninger:</h3>
@@ -70,12 +70,12 @@
                 </div>
             </div>
 
-            <div id="menuNyheder" class="tab-pane fade ">
+            <div id="menuNews" class="tab-pane fade ">
                 <div class="row">
 
                     <div class="col-sm-6">
                         <div class="well">
-                            <p id="nyhederBrugerside"></p>
+                            <p id="newsUser"></p>
 
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                 </div>
             </div>
 
-            <div id="menukalender" class="tab-pane fade in active">
+            <div id="menuCalender" class="tab-pane fade in active">
                 <div class="row">
                     <div class="col-sm-6">
                         <div id='calendar'></div>

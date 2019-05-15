@@ -1,21 +1,19 @@
 onload = async () => {
-
     addNews();
     addMember();
     getNews();
     getMembers();
-
 };
 
+//-UPDATE--------------------------------------------------------------------------------------
+async function updateNews() {
+    const title = document.querySelector('#headline');
+    const content = document.querySelector('#content');
+    const newsLabelUpdate = document.querySelector('#newsLabel');
 
-async function update() {
-    const overskrift = document.querySelector('#headline');
-    const tekst = document.querySelector('#content');
-    const nyhedLabelUpdate = document.querySelector('#nyhedLabel');
-
-    nyhedLabelUpdate.innerHTML = 'Oprettet';
-    overskrift.value = '';
-    tekst.value = '';
+    newsLabelUpdate.innerHTML = 'Oprettet';
+    title.value = '';
+    content.value = '';
 
     getNews();
 }
@@ -36,20 +34,33 @@ async function updateMembers() {
     getMembers();
 }
 
+
+//-GET--------------------------------------------------------------------------------------
 async function getNews() {
     const [template, userResponse] =
         await Promise.all([fetch('/news.hbs'), fetch('https://shotokankarate.herokuapp.com/api/news')]);
     const templateText = await template.text();
     const news = await userResponse.json();
     const compiledTemplate = Handlebars.compile(templateText);
-    document.querySelector('#nyheder').innerHTML = compiledTemplate({news});
+    document.querySelector('#news').innerHTML = compiledTemplate({news});
 }
 
 
+async function getMembers() {
+    const [template, userResponse] =
+        await Promise.all([fetch('/members.hbs'), fetch('https://shotokankarate.herokuapp.com/api/member')]);
+    const templateText = await template.text();
+    const members = await userResponse.json();
+    const compiledTemplate = Handlebars.compile(templateText);
+    document.querySelector('#members').innerHTML = compiledTemplate({members});
+}
+
+
+//-NEWS--------------------------------------------------------------------------------------
 async function addNews() {
     document.querySelector('#saveNews').onclick = () => {
         let url = 'https://shotokankarate.herokuapp.com/api/news';
-        let nyhedLabel = document.querySelector('#nyhedLabel').value;
+        let newsLabel = document.querySelector('#newsLabel').value;
         const msg = {
             headline: document.querySelector('#headline').value,
             content: document.querySelector('#content').value
@@ -58,7 +69,7 @@ async function addNews() {
         let headlineTest = document.querySelector('#headline').value;
         let contentTest = document.querySelector('#content').value;
 
-        if(headlineTest !== '' && contentTest !== '' ) {
+        if (headlineTest !== '' && contentTest !== '') {
 
             fetch(url, {
                 method: "POST",
@@ -67,60 +78,58 @@ async function addNews() {
             })
                 .then(response => {
                     if (response.status >= 400)
-                       throw new Error(response.status);
+                        throw new Error(response.status);
 
                     else
-                        update();
+                        updateNews();
 
                     return response.json();
                 })
                 .then(resultat => console.log(`Resultat: %o`, resultat))
                 .catch(fejl => console.log('Fejl: ' + fejl));
         } else {
-            nyhedLabel.innerHTML = 'Udfyld overskrift og tekst';
+            newsLabel.innerHTML = 'Udfyld overskrift og tekst';
         }
     };
 
 }
 
-function slet(id) {
-    tilSletNews(id);
+function deleteNews(id) {
+    toDeleteNews(id);
 
 }
 
-
-async function tilSletNews(id) {
+async function toDeleteNews(id) {
 
     if (confirm("vil du slette: ")) {
 
-    let url = 'https://shotokankarate.herokuapp.com/api/news/' + id;
-    fetch(url, {
-        method: "DELETE",
-    })
-        .then(response => {
-            if (response.status >= 400)
-                throw new Error(response.status);
-            else
-                getNews();
-            return response.json();
+        let url = 'https://shotokankarate.herokuapp.com/api/news/' + id;
+        fetch(url, {
+            method: "DELETE",
         })
-        .then(resultat => console.log(`Resultat: %o`, resultat))
-        .catch(fejl => console.log('Fejl: ' + fejl));
-}
+            .then(response => {
+                if (response.status >= 400)
+                    throw new Error(response.status);
+                else
+                    getNews();
+                return response.json();
+            })
+            .then(resultat => console.log(`Resultat: %o`, resultat))
+            .catch(fejl => console.log('Fejl: ' + fejl));
+    }
 }
 
 function edit(id, content, headline) {
-    tilEditNews(id, content, headline);
+    toEditNews(id, content, headline);
 
 }
 
+async function toEditNews(id, content, headline) {
+    let title = prompt("Overskrift", headline);
+    let content2 = prompt("text", content);
 
-async function tilEditNews(id, content, headline) {
-    let overskrift = prompt("Overskrift", headline);
-    let text = prompt("text", content);
-
-    if (overskrift !== '' && text !== '') {
-        let data = {headline: overskrift, content: text};
+    if (title !== '' && content2 !== '') {
+        let data = {headline: title, content: content2};
         let url = 'https://shotokankarate.herokuapp.com/api/news/' + id;
 
         fetch(url, {
@@ -142,20 +151,13 @@ async function tilEditNews(id, content, headline) {
     }
 }
 
-async function getMembers() {
-    const [template, userResponse] =
-        await Promise.all([fetch('/members.hbs'), fetch('https://shotokankarate.herokuapp.com/api/member')]);
-    const templateText = await template.text();
-    const members = await userResponse.json();
-    const compiledTemplate = Handlebars.compile(templateText);
-    document.querySelector('#medlemmer').innerHTML = compiledTemplate({members});
-}
 
+//-MEMBER--------------------------------------------------------------------------------------
 
 async function addMember() {
     document.querySelector('#saveMember').onclick = () => {
         let url = 'https://shotokankarate.herokuapp.com/api/member';
-        const opretMedlemAdmin = document.querySelector('#oprettetAdmin');
+        const createAdmin = document.querySelector('#createAdmin');
 
         let nameTest = document.querySelector('#memberName').value;
         let ageTest = document.querySelector('#memberAge').value;
@@ -170,7 +172,6 @@ async function addMember() {
                 password: document.querySelector('#memberPassword').value
             };
 
-            console.log(JSON.stringify(msg));
 
             fetch(url, {
                 method: "POST",
@@ -180,7 +181,7 @@ async function addMember() {
                 .then(response => {
                     if (response.status >= 400)
 
-                        opretMedlemAdmin.innerHTML = 'Allerede oprettet';
+                        createAdmin.innerHTML = 'Allerede oprettet';
                     else
                         updateMembers();
                     return response.json();
@@ -188,7 +189,7 @@ async function addMember() {
                 .then(resultat => console.log(`Resultat: %o`, resultat))
                 .catch(fejl => console.log('Fejl: ' + fejl));
         } else {
-            opretMedlemAdmin.innerHTML = 'Alle felter skal udfyldes';
+            createAdmin.innerHTML = 'Alle felter skal udfyldes';
         }
 
     }
@@ -216,17 +217,18 @@ async function toDeleteMember(id) {
         .catch(fejl => console.log('Fejl: ' + fejl));
 }
 
+
 function editMember(id, name, age, email) {
     toEditMember(id, name, age, email);
 }
 
 async function toEditMember(id, name, age, email) {
-    let navn = prompt("name", name);
-    let alder = prompt("age", age);
-    let mail = prompt("email", email);
+    let name2 = prompt("name", name);
+    let age2 = prompt("age", age);
+    let email2 = prompt("email", email);
 
-    if (navn !== '' && alder !== '' && mail !== '') {
-        let data = {name: navn, age: alder, email: mail};
+    if (name2 !== '' && age2 !== '' && email2 !== '') {
+        let data = {name: name2, age: age2, email: email2};
 
         let url = 'https://shotokankarate.herokuapp.com/api/member/' + id;
 

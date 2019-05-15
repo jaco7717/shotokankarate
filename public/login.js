@@ -5,6 +5,8 @@ onload = () => {
 };
 
 
+//-MEMBER--------------------------------------------------------------------------------------
+
 async function addMember() {
     document.querySelector('#saveMember').onclick = () => {
         let url = 'https://shotokankarate.herokuapp.com/api/member';
@@ -52,46 +54,50 @@ async function updateMembers() {
     const memberAge = document.querySelector('#memberAge');
     const memberEmail = document.querySelector('#memberEmail');
     const memberPassword = document.querySelector('#memberPassword');
-    const tjek = document.querySelector('#oprettet');
+    const create = document.querySelector('#create');
 
 
     memberName.value = '';
     memberAge.value = '';
     memberEmail.value = '';
     memberPassword.value = '';
-    tjek.innerHTML = 'Du er nu oprettet';
+    create.innerHTML = 'Du er nu oprettet';
 }
+
+
+//-LOGIN--------------------------------------------------------------------------------------
+
 
 async function loginButton() {
     const username = document.querySelector('#username');
     const password = document.querySelector('#password');
     const button = document.querySelector('#button');
-    const fejl = document.querySelector('#fejl');
+    const fail = document.querySelector('#fail');
 
     button.onclick = async () => {
-        const data = {username: username.value, password: password.value};
-        const resultat = await fetch("https://shotokankarate.herokuapp.com/login", {
+        const adminData = {username: username.value, password: password.value};
+        const result = await fetch("https://shotokankarate.herokuapp.com/login", {
             method: "POST",
-            body: JSON.stringify(data),
+            body: JSON.stringify(adminData),
             headers: {'Content-Type': 'application/json'}
         });
-        const svar = await resultat.json();
-        if (svar.ok) {
+        const res = await result.json();
+        if (res.ok) {
             window.location.href = "https://shotokankarate.herokuapp.com/session";
         } else {
-            const dataMedlem = {email: username.value, password: password.value};
-            const resultatMedlem = await fetch("https://shotokankarate.herokuapp.com/member", {
+            const dataMember = {email: username.value, password: password.value};
+            const resultMember = await fetch("https://shotokankarate.herokuapp.com/member", {
 
                 method: "POST",
-                body: JSON.stringify(dataMedlem),
+                body: JSON.stringify(dataMember),
                 headers: {'Content-Type': 'application/json'}
             });
-            const svarMedlem = await resultatMedlem.json();
-            if (svarMedlem.ok)
+            const resMember = await resultMember.json();
+            if (resMember.ok)
                 window.location.href = "https://shotokankarate.herokuapp.com/memberSession";
 
             else {
-                fejl.innerHTML = "Login fejl!";
+                fail.innerHTML = "Login fejl!";
             }
         }
 
@@ -102,6 +108,7 @@ async function loginButton() {
 
 }
 
+//-GET--------------------------------------------------------------------------------------
 
 async function getNewsUserPage() {
     const [template, userResponse] =
@@ -109,5 +116,7 @@ async function getNewsUserPage() {
     const templateText = await template.text();
     const newsUserPage = await userResponse.json();
     const compiledTemplate = Handlebars.compile(templateText);
-    document.querySelector('#nyhederBrugerside').innerHTML = compiledTemplate({newsUserPage});
+    document.querySelector('#newsFrontPage').innerHTML = compiledTemplate({newsUserPage});
+
 }
+

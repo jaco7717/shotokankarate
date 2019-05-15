@@ -7,7 +7,6 @@
     <script src="login.js"></script>
     <script src="calenderScript.js" defer></script>
 
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
@@ -16,7 +15,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
     <script src="https://cdn.jsdelivr.net/handlebarsjs/4.0.5/handlebars.min.js"></script>
-
 
     <script src='fullcalendar.js' type="text/javascript"></script>
 
@@ -34,11 +32,11 @@
     <div class="container">
 
         <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#menukalender">Kalender</a></li>
-            <li><a data-toggle="tab" href="#menuNyheder">Nyheder</a></li>
-            <li><a data-toggle="tab" href="#menutræningsinfo">Træningsinfo</a></li>
-            <li><a data-toggle="tab" href="#menukontakt">Kontakt</a></li>
-            <li><a data-toggle="tab" href="#menumedlemmer">Medlem</a></li>
+            <li class="active"><a data-toggle="tab" href="#menuCalender">Kalender</a></li>
+            <li><a data-toggle="tab" href="#menuNews">Nyheder</a></li>
+            <li><a data-toggle="tab" href="#menuPractice">Træningsinfo</a></li>
+            <li><a data-toggle="tab" href="#menuContact">Kontakt</a></li>
+            <li><a data-toggle="tab" href="#menuMember">Medlem</a></li>
             <li><a data-toggle="tab" href="#menuLogin">Login</a></li>
 
         </ul>
@@ -51,7 +49,7 @@
                         <h3>Login</h3>
                         <input type="text" id="username" placeholder="Indtast username"><br>
                         <input type="password" id="password" placeholder="Indtast password"><br><br>
-                        <input type="button" id="button" value="Login"> <span id="fejl"/>
+                        <input type="button" id="button" value="Login"> <span id="fail"/>
                         <ol id="login"></ol>
                     </div>
                     <div class="col-sm-6">
@@ -59,30 +57,27 @@
                     </div>
                 </div>
             </div>
-            <div id="menuNyheder" class="tab-pane fade ">
+            <div id="menuNews" class="tab-pane fade ">
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="well">
                             <h2>Nyheder</h2>
                             <br>
-                            <p id="nyhederBrugerside"></p>
+                            <p id="newsFrontPage"></p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="menukalender" class="tab-pane fade in active">
+            <div id="menuCalender" class="tab-pane fade in active">
                 <div class="row">
                     <div class="col-sm-6">
-
-
                         <div id='calendar'></div>
-
 
                     </div>
 
                 </div>
             </div>
-            <div id="menutræningsinfo" class="tab-pane fade">
+            <div id="menuPractice" class="tab-pane fade">
                 <div class="row">
                     <div class="col-sm-6">
                         <h3>Træningsinfo</h3>
@@ -118,7 +113,7 @@
 
                 </div>
             </div>
-            <div id="menukontakt" class="tab-pane fade">
+            <div id="menuContact" class="tab-pane fade">
                 <div class="row">
                     <div class="col-sm-6">
                         <h3>Kontakt</h3>
@@ -141,7 +136,7 @@
                     </div>
                 </div>
             </div>
-            <div id="menumedlemmer" class="tab-pane fade">
+            <div id="menuMember" class="tab-pane fade">
                 <div class="row">
                     <div class="col-sm-6">
                         <h3>Opret dig som medlem</h3>
@@ -163,7 +158,7 @@
                         <br>
                         <br>
                         <button id="saveMember"> Opret</button>
-                        <p id="oprettet"></p>
+                        <p id="create"></p>
 
                     </div>
                     <div class="col-sm-6">
@@ -202,7 +197,7 @@
     </div>
 </div>
 
-</div>
+
 
 </body>
 </html>

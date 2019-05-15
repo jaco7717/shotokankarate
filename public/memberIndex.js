@@ -3,33 +3,34 @@ onload = () => {
 
 };
 
-
+//-GET--------------------------------------------------------------------------------------
 async function getNewsUserPage() {
     const [template, userResponse] =
         await Promise.all([fetch('/newsUserPage.hbs'), fetch('https://shotokankarate.herokuapp.com/api/news')]);
     const templateText = await template.text();
     const newsUserPage = await userResponse.json();
     const compiledTemplate = Handlebars.compile(templateText);
-    document.querySelector('#nyhederBrugerside').innerHTML = compiledTemplate({newsUserPage});
+    document.querySelector('#newsUser').innerHTML = compiledTemplate({newsUserPage});
 }
 
 
+//-member--------------------------------------------------------------------------------------
 function toEditMemberM(id, name, age, email, password) {
     toEditMemberMemberPart(id, name, age, email, password);
 }
 
 async function toEditMemberMemberPart(id, name, age, email, password) {
 
-    let navn = prompt("name", name);
-    let alder = prompt("age", age);
-    let mail = prompt("email", email);
-    let adgangskode = prompt("adgangskode", password);
+    let name1 = prompt("name", name);
+    let age1 = prompt("age", age);
+    let email1 = prompt("email", email);
+    let password1 = prompt("adgangskode", password);
 
 
 
-    if (navn !== '' && alder !== '' && mail !== '' && password !== '') {
-        let data = {name: navn, age: alder, email: mail, password:adgangskode};
-        console.log(id);
+    if (name1 !== '' && age1 !== '' && email1 !== '' && password1 !== '') {
+        let data = {name: name1, age: age1, email: email1, password:password1};
+
         let url = 'https://shotokankarate.herokuapp.com/api/member/' + id;
 
         fetch(url, {
