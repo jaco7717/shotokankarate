@@ -77,16 +77,13 @@ describe ('Event test', function () {
             .post('/api/calender')
             .send(data)
             .set('Accept', 'application/json')
-            .expect('Content-Type', /text/)
+            .expect('Content-Type', /json/)
             .expect(200)
-            .then(response => {
-                return response.json()
-            })
-            .then(object = response.last())
-            .end((err) => {
+            .end(function (err, res) {
                 if (err) return done(err);
-                done();
+                done()
             });
+        done();
 
     });
 
