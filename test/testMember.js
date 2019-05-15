@@ -15,7 +15,7 @@ let data = {
 
 describe('Member test', function(){
 
-    it("TEST# - test 1 of correct name, age, email and password", async function (){
+    it("TEST16 - test 1 of correct name, age, email and password", async function (){
        const response = await request(app)
            .get('/api/member')
            .expect(200)
@@ -23,13 +23,13 @@ describe('Member test', function(){
 
        const members = response.body;
 
-       members[0].name.should.be.equal('Mads');
-       members[0].age.should.be.equal('24');
-       members[0].email.should.be.equal('mads@test.dk');
-       members[0].password.should.be.equal('randers4ever');
+       members[0].name.should.be.equal('Medlem Test');
+       members[0].age.should.be.equal('10');
+       members[0].email.should.be.equal('medlem@test.dk');
+       members[0].password.should.be.equal('password');
     });
 
-    it("TEST# +1 - test 1 of incorrect name, age, email and password", async function(){
+    it("TEST17 - test 1 of incorrect name, age, email and password", async function(){
        const response = await request(app)
            .get('/api/member')
            .expect(200)
@@ -40,11 +40,11 @@ describe('Member test', function(){
        members[0].name.should.not.be.equal('TESTmedlem');
        members[0].age.should.not.be.equal('34');
        members[0].email.should.not.be.equal('test@test.dk');
-       members[0].password.should.not.be.equal('password');
+       members[0].password.should.not.be.equal('kodeord');
 
     });
 
-    it("TEST# +2 - test 2 of correct name, age, email and password", async function(){
+    it("TEST18 - test 2 of correct name, age, email and password", async function(){
        const response = await request(app)
            .get('/api/member')
            .expect(200)
@@ -52,13 +52,13 @@ describe('Member test', function(){
 
        const members = response.body;
 
-       members[1].name.should.be.equal('Tomas');
-       members[1].age.should.be.equal('23');
-       members[1].email.should.be.equal('Tomas@karate.com');
-       members[1].password.should.be.equal('1234');
+       members[1].name.should.be.equal('Medlem Test 2');
+       members[1].age.should.be.equal('20');
+       members[1].email.should.be.equal('test@medlem.com');
+       members[1].password.should.be.equal('pass');
     });
 
-    it("TEST# +3 - test 2 of incorrect name, age, email and password", async function(){
+    it("TEST19 - test 2 of incorrect name, age, email and password", async function(){
         const response = await request(app)
             .get('/api/member')
             .expect(200)
@@ -72,18 +72,14 @@ describe('Member test', function(){
         members[1].password.should.not.be.equal('passwordTest');
     });
 
-    it("TEST# +4 - test of Post into api/members", function(done){
+    it("TEST20 - test of Post into api/members", function(done){
         request(app)
             .post('/api/member')
             .send(data)
             .set('Accept', 'application/json')
-            .expect('Content-Type', /text/)
+            .expect('Content-Type', /json/)
             .expect(200)
-            .then(response => {
-                return response.json()
-            })
-            .then(object = response.last())
-            .end((err) =>{
+            .end(function (err, res) {
                 if (err) return done(err);
                 done()
             });

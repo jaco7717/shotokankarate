@@ -7,6 +7,8 @@ const fetch = require('node-fetch');
 const newsModel = require('../models/News');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const controller = require("../controller/controller");
+const assert = require('assert');
 
 let data = {
     "headline": "Posttest headline",
@@ -66,7 +68,7 @@ describe('News test', function () {
             .post('/api/news')
             .send(data)
             .set('Accept', 'application/json')
-            .expect('Content-Type', /text/)
+            .expect('Content-Type', /json/)
             .expect(200)
             .end(function (err, res) {
                 if (err) return done(err);
@@ -75,28 +77,6 @@ describe('News test', function () {
 
     });
 
-    it('TEST10 - test of Delete of News', async function (done) {
-
-
-        // const response = await request(app)
-        //     .get('/api/news')
-        //     .expect(200)
-        //     .expect('Content-Type', /json/)
-        //     .end(function (err, res) {
-        //         if (err) return done(err);
-        //     });
-
-        const resp = await fetch('https://shotokankarate.herokuapp.com/api/news/');
-
-
-        const news = resp.body;
-
-        console.log(news[news.length - 1])
-        news[news.length - 1].headline.should.be.equal('Posttest headline')
-        news[news.length - 1].content.should.be.equal('Posttest content')
-
-
-    })
 
 
 });
