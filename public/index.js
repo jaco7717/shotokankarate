@@ -113,7 +113,6 @@ async function toDeleteNews(id) {
                     getNews();
                 return response.json();
             })
-            .then(resultat => console.log(`Resultat: %o`, resultat))
             .catch(fejl => console.log('Fejl: ' + fejl));
     }
 }
@@ -143,7 +142,6 @@ async function toEditNews(id, content, headline) {
                     getNews();
                 return resultat.json();
             })
-            .then(resultat => console.log(`Resultat: %o`, resultat))
             .catch(fejl => console.log('Fejl: ' + fejl));
     } else {
         alert('FEJL - Der må ikke være tomme felter');
@@ -185,7 +183,6 @@ async function addMember() {
                         updateMembers();
                     return response.json();
                 })
-                .then(resultat => console.log(`Resultat: %o`, resultat))
                 .catch(fejl => console.log('Fejl: ' + fejl));
         } else {
             createAdmin.innerHTML = 'Alle felter skal udfyldes';
@@ -212,7 +209,6 @@ async function toDeleteMember(id) {
                 getMembers();
             return response.json();
         })
-        .then(resultat => console.log(`Resultat: %o`, resultat))
         .catch(fejl => console.log('Fejl: ' + fejl));
 }
 
@@ -243,7 +239,6 @@ async function toEditMember(id, name, age, email) {
                     getMembers();
                 return resultat.json();
             })
-            .then(resultat => console.log(`Resultat: %o`, resultat))
             .catch(fejl => console.log('Fejl: ' + fejl));
     } else {
 
