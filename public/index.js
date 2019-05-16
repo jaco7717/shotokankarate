@@ -85,7 +85,6 @@ async function addNews() {
 
                     return response.json();
                 })
-                .then(resultat => console.log(`Resultat: %o`, resultat))
                 .catch(fejl => console.log('Fejl: ' + fejl));
         } else {
             newsLabel.innerHTML = 'Udfyld overskrift og tekst';
